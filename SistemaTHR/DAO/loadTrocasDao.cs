@@ -13,10 +13,14 @@ namespace SistemaTHR.DAO
         OleDbDataReader dr;
         Connection con = new Connection();
 
-        public String numeroEmp;
+        public List<String> numeroEmp = new List<String>();
+        public List<String> ultimaTrocaList = new List<String>();
+        public List<String> trocaAtualList = new List<String>();
+        public String numero;
+        public String ultimaTroca;
 
 
-        public String loadTrocas()
+        public void loadTrocas()
         {
             cmd.CommandText = "Select * from tab_trocaGas order by dataHoraTroca asc";
             try
@@ -25,8 +29,27 @@ namespace SistemaTHR.DAO
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
+                    foreach(var list in dr["numeroEmp"].ToString())
+                    {
+                        // list = dr["numeroEmp"].ToString();
+                        var numeroEmpilhadeira = new List<String> { dr["numeroEmp"].ToString()};
+                        var ultimaTroca = new List<String> { dr["ultimaTroca"].ToString() };
+                        var trocaAtual = new List<String> { dr["trocaAtual"].ToString() };
+                        numero = numeroEmpilhadeira.ToString();
+                        numeroEmp.AddRange(numeroEmpilhadeira);
+                        ultimaTrocaList.AddRange(ultimaTroca);
+                        trocaAtualList.AddRange(trocaAtual);
 
-                   numeroEmp = dr["numeroEmp"].ToString();
+                    }
+
+
+                    /*numero = dr["numeroEmp"].ToString() ;
+                    ultimaTroca = dr["ultimaTroca"].ToString();
+                    numeroEmp.Add(numero);
+                    ultimaTrocaList.Add(ultimaTroca);*/
+
+                    // Console.Write(dr["numeroEmp"].ToString());
+
 
                 }
 
@@ -36,7 +59,7 @@ namespace SistemaTHR.DAO
                 dr = null;
             }
 
-            return numeroEmp;
+
         }
     }
 }

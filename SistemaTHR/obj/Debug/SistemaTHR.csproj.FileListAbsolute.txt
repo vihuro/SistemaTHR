@@ -29,3 +29,4 @@ C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.csproj.
 C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.exe
 C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.pdb
 C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmPainelTrocaGas.resources
+C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmPainelTrocaGas.resources

@@ -3,6 +3,7 @@
     "",
     "\\SistemaTHR",
     "\\SistemaTHR\\Apllication",
+    "\\SistemaTHR\\DAO",
     "\\SistemaTHR\\Modelo"
   ],
   "SelectedNode": "\\SistemaTHR.sln",
