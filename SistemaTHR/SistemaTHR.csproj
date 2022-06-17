@@ -58,11 +58,11 @@
     <Compile Include="Apllication\frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Apllication\frmPainelTrocaGas.cs">
+    <Compile Include="Apllication\frmPainelGas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Apllication\frmPainelTrocaGas.Designer.cs">
-      <DependentUpon>frmPainelTrocaGas.cs</DependentUpon>
+    <Compile Include="Apllication\frmPainelGas.Designer.cs">
+      <DependentUpon>frmPainelGas.cs</DependentUpon>
     </Compile>
     <Compile Include="Apllication\frmTrocaGas.cs">
       <SubType>Form</SubType>
@@ -71,8 +71,10 @@
       <DependentUpon>frmTrocaGas.cs</DependentUpon>
     </Compile>
     <Compile Include="DAO\Connection.cs" />
+    <Compile Include="DAO\loadTrocasDao.cs" />
     <Compile Include="DAO\LoginDao.cs" />
     <Compile Include="DAO\ultimaTrocaDao.cs" />
+    <Compile Include="Modelo\loadTrocaGasController.cs" />
     <Compile Include="Modelo\loginController.cs" />
     <Compile Include="Modelo\ultimaTrocaController.cs" />
     <Compile Include="Program.cs" />
@@ -82,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apllication\frmPainelGas.resx">
+      <DependentUpon>frmPainelGas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmTrocaGas.resx">
       <DependentUpon>frmTrocaGas.cs</DependentUpon>

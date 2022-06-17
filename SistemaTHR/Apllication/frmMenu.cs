@@ -105,8 +105,12 @@ namespace SistemaTHR.Apllication
         private void trocasDeGásToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmPainelTrocaGas painelTrocas = new frmPainelTrocaGas();
-
+            frmPainelTrocaGas painel = new frmPainelTrocaGas();
+            //painel.MdiParent = painelTrocas;
+            //painel.Show();
             painelTrocas.Show();
+
+
 
 
         }
