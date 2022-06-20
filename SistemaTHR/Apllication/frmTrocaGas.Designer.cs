@@ -39,6 +39,9 @@
             this.txtUltimaTroca = new System.Windows.Forms.TextBox();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,9 +84,8 @@
             this.lblHorasTrabalhadas.AutoSize = true;
             this.lblHorasTrabalhadas.Location = new System.Drawing.Point(119, 158);
             this.lblHorasTrabalhadas.Name = "lblHorasTrabalhadas";
-            this.lblHorasTrabalhadas.Size = new System.Drawing.Size(19, 13);
+            this.lblHorasTrabalhadas.Size = new System.Drawing.Size(0, 13);
             this.lblHorasTrabalhadas.TabIndex = 5;
-            this.lblHorasTrabalhadas.Text = "20";
             // 
             // label4
             // 
@@ -150,11 +152,39 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 401);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(269, 22);
+            this.statusStrip1.TabIndex = 5;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(0, 409);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Usuário:";
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(53, 409);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(0, 13);
+            this.lblUsuario.TabIndex = 7;
+            // 
             // frmTrocaGas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(269, 405);
+            this.ClientSize = new System.Drawing.Size(269, 423);
+            this.Controls.Add(this.lblUsuario);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.groupBox1);
@@ -186,5 +216,8 @@
         private System.Windows.Forms.TextBox txtUltimaTroca;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label lblUsuario;
     }
 }

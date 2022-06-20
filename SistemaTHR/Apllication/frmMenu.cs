@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace SistemaTHR.Apllication
 {
     public partial class frmMenu : Form
@@ -20,104 +19,71 @@ namespace SistemaTHR.Apllication
 
         private void empilhadeira1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTrocaGas trocaGas = new frmTrocaGas();
-            trocaGas.lblNumeroEmp.Text = "1";
-            trocaGas.Show();
+            frmTrocaGas frmTrocaGas = new frmTrocaGas();
+            
+            frmTrocaGas.lblNumeroEmp.Text = "1";
+            frmTrocaGas.lblUsuario.Text = this.lblUsuario.Text;
+            frmTrocaGas.Show();
         }
 
-        private void empilhadeira1ToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void empilhadeira2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTrocaGas trocaGas = new frmTrocaGas();
-            trocaGas.lblNumeroEmp.Text = "2";
-            trocaGas.Show();
+            frmTrocaGas frmTrocaGas = new frmTrocaGas();
+
+            frmTrocaGas.lblNumeroEmp.Text = "2";
+            frmTrocaGas.lblUsuario.Text = this.lblUsuario.Text;
+            frmTrocaGas.Show();
         }
 
-        private void empilhadeira1ToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void empilhadeira3ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTrocaGas trocaGas = new frmTrocaGas();
-            trocaGas.lblNumeroEmp.Text = "3";
-            trocaGas.Show();
-        }
+            frmTrocaGas frmTrocaGas = new frmTrocaGas();
 
-        private void empilhadeira1ToolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            frmTrocaGas trocaGas = new frmTrocaGas();
-            trocaGas.lblNumeroEmp.Text = "4";
-            trocaGas.Show();
-        }
-
-        private void empilhadeira5ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmTrocaGas trocaGas = new frmTrocaGas();
-            trocaGas.lblNumeroEmp.Text = "5";
-            trocaGas.Show();
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
+            frmTrocaGas.lblNumeroEmp.Text = "3";
+            frmTrocaGas.lblUsuario.Text = this.lblUsuario.Text;
+            frmTrocaGas.Show();
 
         }
 
-        private void empilhadeira1ToolStripMenuItem4_Click(object sender, EventArgs e)
+        private void empilhadeira3ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmTrocaGas trocaGas = new frmTrocaGas();
-            trocaGas.lblNumeroEmp.Text = "1";
-            trocaGas.Show();
+            frmTrocaGas frmTrocaGas = new frmTrocaGas();
+
+            frmTrocaGas.lblNumeroEmp.Text = "4";
+            frmTrocaGas.lblUsuario.Text = this.lblUsuario.Text;
+            frmTrocaGas.Show();
 
         }
 
-        private void frmMenu_Load(object sender, EventArgs e)
+        private void empilhadeira3ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
+            frmTrocaGas frmTrocaGas = new frmTrocaGas();
+
+            frmTrocaGas.lblNumeroEmp.Text = "5";
+            frmTrocaGas.lblUsuario.Text = this.lblUsuario.Text;
+            frmTrocaGas.Show();
 
         }
 
-        private void empilhadeira1ToolStripMenuItem5_Click(object sender, EventArgs e)
+        private void trocaGásToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTrocaGas trocaGas = new frmTrocaGas();
-            trocaGas.lblNumeroEmp.Text = "2";
-            trocaGas.Show();
+            frmPainelTrocaGas frmPainelTrocaGas = new frmPainelTrocaGas();
+            frmPainelTrocaGas.Show();
         }
 
-        private void empilhadeira1ToolStripMenuItem6_Click(object sender, EventArgs e)
+        private void solicitarManutençãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTrocaGas trocaGas = new frmTrocaGas();
-            trocaGas.lblNumeroEmp.Text = "3";
-            trocaGas.Show();
-
+            frmSolicitarManutencao frmSolicitarManutencao = new frmSolicitarManutencao();
+            frmSolicitarManutencao.lblUsuario.Text = this.lblUsuario.Text;
+            frmSolicitarManutencao.ShowDialog();
         }
 
-        private void empilhadeira1ToolStripMenuItem7_Click(object sender, EventArgs e)
+        private void manutenççõesEmAbertoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTrocaGas trocaGas = new frmTrocaGas();
-            trocaGas.lblNumeroEmp.Text = "4";
-            trocaGas.Show();
-
-        }
-
-        private void empilhadeira1ToolStripMenuItem8_Click(object sender, EventArgs e)
-        {
-            frmTrocaGas trocaGas = new frmTrocaGas();
-            trocaGas.lblNumeroEmp.Text = "4";
-            trocaGas.Show();
-
-        }
-
-        private void trocasDeGásToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPainelTrocaGas painelTrocas = new frmPainelTrocaGas();
-            frmPainelTrocaGas painel = new frmPainelTrocaGas();
-            //painel.MdiParent = painelTrocas;
-            //painel.Show();
-            painelTrocas.Show();
-
-
-
-
-        }
-
-        private void empilhadeirasToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
+            frmPainelManutencoesAberto frmPainelManutencoesAberto = new frmPainelManutencoesAberto();
+            frmPainelManutencoesAberto.lblUsuario.Text = this.lblUsuario.Text;
+     
+            frmPainelManutencoesAberto.Show();
         }
     }
 }

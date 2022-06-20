@@ -113,13 +113,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.Button btnEntrar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox txtNome;
     }
 }
 

@@ -35,6 +35,7 @@ namespace SistemaTHR.DAO
                         var numeroEmpilhadeira = new List<String> { dr["numeroEmp"].ToString()};
                         var ultimaTroca = new List<String> { dr["ultimaTroca"].ToString() };
                         var trocaAtual = new List<String> { dr["trocaAtual"].ToString() };
+
                         numero = numeroEmpilhadeira.ToString();
                         numeroEmp.AddRange(numeroEmpilhadeira);
                         ultimaTrocaList.AddRange(ultimaTroca);

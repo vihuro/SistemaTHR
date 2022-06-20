@@ -58,11 +58,29 @@
     <Compile Include="Apllication\frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Apllication\frmOrdemServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apllication\frmOrdemServico.Designer.cs">
+      <DependentUpon>frmOrdemServico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Apllication\frmPainelGas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Apllication\frmPainelGas.Designer.cs">
       <DependentUpon>frmPainelGas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apllication\frmPainelManutencoesAberto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apllication\frmPainelManutencoesAberto.Designer.cs">
+      <DependentUpon>frmPainelManutencoesAberto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apllication\frmSolicitarManutencao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apllication\frmSolicitarManutencao.Designer.cs">
+      <DependentUpon>frmSolicitarManutencao.cs</DependentUpon>
     </Compile>
     <Compile Include="Apllication\frmTrocaGas.cs">
       <SubType>Form</SubType>
@@ -73,9 +91,13 @@
     <Compile Include="DAO\Connection.cs" />
     <Compile Include="DAO\loadTrocasDao.cs" />
     <Compile Include="DAO\LoginDao.cs" />
+    <Compile Include="DAO\manutecaoEmpilhadeiraDao.cs" />
+    <Compile Include="DAO\trocaGasDao.cs" />
     <Compile Include="DAO\ultimaTrocaDao.cs" />
     <Compile Include="Modelo\loadTrocaGasController.cs" />
     <Compile Include="Modelo\loginController.cs" />
+    <Compile Include="Modelo\manutecaoEmpilhadeirasController.cs" />
+    <Compile Include="Modelo\trocaGasController.cs" />
     <Compile Include="Modelo\ultimaTrocaController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,8 +107,17 @@
     <EmbeddedResource Include="Apllication\frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Apllication\frmOrdemServico.resx">
+      <DependentUpon>frmOrdemServico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmPainelGas.resx">
       <DependentUpon>frmPainelGas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apllication\frmPainelManutencoesAberto.resx">
+      <DependentUpon>frmPainelManutencoesAberto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apllication\frmSolicitarManutencao.resx">
+      <DependentUpon>frmSolicitarManutencao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmTrocaGas.resx">
       <DependentUpon>frmTrocaGas.cs</DependentUpon>

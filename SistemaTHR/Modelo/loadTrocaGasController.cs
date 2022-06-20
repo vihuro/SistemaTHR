@@ -18,13 +18,13 @@ namespace SistemaTHR.Modelo
         {
             DAO.loadTrocasDao loadTrocaGas = new DAO.loadTrocasDao();
             loadTrocaGas.loadTrocas();
-            //this.empNumero = loadTrocaGas.numeroEmp;
+
             if (!loadTrocaGas.Equals(""))
             {
                 this.empNumero = loadTrocaGas.numeroEmp;
                 this.ultimaTrocaList = loadTrocaGas.ultimaTrocaList;
                 this.trocaAtualList = loadTrocaGas.trocaAtualList;
-                //this.empNumero.Add(loadTrocaGas.numeroEmp.ToString());
+
             }
 
         }

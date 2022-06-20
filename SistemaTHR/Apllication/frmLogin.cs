@@ -37,9 +37,13 @@ namespace SistemaTHR
             if (loginController.tem)
             {
 
+
                 frmMenu menu = new frmMenu();
-                menu.lblUsuario.Text = txtNome.Text.ToString();
                 menu.Show();
+
+                menu.lblUsuario.Text = txtNome.Text;
+
+
 
                 this.txtNome.Text = string.Empty;
                 this.txtSenha.Text = string.Empty;
@@ -47,7 +51,7 @@ namespace SistemaTHR
             }
             else
             {
-                MessageBox.Show("Usuário ou senha inválidos!");
+                MessageBox.Show("Usuário ou senha inválidos!","Erro",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 

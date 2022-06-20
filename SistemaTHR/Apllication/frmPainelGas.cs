@@ -26,45 +26,47 @@ namespace SistemaTHR.Apllication
         {
 
         }
-        
+
 
         public List<String> numeroEmp = new List<String>();
         public List<String> ultimaTroca = new List<String>();
         public List<String> trocaAtual = new List<String>();
 
+        OleDbCommand cmd = new OleDbCommand();
+        OleDbDataReader dr;
+        Connection con = new Connection();
+
 
         public void loadListView()
         {
-            Modelo.loadTrocaGasController loadTrocaGasController = new Modelo.loadTrocaGasController();
-            loadTrocaGasController.numeroEmp();
-            numeroEmp = loadTrocaGasController.empNumero;
-            ultimaTroca = loadTrocaGasController.ultimaTrocaList;
-            trocaAtual = loadTrocaGasController.trocaAtualList;
-
-            foreach (var list in numeroEmp)
+            cmd.CommandText = "Select * from tab_trocaGas order by dataHoraTroca asc";
+            try
             {
-                ListViewItem lisItem = new ListViewItem(list);
-
-                var ultimaTrocaList = new List<Array> { ultimaTroca.ToArray() };
-
-
-                foreach(var listUltimaTroca in ultimaTroca)
+                cmd.Connection = con.conectar();
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
                 {
-                    lisItem.SubItems.Add(listUltimaTroca);
-                }
-                foreach(var trocaAtualList in trocaAtual)
-                {
-                    lisItem.SubItems.Add(trocaAtualList);
+                    ListViewItem listItem = new ListViewItem(dr["numeroEmp"].ToString());
+
+                    listItem.SubItems.Add(dr["ultimaTroca"].ToString());
+                    listItem.SubItems.Add(dr["trocaAtual"].ToString());
+                    listItem.SubItems.Add(dr["horasTrabalhadas"].ToString());
+                    listItem.SubItems.Add(dr["usuarioTroca"].ToString());
+
+                    String dateTime = Convert.ToDateTime(dr["dataHoraTroca"]).ToString("dd/MM/yyy HH:mm:ss");
+
+                   listItem.SubItems.Add(dateTime);
+
+
+                    listView1.Items.Add(listItem);
+
 
                 }
-
-
-     
-
-               listView1.Items.Add(lisItem);
             }
-
-
+            catch
+            {
+                dr = null;
+            }
         }
 
         public void listViewFinally()
@@ -79,35 +81,19 @@ namespace SistemaTHR.Apllication
 
         }
 
+        List<String> todos = new List<string>();
+
         public List<String> loadTrocas()
         {
-            /*cmd.CommandText = "Select * from tab_trocaGas order by dataHoraTroca asc";
-            try
-            {
-                cmd.Connection = con.conectar();
-                dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    //numero = dr["numeroEmp"].ToString();
-                    numeroEmpilhadeira1 = dr["numeroEmp"].ToString();
 
-
-                    numeroEmp.Add(numeroEmpilhadeira1);
-                    MessageBox.Show(numeroEmpilhadeira1);
-                    // Console.Write(dr["numeroEmp"].ToString());
-                    // Console.Write(numeroEmp);*/
-                    
-                    /*Modelo.loadTrocaGasController loadTrovcaGasController = new Modelo.loadTrocaGasController();
-                    loadTrocaGasController.numeroEmp();
-                    ListViewItem list = new ListViewItem(loadTrocaGasController.empNumero.ToString());
-
-                    listView1.Items.Add(list);*/
 
             return null;
         }
 
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
 
-
+        }
     }
     
 }
