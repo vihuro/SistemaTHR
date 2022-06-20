@@ -85,5 +85,14 @@ namespace SistemaTHR.Apllication
      
             frmPainelManutencoesAberto.Show();
         }
+
+
+
+        private void transfêToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTransferencia frmTransferencia = new frmTransferencia();
+            frmTransferencia.Show();
+
+        }
     }
 }

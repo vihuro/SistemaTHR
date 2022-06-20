@@ -78,8 +78,13 @@ namespace SistemaTHR.Apllication
             }
         }
 
+
+
+
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
+
+
             frmOrdemServico frmOrdemServico = new frmOrdemServico();
             frmMenu frmMenu = new frmMenu();
             frmOrdemServico.lblUsuario.Text = this.lblUsuario.Text;

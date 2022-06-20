@@ -82,6 +82,12 @@
     <Compile Include="Apllication\frmSolicitarManutencao.Designer.cs">
       <DependentUpon>frmSolicitarManutencao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Apllication\frmTransferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apllication\frmTransferencia.Designer.cs">
+      <DependentUpon>frmTransferencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Apllication\frmTrocaGas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,11 +95,14 @@
       <DependentUpon>frmTrocaGas.cs</DependentUpon>
     </Compile>
     <Compile Include="DAO\Connection.cs" />
+    <Compile Include="DAO\ConnectionBDEstoque.cs" />
+    <Compile Include="DAO\loadPADAO.cs" />
     <Compile Include="DAO\loadTrocasDao.cs" />
     <Compile Include="DAO\LoginDao.cs" />
     <Compile Include="DAO\manutecaoEmpilhadeiraDao.cs" />
     <Compile Include="DAO\trocaGasDao.cs" />
     <Compile Include="DAO\ultimaTrocaDao.cs" />
+    <Compile Include="Modelo\loadPaController.cs" />
     <Compile Include="Modelo\loadTrocaGasController.cs" />
     <Compile Include="Modelo\loginController.cs" />
     <Compile Include="Modelo\manutecaoEmpilhadeirasController.cs" />
@@ -118,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmSolicitarManutencao.resx">
       <DependentUpon>frmSolicitarManutencao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apllication\frmTransferencia.resx">
+      <DependentUpon>frmTransferencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmTrocaGas.resx">
       <DependentUpon>frmTrocaGas.cs</DependentUpon>
