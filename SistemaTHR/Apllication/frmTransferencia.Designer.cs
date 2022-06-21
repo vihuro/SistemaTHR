@@ -30,20 +30,24 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.btnConectar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtNumeroPA = new System.Windows.Forms.TextBox();
             this.clNumeroPA = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clCodigo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clDescricao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clPesoBruto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clPesoLiquido = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clQuantidadeBob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clCodigo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnSomar = new System.Windows.Forms.Button();
+            this.btnConectar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNumeroPA = new System.Windows.Forms.TextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -59,13 +63,15 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Panel2.Controls.Add(this.btnSomar);
             this.splitContainer1.Panel2.Controls.Add(this.btnConectar);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.txtNumeroPA);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 450);
-            this.splitContainer1.SplitterDistance = 230;
+            this.splitContainer1.Size = new System.Drawing.Size(800, 575);
+            this.splitContainer1.SplitterDistance = 124;
             this.splitContainer1.TabIndex = 0;
             // 
             // listView1
@@ -82,15 +88,55 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(800, 230);
+            this.listView1.Size = new System.Drawing.Size(800, 124);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
+            // clNumeroPA
+            // 
+            this.clNumeroPA.Text = "Nº PA";
+            this.clNumeroPA.Width = 102;
+            // 
+            // clCodigo
+            // 
+            this.clCodigo.Text = "Código";
+            this.clCodigo.Width = 126;
+            // 
+            // clDescricao
+            // 
+            this.clDescricao.Text = "Descrição";
+            this.clDescricao.Width = 259;
+            // 
+            // clPesoBruto
+            // 
+            this.clPesoBruto.Text = "Peso Bruto";
+            this.clPesoBruto.Width = 101;
+            // 
+            // clPesoLiquido
+            // 
+            this.clPesoLiquido.Text = "Peso Liquido";
+            this.clPesoLiquido.Width = 124;
+            // 
+            // clQuantidadeBob
+            // 
+            this.clQuantidadeBob.Text = "Quantidade de Bob";
+            this.clQuantidadeBob.Width = 132;
+            // 
+            // btnSomar
+            // 
+            this.btnSomar.Location = new System.Drawing.Point(157, 79);
+            this.btnSomar.Name = "btnSomar";
+            this.btnSomar.Size = new System.Drawing.Size(75, 23);
+            this.btnSomar.TabIndex = 3;
+            this.btnSomar.Text = "Somar...";
+            this.btnSomar.UseVisualStyleBackColor = true;
+            this.btnSomar.Click += new System.EventHandler(this.btnSomar_Click);
+            // 
             // btnConectar
             // 
-            this.btnConectar.Location = new System.Drawing.Point(15, 181);
+            this.btnConectar.Location = new System.Drawing.Point(51, 79);
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(75, 23);
             this.btnConectar.TabIndex = 2;
@@ -117,51 +163,29 @@
             this.txtNumeroPA.TextChanged += new System.EventHandler(this.txtNumeroPA_TextChanged);
             this.txtNumeroPA.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNumeroPA_KeyUp);
             // 
-            // clNumeroPA
+            // statusStrip1
             // 
-            this.clNumeroPA.Text = "Nº PA";
-            this.clNumeroPA.Width = 102;
+            this.statusStrip1.Location = new System.Drawing.Point(0, 425);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 5;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // clDescricao
+            // splitContainer2
             // 
-            this.clDescricao.Text = "Descrição";
-            this.clDescricao.Width = 259;
-            // 
-            // clPesoBruto
-            // 
-            this.clPesoBruto.Text = "Peso Bruto";
-            this.clPesoBruto.Width = 101;
-            // 
-            // clPesoLiquido
-            // 
-            this.clPesoLiquido.Text = "Peso Liquido";
-            this.clPesoLiquido.Width = 124;
-            // 
-            // clQuantidadeBob
-            // 
-            this.clQuantidadeBob.Text = "Quantidade de Bob";
-            this.clQuantidadeBob.Width = 132;
-            // 
-            // clCodigo
-            // 
-            this.clCodigo.Text = "Código";
-            this.clCodigo.Width = 126;
-            // 
-            // btnSomar
-            // 
-            this.btnSomar.Location = new System.Drawing.Point(144, 181);
-            this.btnSomar.Name = "btnSomar";
-            this.btnSomar.Size = new System.Drawing.Size(75, 23);
-            this.btnSomar.TabIndex = 3;
-            this.btnSomar.Text = "Somar...";
-            this.btnSomar.UseVisualStyleBackColor = true;
-            this.btnSomar.Click += new System.EventHandler(this.btnSomar_Click);
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 148);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainer2.Size = new System.Drawing.Size(800, 277);
+            this.splitContainer2.SplitterDistance = 138;
+            this.splitContainer2.TabIndex = 6;
             // 
             // frmTransferencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 575);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmTransferencia";
             this.Text = "frmTransferencia";
@@ -170,6 +194,8 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -188,5 +214,7 @@
         private System.Windows.Forms.ColumnHeader clQuantidadeBob;
         private System.Windows.Forms.ColumnHeader clCodigo;
         private System.Windows.Forms.Button btnSomar;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
     }
 }

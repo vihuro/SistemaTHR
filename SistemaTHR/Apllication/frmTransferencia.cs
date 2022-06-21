@@ -43,13 +43,85 @@ namespace SistemaTHR.Apllication
 
         private void btnConectar_Click(object sender, EventArgs e)
         {
+            if(listView1.Items.Count == 0)
+            {
+                loadPA();
+
+            }
+            else
+            {
+                foreach (ListViewItem item in listView1.Items)
+                {
+
+                    if (item.SubItems[0].Text == "Resultado:")
+                    {
+                        MessageBox.Show("Tem resultado!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não tem resultado!");
+                    }
+
+                    /*while (item.SubItems[0].Text == "Resultado:")
+                    {
+                        if (item.SubItems[0].Text != "Resultado:")
+                        {
+                            loadPA();
+                            break;
+                        }
+                        else
+                        {
+                            alterarResultado();
+                            break;
+                        }
 
 
-            loadPA();
+                    }*/
+
+                    /*if (item.SubItems[0].Text != "Resultado:")
+                    {
+                        MessageBox.Show("Não tem resultado ainda");
+                        alterarResultado();
+                    }
+                    else
+                    {
+                        loadPA();
+
+                    }*/
 
 
 
 
+                }
+            }
+
+
+
+
+        }
+
+        public void alterarResultado()
+        {
+            Modelo.loadPaController loadPaController = new Modelo.loadPaController();
+            loadPaController.selectPA(txtNumeroPA.Text);
+
+            foreach (ListViewItem item in listView1.Items)
+            {
+                if (item.SubItems[0].Text == "Resultado:")
+                {
+
+                    MessageBox.Show("Alterando Resultado para valor de P.A");
+
+                    MessageBox.Show(item.SubItems[0].Text);
+
+                    item.SubItems[1].Text = loadPaController.codigo;
+                    item.SubItems[2].Text = loadPaController.descricao;
+                    item.SubItems[3].Text = loadPaController.pesoBruto.ToString();
+                    item.SubItems[4].Text = loadPaController.pesoLiquido.ToString();
+                    item.Text = txtNumeroPA.Text;
+
+                }
+            }
         }
 
         public void loadPA()
@@ -59,9 +131,9 @@ namespace SistemaTHR.Apllication
 
             foreach (ListViewItem item in listView1.Items)
             {
-                MessageBox.Show(item.SubItems[0].Text);
+               // MessageBox.Show(item.SubItems[0].Text);
 
-                if (item.SubItems[0].Text == "Resultado:")
+                /*if (item.SubItems[0].Text == "Resultado:")
                 {
                     item.SubItems[1].Text = loadPaController.codigo.ToString();
                     item.SubItems[2].Text = loadPaController.descricao.ToString();
@@ -72,9 +144,9 @@ namespace SistemaTHR.Apllication
                 else
                 {
 
-                }
+                }*/
 
-                double pesoBruto = Convert.ToDouble(item.SubItems[3].Text);
+                /*double pesoBruto = Convert.ToDouble(item.SubItems[3].Text);
                 double pesoLiquido = Convert.ToDouble(item.SubItems[4].Text);
                 double resultadopesoBruto1 = 0;
                 double resultadopesoLiquido1 = 0;
@@ -84,7 +156,7 @@ namespace SistemaTHR.Apllication
 
 
                 resultadopesoBruto1 = resultadopesoBruto;
-                resultadopesoLiquido1 = resultadopesoLiquido;
+                resultadopesoLiquido1 = resultadopesoLiquido;*/
 
             }
             ListViewItem list = new ListViewItem(txtNumeroPA.Text);
@@ -137,6 +209,24 @@ namespace SistemaTHR.Apllication
 
                 }
 
+                /*double pesoBruto = Convert.ToDouble(item.SubItems[3].Text);
+                double pesoLiquido = Convert.ToDouble(item.SubItems[4].Text);
+                double resultadopesoBruto1 = 0;
+                double resultadopesoLiquido1 = 0;
+
+                resultadopesoBruto = resultadopesoBruto + pesoBruto;
+                resultadopesoLiquido = resultadopesoLiquido + pesoLiquido;
+
+
+                resultadopesoBruto1 = resultadopesoBruto;
+                resultadopesoLiquido1 = resultadopesoLiquido;*/
+
+            }
+
+           // double resultadopesoBruto = 0;
+           // double resultadopesoLiquido = 0;
+            foreach (ListViewItem item in listView1.Items)
+            {
                 double pesoBruto = Convert.ToDouble(item.SubItems[3].Text);
                 double pesoLiquido = Convert.ToDouble(item.SubItems[4].Text);
                 double resultadopesoBruto1 = 0;
@@ -151,24 +241,6 @@ namespace SistemaTHR.Apllication
 
             }
 
-            /*double resultadopesoBruto = 0;
-            double resultadopesoLiquido = 0;*/
-            /*foreach (ListViewItem item in listView1.Items)
-            {
-                double pesoBruto = Convert.ToDouble(item.SubItems[3].Text);
-                double pesoLiquido = Convert.ToDouble(item.SubItems[4].Text);
-                double resultadopesoBruto1 = 0;
-                double resultadopesoLiquido1 = 0;
-
-                resultadopesoBruto = resultadopesoBruto + pesoBruto;
-                resultadopesoLiquido = resultadopesoLiquido + pesoLiquido;
-
-
-                resultadopesoBruto1 = resultadopesoBruto;
-                resultadopesoLiquido1 = resultadopesoLiquido;
-
-            }*/
-
             ListViewItem list = new ListViewItem("Resultado:");
             list.SubItems.Add("");
             list.SubItems.Add("");
@@ -180,6 +252,16 @@ namespace SistemaTHR.Apllication
             listView1.Items.Add(list);
 
             MessageBox.Show("o resultado é = " + resultadopesoBruto);
+
+        }
+
+        private void splitContainer2_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void splitContainer2_Panel2_Paint_1(object sender, PaintEventArgs e)
+        {
 
         }
     }
