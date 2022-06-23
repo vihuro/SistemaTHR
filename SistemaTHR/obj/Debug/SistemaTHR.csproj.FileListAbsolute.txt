@@ -37,3 +37,5 @@ C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication
 C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmPainelManutencoesAberto.resources
 C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmSolicitarManutencao.resources
 C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmTransferencia.resources
+C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmTransferencia.resources
+C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmTeste.resources

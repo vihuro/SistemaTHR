@@ -27,7 +27,30 @@ namespace SistemaTHR.Apllication
         {
             if(e.KeyCode == Keys.Enter)
             {
-                loadPA();
+                if (listView1.Items.Count == 0)
+                {
+                    loadPA();
+
+                }
+                else
+                {
+                    int resultado = -1;
+                    int resultado2 = listView1.Items.Count;
+                    int numeroLinha = resultado + resultado2;
+
+                    ListViewItem item1 = listView1.Items[numeroLinha];
+
+                    if (item1.Text == "Resultado:")
+                    {
+                        alterarResultado();
+                    }
+                    else
+                    {
+                        loadPA();
+                    }
+
+
+                }
             }
         }
 
@@ -50,53 +73,27 @@ namespace SistemaTHR.Apllication
             }
             else
             {
-                foreach (ListViewItem item in listView1.Items)
+                int resultado = -1;
+                int resultado2 = listView1.Items.Count;
+                int numeroLinha = resultado + resultado2;
+
+                ListViewItem item1 = listView1.Items[numeroLinha];
+
+                MessageBox.Show("Achei só o resultado " + item1.Text);
+
+
+                if(item1.Text == "Resultado:")
                 {
-
-                    if (item.SubItems[0].Text == "Resultado:")
-                    {
-                        MessageBox.Show("Tem resultado!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Não tem resultado!");
-                    }
-
-                    /*while (item.SubItems[0].Text == "Resultado:")
-                    {
-                        if (item.SubItems[0].Text != "Resultado:")
-                        {
-                            loadPA();
-                            break;
-                        }
-                        else
-                        {
-                            alterarResultado();
-                            break;
-                        }
-
-
-                    }*/
-
-                    /*if (item.SubItems[0].Text != "Resultado:")
-                    {
-                        MessageBox.Show("Não tem resultado ainda");
-                        alterarResultado();
-                    }
-                    else
-                    {
-                        loadPA();
-
-                    }*/
-
-
-
-
+                    alterarResultado();
                 }
+                else
+                {
+                    loadPA();
+                }
+
+
             }
-
-
-
+            
 
         }
 
@@ -105,23 +102,24 @@ namespace SistemaTHR.Apllication
             Modelo.loadPaController loadPaController = new Modelo.loadPaController();
             loadPaController.selectPA(txtNumeroPA.Text);
 
-            foreach (ListViewItem item in listView1.Items)
+            int resultado = -1;
+            int resultado2 = listView1.Items.Count;
+            int numeroLinha = resultado + resultado2;
+
+            ListViewItem item1 = listView1.Items[numeroLinha];
+
+            if (item1.Text == "Resultado:")
             {
-                if (item.SubItems[0].Text == "Resultado:")
-                {
+                item1.Text = txtNumeroPA.Text;
+                item1.SubItems[1].Text = loadPaController.codigo;
+                item1.SubItems[2].Text = loadPaController.descricao;
+                item1.SubItems[3].Text = loadPaController.pesoBruto.ToString();
+                item1.SubItems[4].Text = loadPaController.pesoLiquido.ToString();
+                item1.SubItems.Add(loadPaController.qtBobinas.ToString());
 
-                    MessageBox.Show("Alterando Resultado para valor de P.A");
-
-                    MessageBox.Show(item.SubItems[0].Text);
-
-                    item.SubItems[1].Text = loadPaController.codigo;
-                    item.SubItems[2].Text = loadPaController.descricao;
-                    item.SubItems[3].Text = loadPaController.pesoBruto.ToString();
-                    item.SubItems[4].Text = loadPaController.pesoLiquido.ToString();
-                    item.Text = txtNumeroPA.Text;
-
-                }
             }
+
+            txtNumeroPA.Text = string.Empty;
         }
 
         public void loadPA()
@@ -129,36 +127,7 @@ namespace SistemaTHR.Apllication
             Modelo.loadPaController loadPaController = new Modelo.loadPaController();
             loadPaController.selectPA(txtNumeroPA.Text);
 
-            foreach (ListViewItem item in listView1.Items)
-            {
-               // MessageBox.Show(item.SubItems[0].Text);
 
-                /*if (item.SubItems[0].Text == "Resultado:")
-                {
-                    item.SubItems[1].Text = loadPaController.codigo.ToString();
-                    item.SubItems[2].Text = loadPaController.descricao.ToString();
-                    item.SubItems[3].Text = "0";
-                    item.Text = txtNumeroPA.Text;
-
-                }
-                else
-                {
-
-                }*/
-
-                /*double pesoBruto = Convert.ToDouble(item.SubItems[3].Text);
-                double pesoLiquido = Convert.ToDouble(item.SubItems[4].Text);
-                double resultadopesoBruto1 = 0;
-                double resultadopesoLiquido1 = 0;
-
-                resultadopesoBruto = resultadopesoBruto + pesoBruto;
-                resultadopesoLiquido = resultadopesoLiquido + pesoLiquido;
-
-
-                resultadopesoBruto1 = resultadopesoBruto;
-                resultadopesoLiquido1 = resultadopesoLiquido;*/
-
-            }
             ListViewItem list = new ListViewItem(txtNumeroPA.Text);
             list.SubItems.Add(loadPaController.codigo);
             list.SubItems.Add(loadPaController.descricao);
@@ -192,39 +161,7 @@ namespace SistemaTHR.Apllication
             double resultadopesoBruto = 0;
             double resultadopesoLiquido = 0;
 
-            foreach (ListViewItem item in listView1.Items)
-            {
-                MessageBox.Show(item.SubItems[0].Text);
 
-                if (item.SubItems[0].Text == "Resultado:")
-                {
-                    item.SubItems[1].Text = "0";
-                    item.SubItems[2].Text = "0";
-                    item.SubItems[3].Text = "0";
-                    item.Text = string.Empty;
-
-                }
-                else
-                {
-
-                }
-
-                /*double pesoBruto = Convert.ToDouble(item.SubItems[3].Text);
-                double pesoLiquido = Convert.ToDouble(item.SubItems[4].Text);
-                double resultadopesoBruto1 = 0;
-                double resultadopesoLiquido1 = 0;
-
-                resultadopesoBruto = resultadopesoBruto + pesoBruto;
-                resultadopesoLiquido = resultadopesoLiquido + pesoLiquido;
-
-
-                resultadopesoBruto1 = resultadopesoBruto;
-                resultadopesoLiquido1 = resultadopesoLiquido;*/
-
-            }
-
-           // double resultadopesoBruto = 0;
-           // double resultadopesoLiquido = 0;
             foreach (ListViewItem item in listView1.Items)
             {
                 double pesoBruto = Convert.ToDouble(item.SubItems[3].Text);

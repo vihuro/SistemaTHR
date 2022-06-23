@@ -14,7 +14,7 @@ namespace SistemaTHR.DAO
 
         public Connection()
         {
-            conexao = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\thr\\source\\repos\\SistemaTHR\\bd_SistemTHR.accdb;";
+            conexao = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\vitor_2\\source\\repos\\SistemaTHR\\bd_SistemTHR.accdb;";
 
             conn.ConnectionString = conexao;
         }

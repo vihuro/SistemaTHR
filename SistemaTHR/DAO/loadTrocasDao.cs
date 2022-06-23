@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace SistemaTHR.DAO
         OleDbCommand cmd = new OleDbCommand();
         OleDbDataReader dr;
         Connection con = new Connection();
+        OleDbDataAdapter da = new OleDbDataAdapter();
+        DataSet ds;
 
         public List<String> numeroEmp = new List<String>();
         public List<String> ultimaTrocaList = new List<String>();
@@ -29,19 +32,24 @@ namespace SistemaTHR.DAO
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
+                    da.Fill(ds);
+
                     foreach(var list in dr["numeroEmp"].ToString())
                     {
                         // list = dr["numeroEmp"].ToString();
-                        var numeroEmpilhadeira = new List<String> { dr["numeroEmp"].ToString()};
-                        var ultimaTroca = new List<String> { dr["ultimaTroca"].ToString() };
-                        var trocaAtual = new List<String> { dr["trocaAtual"].ToString() };
+                        var numeroEmpilhadeira = new List<String> { dr["numeroEmp"].ToString(), dr["ultimaTroca"].ToString(), dr["trocaAtual"].ToString() };
+                        // var ultimaTroca = new List<String> { dr["ultimaTroca"].ToString() };
+                        //var trocaAtual = new List<String> { dr["trocaAtual"].ToString() };
+
+                        //numero = numeroEmpilhadeira.ToString();
+                        //numeroEmp.AddRange(numeroEmpilhadeira);
+                        //ultimaTrocaList.AddRange(ultimaTroca);
+                        //trocaAtualList.AddRange(trocaAtual);
 
                         numero = numeroEmpilhadeira.ToString();
-                        numeroEmp.AddRange(numeroEmpilhadeira);
-                        ultimaTrocaList.AddRange(ultimaTroca);
-                        trocaAtualList.AddRange(trocaAtual);
 
                     }
+
 
 
                     /*numero = dr["numeroEmp"].ToString() ;
