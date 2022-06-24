@@ -18,7 +18,7 @@ namespace SistemaTHR.Apllication
         public frmTeste()
         {
             InitializeComponent();
-            loadGradeView();
+            //loadGradeView();
 
             trocaGas();
         }
@@ -26,27 +26,31 @@ namespace SistemaTHR.Apllication
         public void loadGradeView()
         {
 
-            DataGridView dataGridView = new DataGridView();
+            
 
-            dataGridView.Rows.Clear();
-            dataGridView.Columns.Clear();
-            dataGridView.ColumnCount = 7;
+            
 
-            dataGridView.Columns[0].Name = "id";
-            dataGridView.Columns[1].Name = "numeroEmp";
-            dataGridView.Columns[2].Name = "ultimaTroca";
-            dataGridView.Columns[3].Name = "TrocaAtual";
-            dataGridView.Columns[4].Name = "HorasTrabalhadas";
-            dataGridView.Columns[5].Name = "dataHoraTroca";
-            dataGridView.Columns[6].Name = "UsuarioTroca";
+            //dataGridView1.Rows.Clear();
+            //dataGridView1.Columns.Clear();
+            //dataGridView1.ColumnCount = 7;
 
-            dataGridView.Columns["id"].HeaderText = "ID";
-            dataGridView.Columns["numeroEmp"].HeaderText = "Numero Empilhadeira";
-            dataGridView.Columns["ultimaTroca"].HeaderText = "Ultima Troca";
-            dataGridView.Columns["TrocaAtual"].HeaderText = "Troca Atual";
-            dataGridView.Columns["HorasTrabalhadas"].HeaderText = "Horas Trabalhadas";
-            dataGridView.Columns["dataHoraTroca"].HeaderText = "Data/Hora Troca";
-            dataGridView.Columns["UsuarioTroca"].HeaderText = "Usuário Troca";
+            dataGridView1.Columns[0].Name = "id";
+            dataGridView1.Columns[1].Name = "numeroEmp";
+            dataGridView1.Columns[2].Name = "ultimaTroca";
+            dataGridView1.Columns[3].Name = "TrocaAtual";
+            dataGridView1.Columns[4].Name = "HorasTrabalhadas";
+            dataGridView1.Columns[5].Name = "dataHoraTroca";
+            dataGridView1.Columns[6].Name = "UsuarioTroca";
+
+            dataGridView1.Columns["id"].HeaderText = "ID";
+            dataGridView1.Columns["numeroEmp"].HeaderText = "Numero Empilhadeira";
+            dataGridView1.Columns["ultimaTroca"].HeaderText = "Ultima Troca";
+            dataGridView1.Columns["TrocaAtual"].HeaderText = "Troca Atual";
+            dataGridView1.Columns["HorasTrabalhadas"].HeaderText = "Horas Trabalhadas";
+            dataGridView1.Columns["dataHoraTroca"].HeaderText = "Data/Hora Troca";
+            dataGridView1.Columns["UsuarioTroca"].HeaderText = "Usuário Troca";
+
+            dataGridView1.Columns["id"].Visible = false;
 
         }
 
@@ -78,15 +82,18 @@ namespace SistemaTHR.Apllication
                 DataTable dt = new DataTable();
 
                 da.Fill(dt);
-                dataGridView1.DataSource = dt;
-                dataGridView1.DataMember = dt.TableName;
 
-                /*da = new OleDbDataAdapter(cmd);
+            dataGridView1.DataSource = dt;
 
-                dt.Load(dr);*/
+            dataGridView1.DataMember = dt.TableName;
+            loadGradeView();
+
+            /*da = new OleDbDataAdapter(cmd);
+
+            dt.Load(dr);*/
 
 
-           
+
         }
 
 
