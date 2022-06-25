@@ -39,3 +39,4 @@ C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication
 C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmTransferencia.resources
 C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmTransferencia.resources
 C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmTeste.resources
+C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmPainelTransferencias.resources

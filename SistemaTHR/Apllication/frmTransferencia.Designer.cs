@@ -48,6 +48,7 @@
             this.clPesoLiquidoFech = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clQtBobinas = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.btnSalvar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -76,7 +77,6 @@
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // clNumeroPA
             // 
@@ -143,6 +143,7 @@
             // 
             this.splitContainer3.Panel1.AllowDrop = true;
             this.splitContainer3.Panel1.AutoScroll = true;
+            this.splitContainer3.Panel1.Controls.Add(this.btnSalvar);
             this.splitContainer3.Panel1.Controls.Add(this.btnSomar);
             this.splitContainer3.Panel1.Controls.Add(this.btnConectar);
             this.splitContainer3.Panel1.Controls.Add(this.label1);
@@ -193,7 +194,6 @@
             this.txtNumeroPA.Name = "txtNumeroPA";
             this.txtNumeroPA.Size = new System.Drawing.Size(100, 20);
             this.txtNumeroPA.TabIndex = 4;
-            this.txtNumeroPA.TextChanged += new System.EventHandler(this.txtNumeroPA_TextChanged_1);
             this.txtNumeroPA.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNumeroPA_KeyUp_1);
             // 
             // listView2
@@ -205,6 +205,7 @@
             this.clPesoLiquidoFech,
             this.clQtBobinas});
             this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView2.FullRowSelect = true;
             this.listView2.HideSelection = false;
             this.listView2.Location = new System.Drawing.Point(0, 0);
             this.listView2.Name = "listView2";
@@ -245,6 +246,16 @@
             this.statusStrip1.Size = new System.Drawing.Size(796, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Location = new System.Drawing.Point(268, 61);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.TabIndex = 8;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // frmTransferencia
             // 
@@ -289,5 +300,6 @@
         private System.Windows.Forms.ColumnHeader clPesoBrutoFech;
         private System.Windows.Forms.ColumnHeader clPesoLiquidoFech;
         private System.Windows.Forms.ColumnHeader clQtBobinas;
+        private System.Windows.Forms.Button btnSalvar;
     }
 }

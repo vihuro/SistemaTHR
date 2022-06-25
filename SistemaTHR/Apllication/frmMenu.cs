@@ -105,5 +105,11 @@ namespace SistemaTHR.Apllication
             frmTeste frmTeste = new frmTeste();
             frmTeste.Show();
         }
+
+        private void transferênciasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPainelTransferencias frmPainelTransferencias = new frmPainelTransferencias();
+            frmPainelTransferencias.Show();
+        }
     }
 }
