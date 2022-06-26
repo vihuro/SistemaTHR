@@ -91,6 +91,7 @@ namespace SistemaTHR.Apllication
         private void transfêToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmTransferencia frmTransferencia = new frmTransferencia();
+            frmTransferencia.lblUsuario.Text = this.lblUsuario.Text;
             frmTransferencia.Show();
 
         }

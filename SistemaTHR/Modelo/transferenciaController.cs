@@ -38,7 +38,7 @@ namespace SistemaTHR.Modelo
         private void insertMovimentaoca()
         {
             DAO.transferenciaDao transferenciaDao = new DAO.transferenciaDao();
-            transferenciaDao.insertMovimentacao(numeroPa, codigo, descricao, pesoBruto, pesoBruto, bobinas, idTransferencia, usuarioTransferencia);
+            transferenciaDao.insertMovimentacao(numeroPa, codigo, descricao, pesoBruto, pesoLiquido, bobinas, idTransferencia, usuarioTransferencia);
 
         }
 
@@ -105,6 +105,33 @@ namespace SistemaTHR.Modelo
             selectFechamento();
             
         }
+
+        private void selectTransfenrecia()
+        {
+            DAO.transferenciaDao transferenciaDao = new DAO.transferenciaDao();
+            transferenciaDao.selectTransf(id);
+            this.dt = transferenciaDao.dt;
+        }
+
+        public void selectTransf(String id)
+        {
+            this.id = id;
+            selectTransfenrecia();
+        }
+
+        private void selectFechamentos()
+        {
+            DAO.transferenciaDao transferenciaDao = new DAO.transferenciaDao();
+            transferenciaDao.selecMovimenta(id);
+            this.dt = transferenciaDao.dt;
+        }
+
+        public void selecMovimenta(String id)
+        {
+            this.id = id;
+            selectFechamentos();
+        }
+
 
 
         private void selectTransf()

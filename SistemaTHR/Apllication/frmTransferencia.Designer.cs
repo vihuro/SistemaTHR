@@ -37,6 +37,7 @@
             this.clQuantidadeBob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.btnSomar = new System.Windows.Forms.Button();
             this.btnConectar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,7 +49,9 @@
             this.clPesoLiquidoFech = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clQtBobinas = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.btnSalvar = new System.Windows.Forms.Button();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnRemover = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -57,6 +60,7 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
@@ -143,6 +147,7 @@
             // 
             this.splitContainer3.Panel1.AllowDrop = true;
             this.splitContainer3.Panel1.AutoScroll = true;
+            this.splitContainer3.Panel1.Controls.Add(this.btnRemover);
             this.splitContainer3.Panel1.Controls.Add(this.btnSalvar);
             this.splitContainer3.Panel1.Controls.Add(this.btnSomar);
             this.splitContainer3.Panel1.Controls.Add(this.btnConectar);
@@ -159,9 +164,19 @@
             this.splitContainer3.SplitterDistance = 144;
             this.splitContainer3.TabIndex = 0;
             // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Location = new System.Drawing.Point(56, 104);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.TabIndex = 8;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
             // btnSomar
             // 
-            this.btnSomar.Location = new System.Drawing.Point(162, 61);
+            this.btnSomar.Location = new System.Drawing.Point(137, 61);
             this.btnSomar.Name = "btnSomar";
             this.btnSomar.Size = new System.Drawing.Size(75, 23);
             this.btnSomar.TabIndex = 7;
@@ -241,21 +256,36 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.lblUsuario});
             this.statusStrip1.Location = new System.Drawing.Point(0, 299);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(796, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // btnSalvar
+            // toolStripStatusLabel1
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(268, 61);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 8;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(50, 17);
+            this.toolStripStatusLabel1.Text = "Usuário:";
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(118, 17);
+            this.lblUsuario.Text = "toolStripStatusLabel2";
+            // 
+            // btnRemover
+            // 
+            this.btnRemover.Location = new System.Drawing.Point(283, 61);
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(75, 23);
+            this.btnRemover.TabIndex = 9;
+            this.btnRemover.Text = "Remover";
+            this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // frmTransferencia
             // 
@@ -275,6 +305,8 @@
             this.splitContainer3.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -301,5 +333,8 @@
         private System.Windows.Forms.ColumnHeader clPesoLiquidoFech;
         private System.Windows.Forms.ColumnHeader clQtBobinas;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        public System.Windows.Forms.ToolStripStatusLabel lblUsuario;
+        private System.Windows.Forms.Button btnRemover;
     }
 }

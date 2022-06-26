@@ -94,6 +94,8 @@ namespace SistemaTHR.Apllication
             this.dt = transferenciaController.dt;
 
             dataGridView2.DataSource = dt;
+            dataGridView2.DataMember = dt.TableName;
+            loadStyleGridView2();
         }
 
         private void loadDataGridView3()
@@ -105,6 +107,47 @@ namespace SistemaTHR.Apllication
             dataGridView3.DataSource = dt;
         }
 
-        
+        public void loadStyleGridView2()
+        {
+            /*dataGridView2.Columns[0].Name = "id";
+            dataGridView2.Columns[1].Name = "numeroPA";
+            dataGridView2.Columns[2].Name = "codigo";
+            dataGridView2.Columns[0].Name = "descricao";
+            dataGridView2.Columns[1].Name = "pesoBruto";
+            dataGridView2.Columns[2].Name = "pesoLiquido";
+            dataGridView2.Columns[0].Name = "Bobinas";
+            dataGridView2.Columns[1].Name = "idTransferencia";
+            dataGridView2.Columns[2].Name = "usuarioTransferencia";*/
+
+
+            dataGridView2.Columns["id"].HeaderText = "ID";
+            dataGridView2.Columns["numeroPA"].HeaderText = "Nº P.A";
+            dataGridView2.Columns["codigo"].HeaderText = "Código";
+            dataGridView2.Columns["descricao"].HeaderText = "Descrição";
+            dataGridView2.Columns["pesoBruto"].HeaderText = "Peso Bruto";
+            dataGridView2.Columns["pesoLiquido"].HeaderText = "Peso Liquido";
+            dataGridView2.Columns["Bobinas"].HeaderText = "Qt: Bobinas";
+            dataGridView2.Columns["idTransferencia"].HeaderText = "ID/Transfenrecia";
+            dataGridView2.Columns["usuarioTransferencia"].HeaderText = "Usuário/Transferencia";
+
+            dataGridView2.Columns["id"].Visible = false;
+            dataGridView2.Columns["idTransferencia"].Visible = false;
+
+
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            frmEditarTransferencia frmEditarTransferencia = new frmEditarTransferencia();
+            Modelo.transferenciaController transferencia = new Modelo.transferenciaController();
+            transferencia.selectTransf(idSelecionado);
+            this.dt = transferencia.dt;
+            frmEditarTransferencia.dataGridView1.DataSource = transferencia.dt;
+            frmEditarTransferencia.dataGridView1.DataMember = dt.TableName;
+            frmEditarTransferencia.loadStyleGridView1();
+            transferencia.selecMovimenta(idSelecionado);
+            frmEditarTransferencia.dataGridView2.DataSource = transferencia.dt;
+            frmEditarTransferencia.Show();
+        }
     }
 }

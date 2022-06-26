@@ -74,5 +74,17 @@ namespace SistemaTHR
             frmLogin frm = new frmLogin();
             this.Close();
         }
+
+        private void btnSenha_Click(object sender, EventArgs e)
+        {
+            if(txtSenha.PasswordChar.ToString() == "•")
+            {
+                txtSenha.PasswordChar = '\0';
+            }
+            else
+            {
+                txtSenha.PasswordChar = '•';
+            }
+        }
     }
 }

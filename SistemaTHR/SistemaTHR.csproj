@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apllication\frmEditarTransferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apllication\frmEditarTransferencia.Designer.cs">
+      <DependentUpon>frmEditarTransferencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Apllication\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     <Compile Include="Modelo\ultimaTrocaController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Apllication\frmEditarTransferencia.resx">
+      <DependentUpon>frmEditarTransferencia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +187,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -217,6 +227,15 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filtro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filtro %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\show.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

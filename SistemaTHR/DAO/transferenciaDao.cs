@@ -101,6 +101,63 @@ namespace SistemaTHR.DAO
             }
         }
 
+        private void selectTransfenrecia()
+        {
+            cmd.CommandText = "Select * from tab_Movimentacao where idTransferencia = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                cmd.Connection = conn.conectar();
+
+                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+
+                da.Fill(dt);
+
+                conn.desconectar();
+
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        public void selectTransf(String id)
+        {
+            this.id = id;
+            selectTransfenrecia();
+        }
+
+        private void selectFechamentos()
+        {
+                cmd.CommandText = "Select * from tab_Fechamento where idTransferencia = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+
+                try
+                {
+                    cmd.Connection = conn.conectar();
+
+                    OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+
+                    da.Fill(dt);
+
+                    conn.desconectar();
+
+                }
+                catch
+                {
+
+                }
+            }
+
+        public void selecMovimenta(String id)
+        {
+            this.id = id;
+            selectFechamentos();
+        }
+
         public void InsertFechamento(String codigo, String descricao, String pesoBruto, String pesoLiquido, String bobinas, String idTransferencia)
         {
             this.codigo = codigo;
@@ -118,7 +175,7 @@ namespace SistemaTHR.DAO
         public String id;
         private String selectIdTransf()
         {
-            cmd.CommandText = "Select * from tab_transferencia";
+            cmd.CommandText = "Select * from tab_transferencia order by id asc";
             try
             {
                 cmd.Connection = conn.conectar();

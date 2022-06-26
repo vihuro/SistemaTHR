@@ -34,11 +34,12 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnSenha = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(89, 36);
+            this.txtNome.Location = new System.Drawing.Point(54, 36);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 20);
             this.txtNome.TabIndex = 0;
@@ -46,14 +47,15 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(89, 62);
+            this.txtSenha.Location = new System.Drawing.Point(54, 62);
             this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '•';
             this.txtSenha.Size = new System.Drawing.Size(100, 20);
             this.txtSenha.TabIndex = 1;
             // 
             // btnEntrar
             // 
-            this.btnEntrar.Location = new System.Drawing.Point(7, 154);
+            this.btnEntrar.Location = new System.Drawing.Point(12, 121);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(75, 23);
             this.btnEntrar.TabIndex = 2;
@@ -63,7 +65,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(114, 154);
+            this.btnCancelar.Location = new System.Drawing.Point(107, 121);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 3;
@@ -89,11 +91,26 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Senha:";
             // 
+            // btnSenha
+            // 
+            this.btnSenha.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSenha.BackgroundImage = global::SistemaTHR.Properties.Resources.show;
+            this.btnSenha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSenha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSenha.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnSenha.Location = new System.Drawing.Point(160, 62);
+            this.btnSenha.Name = "btnSenha";
+            this.btnSenha.Size = new System.Drawing.Size(22, 21);
+            this.btnSenha.TabIndex = 6;
+            this.btnSenha.UseVisualStyleBackColor = false;
+            this.btnSenha.Click += new System.EventHandler(this.btnSenha_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(214, 189);
+            this.ClientSize = new System.Drawing.Size(193, 156);
+            this.Controls.Add(this.btnSenha);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
@@ -119,6 +136,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.Button btnSenha;
     }
 }
 
