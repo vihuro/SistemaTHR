@@ -112,5 +112,21 @@ namespace SistemaTHR.Apllication
             frmPainelTransferencias frmPainelTransferencias = new frmPainelTransferencias();
             frmPainelTransferencias.Show();
         }
+
+        public DataTable dt = new DataTable();
+        private void gerenciarLoginsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGerenciarLogin gerenciarLogin = new frmGerenciarLogin();
+            loginController login = new loginController();
+            login.loadUser();
+            this.dt = login.dt;
+            gerenciarLogin.dataGridView1.DataSource = this.dt;
+            gerenciarLogin.Show();
+        }
+         
+        private void arquivosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
