@@ -109,17 +109,7 @@ namespace SistemaTHR.Apllication
 
         public void loadStyleGridView2()
         {
-            /*dataGridView2.Columns[0].Name = "id";
-            dataGridView2.Columns[1].Name = "numeroPA";
-            dataGridView2.Columns[2].Name = "codigo";
-            dataGridView2.Columns[0].Name = "descricao";
-            dataGridView2.Columns[1].Name = "pesoBruto";
-            dataGridView2.Columns[2].Name = "pesoLiquido";
-            dataGridView2.Columns[0].Name = "Bobinas";
-            dataGridView2.Columns[1].Name = "idTransferencia";
-            dataGridView2.Columns[2].Name = "usuarioTransferencia";*/
-
-
+            
             dataGridView2.Columns["id"].HeaderText = "ID";
             dataGridView2.Columns["numeroPA"].HeaderText = "Nº P.A";
             dataGridView2.Columns["codigo"].HeaderText = "Código";

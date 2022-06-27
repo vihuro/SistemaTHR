@@ -31,11 +31,11 @@ namespace SistemaTHR.Apllication
             dataGridView1.Columns["pesoBruto"].HeaderText = "Peso Bruto";
             dataGridView1.Columns["pesoLiquido"].HeaderText = "Peso Liquido";
             dataGridView1.Columns["Bobinas"].HeaderText = "Qt: Bobinas";
-            dataGridView1.Columns["idTransferencia"].HeaderText = "ID/Transfenrecia";
+            dataGridView1.Columns["idTransferencia"].HeaderText = "Nº/Transfenrecia";
             dataGridView1.Columns["usuarioTransferencia"].HeaderText = "Usuário/Transferencia";
 
-            dataGridView1.Columns["id"].Visible = false;
-            dataGridView1.Columns["idTransferencia"].Visible = false;
+            //dataGridView1.Columns["id"].Visible = false;
+            //dataGridView1.Columns["idTransferencia"].Visible = false;
 
         }
 
@@ -47,21 +47,51 @@ namespace SistemaTHR.Apllication
         private void btnRemover_Click(object sender, EventArgs e)
         {
 
-            
-            for(int i = 0; i < dataGridView2.Rows.Count; i++)
+            if (dataGridView1.Rows.Count > 0)
             {
-                MessageBox.Show("Vamos ver: " + dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[1].Value.ToString());
-
-                if(dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[1].Value.ToString() == dataGridView2.Rows[dataGridView1.SelectedRows[0].Index].Cells[1].Value.ToString())
+                for (int i = 0; i < dataGridView2.Rows.Count; i++)
                 {
-                    MessageBox.Show("Achei" + dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[1].Value.ToString());
-                    break;
-                }
+                    MessageBox.Show("Vamos ver: " + dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[1].Value.ToString());
 
-                   
-                
+                    if (dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[1].Value.ToString() == dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[2].Value.ToString())
+                    {
+
+                        decimal pesoBrutoMovi = Convert.ToDecimal(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[4].Value.ToString());
+                        decimal pesoLiquidoMovi = Convert.ToDecimal(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[5].Value.ToString());
+                        decimal qtBobinasMovi = Convert.ToDecimal(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[6].Value.ToString());
+
+                        decimal pesoBrutoFech = Convert.ToDecimal(dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[3].Value.ToString());
+                        decimal pesoLiquidoFech = Convert.ToDecimal(dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[4].Value.ToString());
+                        decimal qtBobinasFech = Convert.ToDecimal(dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[5].Value.ToString());
+
+                        decimal pesoBrutoResultado = pesoBrutoMovi - pesoBrutoFech;
+                        decimal pesoLiquidoResultado = pesoLiquidoMovi - pesoLiquidoFech;
+                        decimal qtBobinasResultado = qtBobinasMovi - qtBobinasFech;
+
+                        decimal pesoBrutoTotal = pesoBrutoResultado * -1;
+                        decimal pesoLiquidoTotal = pesoLiquidoResultado * -1;
+                        decimal qtBobinasTotal = qtBobinasResultado * -1;
+
+                        if (pesoBrutoTotal == 0)
+                        {
+                            dataGridView2.Rows.Remove(dataGridView2.Rows[i]);
+                        }
+                        else
+                        {
+                            dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[3].Value = pesoBrutoTotal;
+                            dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[4].Value = pesoLiquidoTotal;
+                            dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[5].Value = qtBobinasTotal;
+
+                        }
+
+                        break;
+                    }
+
+
+                }
+                dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
             }
-            dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+
         }
     }
 }

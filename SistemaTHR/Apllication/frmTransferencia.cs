@@ -66,8 +66,8 @@ namespace SistemaTHR.Apllication
                 item1.Text = txtNumeroPA.Text;
                 item1.SubItems[1].Text = loadPaController.codigo;
                 item1.SubItems[2].Text = loadPaController.descricao;
-                item1.SubItems[3].Text = loadPaController.pesoBruto.ToString();
-                item1.SubItems[4].Text = loadPaController.pesoLiquido.ToString();
+                item1.SubItems[3].Text = loadPaController.pesoBruto.ToString("###,###.#0");
+                item1.SubItems[4].Text = loadPaController.pesoLiquido.ToString("###,###.#0");
                 item1.SubItems.Add(loadPaController.qtBobinas.ToString());
 
                 if (loadPaController.codigo != string.Empty)
@@ -87,8 +87,8 @@ namespace SistemaTHR.Apllication
                                 decimal resultadoBruto = pesoBruto + BrutoLoadPa;
                                 decimal resultadoLiquido = pesoLiquido + LiquidoLoadPa;
 
-                                listView2.Items[i].SubItems[2].Text = resultadoBruto.ToString();
-                                listView2.Items[i].SubItems[3].Text = resultadoLiquido.ToString();
+                                listView2.Items[i].SubItems[2].Text = resultadoBruto.ToString("###,###.#0");
+                                listView2.Items[i].SubItems[3].Text = resultadoLiquido.ToString("###,###.#0");
 
                                 txtNumeroPA.Text = string.Empty;
 
@@ -157,9 +157,9 @@ namespace SistemaTHR.Apllication
                                 double resultadoQtBobinas = qtBobinas + qtbobinasPa;
 
                                 
-                                listView2.Items[i].SubItems[2].Text = resultadoBruto.ToString();
-                                listView2.Items[i].SubItems[3].Text = resultadoLiquido.ToString();
-                                listView2.Items[i].SubItems[4].Text = resultadoQtBobinas.ToString();
+                                listView2.Items[i].SubItems[2].Text = resultadoBruto.ToString("###,###.#0");
+                                listView2.Items[i].SubItems[3].Text = resultadoLiquido.ToString("###,###.#0");
+                                listView2.Items[i].SubItems[4].Text = resultadoQtBobinas.ToString("###,###.#0");
 
                                 txtNumeroPA.Text = string.Empty;
 
@@ -369,8 +369,6 @@ namespace SistemaTHR.Apllication
                             String idTransferencia = this.id;
                             String usuarioTransferencia = this.lblUsuario.Text;
 
-                            MessageBox.Show(pesoBruto);
-                            MessageBox.Show(pesoLiquido);
 
                             transferenciaController.insertMov(numeroPA, codigo, descricao, pesoBruto, pesoLiquido, bobinas, idTransferencia, usuarioTransferencia);
                         }
@@ -405,7 +403,7 @@ namespace SistemaTHR.Apllication
             }
             else
             {
-                MessageBox.Show("Não é possivel adicionar uma transferencia com os itens vazio!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Não é possivel adicionar uma transferencia com os itens vazios!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
