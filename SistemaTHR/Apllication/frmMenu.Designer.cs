@@ -107,13 +107,13 @@
             // alterarSenhaToolStripMenuItem
             // 
             this.alterarSenhaToolStripMenuItem.Name = "alterarSenhaToolStripMenuItem";
-            this.alterarSenhaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.alterarSenhaToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.alterarSenhaToolStripMenuItem.Text = "Alterar Senha";
             // 
             // gerenciarLoginsToolStripMenuItem
             // 
             this.gerenciarLoginsToolStripMenuItem.Name = "gerenciarLoginsToolStripMenuItem";
-            this.gerenciarLoginsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gerenciarLoginsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.gerenciarLoginsToolStripMenuItem.Text = "Gerenciar Logins";
             this.gerenciarLoginsToolStripMenuItem.Click += new System.EventHandler(this.gerenciarLoginsToolStripMenuItem_Click);
             // 
@@ -284,7 +284,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMenu";
-            this.Text = "frmMenu";
+            this.Text = "Menu";
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

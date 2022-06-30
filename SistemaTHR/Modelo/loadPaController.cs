@@ -25,5 +25,25 @@ namespace SistemaTHR.Modelo
             this.pesoLiquido = loadPADAO.pesoLiquido;
             this.qtBobinas = loadPADAO.qtBobinas;
         }
+
+        String PA;
+
+        private void selectPAExped()
+        {
+            DAO.loadPADAO pADAO = new DAO.loadPADAO();
+            pADAO.selecExpedicao(PA);
+            this.descricao = pADAO.descricao;
+            this.codigo = pADAO.codigo;
+            this.pesoBruto = pADAO.pesoBruto;
+            this.pesoLiquido = pADAO.pesoLiquido;
+            this.qtBobinas = pADAO.qtBobinas;
+
+        }
+
+        public void selectExp(String numeroPa)
+        {
+            this.PA = numeroPa;
+            selectPAExped();
+        }
     }
 }

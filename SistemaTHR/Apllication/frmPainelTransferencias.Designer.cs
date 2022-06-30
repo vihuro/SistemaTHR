@@ -32,14 +32,15 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnFiltro = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnFiltro = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -90,14 +91,47 @@
             this.panel1.Size = new System.Drawing.Size(800, 28);
             this.panel1.TabIndex = 1;
             // 
+            // btnFiltro
+            // 
+            this.btnFiltro.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnFiltro.Image = global::SistemaTHR.Properties.Resources.filtro__1_;
+            this.btnFiltro.Location = new System.Drawing.Point(0, 0);
+            this.btnFiltro.Name = "btnFiltro";
+            this.btnFiltro.Size = new System.Drawing.Size(29, 28);
+            this.btnFiltro.TabIndex = 0;
+            this.btnFiltro.UseVisualStyleBackColor = true;
+            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnImprimir);
             this.panel2.Controls.Add(this.btnEditar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 445);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 84);
             this.panel2.TabIndex = 2;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimir.Location = new System.Drawing.Point(569, 58);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(75, 23);
+            this.btnImprimir.TabIndex = 1;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.Location = new System.Drawing.Point(713, 58);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 0;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // splitContainer1
             // 
@@ -208,27 +242,6 @@
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
-            // btnEditar
-            // 
-            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditar.Location = new System.Drawing.Point(713, 58);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 0;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnFiltro
-            // 
-            this.btnFiltro.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnFiltro.Image = global::SistemaTHR.Properties.Resources.filtro__1_;
-            this.btnFiltro.Location = new System.Drawing.Point(0, 0);
-            this.btnFiltro.Name = "btnFiltro";
-            this.btnFiltro.Size = new System.Drawing.Size(29, 28);
-            this.btnFiltro.TabIndex = 0;
-            this.btnFiltro.UseVisualStyleBackColor = true;
-            // 
             // frmPainelTransferencias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +287,7 @@
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnFiltro;
-        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnImprimir;
+        public System.Windows.Forms.Button btnEditar;
     }
 }

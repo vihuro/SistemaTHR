@@ -48,9 +48,68 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="App.Metrics.Abstractions, Version=4.3.0.0, Culture=neutral, PublicKeyToken=0d5193a913d1b812, processorArchitecture=MSIL">
+      <HintPath>..\packages\App.Metrics.Abstractions.4.3.0\lib\net461\App.Metrics.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="App.Metrics.Concurrency, Version=4.3.0.0, Culture=neutral, PublicKeyToken=0d5193a913d1b812, processorArchitecture=MSIL">
+      <HintPath>..\packages\App.Metrics.Concurrency.4.3.0\lib\netstandard2.0\App.Metrics.Concurrency.dll</HintPath>
+    </Reference>
+    <Reference Include="App.Metrics.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=0d5193a913d1b812, processorArchitecture=MSIL">
+      <HintPath>..\packages\App.Metrics.Core.4.3.0\lib\net461\App.Metrics.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="App.Metrics.Formatters.Ascii, Version=4.3.0.0, Culture=neutral, PublicKeyToken=0d5193a913d1b812, processorArchitecture=MSIL">
+      <HintPath>..\packages\App.Metrics.Formatters.Ascii.4.3.0\lib\net461\App.Metrics.Formatters.Ascii.dll</HintPath>
+    </Reference>
+    <Reference Include="App.Metrics.Reporting.TextFile, Version=4.3.0.0, Culture=neutral, PublicKeyToken=0d5193a913d1b812, processorArchitecture=MSIL">
+      <HintPath>..\packages\App.Metrics.Reporting.TextFile.4.3.0\lib\netstandard2.0\App.Metrics.Reporting.TextFile.dll</HintPath>
+    </Reference>
+    <Reference Include="DatabaseConnections, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DatabaseConnections.2.0.0\lib\net35\DatabaseConnections.dll</HintPath>
+    </Reference>
+    <Reference Include="DatabaseConnections.OleDb, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DatabaseConnections.OleDb.2.0.0\lib\net35\DatabaseConnections.OleDb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1484.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1484.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OleDb, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.OleDb.6.0.0\lib\net461\System.Data.OleDb.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,6 +132,18 @@
     </Compile>
     <Compile Include="Apllication\frmGerenciarLogin.Designer.cs">
       <DependentUpon>frmGerenciarLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apllication\frmImp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apllication\frmImp.Designer.cs">
+      <DependentUpon>frmImp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apllication\frmImpMovimento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apllication\frmImpMovimento.Designer.cs">
+      <DependentUpon>frmImpMovimento.cs</DependentUpon>
     </Compile>
     <Compile Include="Apllication\frmLogin.cs">
       <SubType>Form</SubType>
@@ -110,6 +181,12 @@
     <Compile Include="Apllication\frmPainelTransferencias.Designer.cs">
       <DependentUpon>frmPainelTransferencias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Apllication\frmSelectImp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apllication\frmSelectImp.Designer.cs">
+      <DependentUpon>frmSelectImp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Apllication\frmSolicitarManutencao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +220,7 @@
     <Compile Include="DAO\transferenciaDao.cs" />
     <Compile Include="DAO\trocaGasDao.cs" />
     <Compile Include="DAO\ultimaTrocaDao.cs" />
+    <Compile Include="impFechamento.cs" />
     <Compile Include="Modelo\loadPaController.cs" />
     <Compile Include="Modelo\loadTrocaGasController.cs" />
     <Compile Include="Modelo\loginController.cs" />
@@ -152,11 +230,33 @@
     <Compile Include="Modelo\ultimaTrocaController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="_bd_SistemDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_bd_SistemDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_bd_SistemDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_bd_SistemDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_bd_SistemDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_bd_SistemDataSet2.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Apllication\frmEditarTransferencia.resx">
       <DependentUpon>frmEditarTransferencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmGerenciarLogin.resx">
       <DependentUpon>frmGerenciarLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apllication\frmImp.resx">
+      <DependentUpon>frmImp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apllication\frmImpMovimento.resx">
+      <DependentUpon>frmImpMovimento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -176,6 +276,9 @@
     <EmbeddedResource Include="Apllication\frmPainelTransferencias.resx">
       <DependentUpon>frmPainelTransferencias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Apllication\frmSelectImp.resx">
+      <DependentUpon>frmSelectImp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmSolicitarManutencao.resx">
       <DependentUpon>frmSolicitarManutencao.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,6 +291,7 @@
     <EmbeddedResource Include="Apllication\frmTrocaGas.resx">
       <DependentUpon>frmTrocaGas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="impMovimentacao.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -198,6 +302,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report2.rdlc" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -207,6 +313,39 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="_bd_SistemDataSet.xsc">
+      <DependentUpon>_bd_SistemDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_bd_SistemDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_bd_SistemDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_bd_SistemDataSet.xss">
+      <DependentUpon>_bd_SistemDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_bd_SistemDataSet1.xsc">
+      <DependentUpon>_bd_SistemDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="_bd_SistemDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_bd_SistemDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_bd_SistemDataSet1.xss">
+      <DependentUpon>_bd_SistemDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="_bd_SistemDataSet2.xsc">
+      <DependentUpon>_bd_SistemDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="_bd_SistemDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_bd_SistemDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_bd_SistemDataSet2.xss">
+      <DependentUpon>_bd_SistemDataSet2.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -245,6 +384,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\show.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bd-Sistem.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

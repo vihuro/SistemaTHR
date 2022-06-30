@@ -37,6 +37,7 @@ namespace SistemaTHR
         {
             DAO.LoginDao loginDao = new DAO.LoginDao();
             loginDao.verificarNivel(usuario);
+            this.usuario = loginDao.usuario;
             this.Empilhadeiras = loginDao.Empilhadeiras;
             this.EmpNivel = loginDao.EmpNivel;
             this.Recebimento = loginDao.Recebimento;

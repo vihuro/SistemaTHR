@@ -21,9 +21,8 @@ namespace SistemaTHR.DAO
 
         public void selectPA(String numeroPA)
         {
-            cmd.CommandText = "Select * from ApontamentoSaida where Sequencia = @sequencia";
+            cmd.CommandText = "Select * from Apontamento where Sequencia = @sequencia";
             cmd.Parameters.AddWithValue("@sequencia", numeroPA);
-
 
             try
             {
@@ -47,6 +46,46 @@ namespace SistemaTHR.DAO
 
             }
 
+        }
+
+        String numeroPA;
+
+        
+
+        public void selectPAEXPEDICAO()
+        {
+            cmd.CommandText = "Select * from ApontamentoSaida where Sequencia = @sequencia";
+            cmd.Parameters.AddWithValue("@sequencia", numeroPA);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    codigo = dr["CodProduto"].ToString();
+                    descricao = dr["descricao"].ToString();
+                    pesoBruto = Convert.ToDouble(dr["PesoBruto"]);
+                    pesoLiquido = Convert.ToDouble(dr["pesoLiquido"]);
+                    qtBobinas = Convert.ToDouble(dr["QtdBobinas"]);
+
+                    con.desconectar();
+
+                }
+
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        public void selecExpedicao(String numeroPa)
+        {
+            this.numeroPA = numeroPa;
+
+            selectPAEXPEDICAO();
         }
     }
 }

@@ -33,6 +33,7 @@ namespace SistemaTHR.Modelo
         public String bobinas;
         public String idTransferencia;
         public String usuarioTransferencia;
+        String numeroMovimentacao;
         public DataTable dt = new DataTable();
 
         private void insertMovimentaoca()
@@ -132,8 +133,6 @@ namespace SistemaTHR.Modelo
             selectFechamentos();
         }
 
-
-
         private void selectTransf()
         {
             DAO.transferenciaDao transferenciaDao = new DAO.transferenciaDao();
@@ -158,5 +157,50 @@ namespace SistemaTHR.Modelo
             this.id = id;
             selectMovimentacao();
         }
+
+        private void deletMovimentacao()
+        {
+            DAO.transferenciaDao transferencia = new DAO.transferenciaDao();
+            transferencia.deletMovi(numeroMovimentacao);
+        }
+
+        public void deletMovi(String numeroMovimentacao)
+        {
+            this.numeroMovimentacao = numeroMovimentacao;
+            deletMovimentacao();
+        }
+        public String numeroFechamento;
+        private void updateFechamento()
+        {
+            DAO.transferenciaDao transferencia = new DAO.transferenciaDao();
+            transferencia.pesoBruto = this.pesoBruto;
+            transferencia.pesoLiquido = this.pesoLiquido;
+            transferencia.bobinas = this.bobinas;
+            transferencia.updataFech(numeroFechamento);
+
+        }
+
+        public void updateFech(String numeroFechamento)
+        {
+            this.numeroFechamento = numeroFechamento;
+            updateFechamento();
+        }
+
+        private void loadFechamentoImp()
+        {
+            DAO.transferenciaDao transferenciaDao = new DAO.transferenciaDao();
+            transferenciaDao.loadImpFech(id);
+            this.dt = transferenciaDao.dt;
+
+        }
+
+        public void loadFechImp(String id)
+        {
+            this.id = id;
+            loadFechamentoImp();
+        }
+
+
+
     }
 }

@@ -40,6 +40,24 @@ namespace SistemaTHR.DAO
             }
         }
 
+        DataTable tabela = new DataTable();
+
+        public DataTable loadFechamento()
+        {
+            DataTable dt = new DataTable();
+            cmd.CommandText = "Select * tab_fechamento where idTransferencia = 61";
+            
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+
+            da.Fill(dt);
+
+            conn.desconectar();
+
+
+
+            return tabela;
+        }
+
         public String numeroPa;
         public String codigo;
         public String descricao;
@@ -123,6 +141,34 @@ namespace SistemaTHR.DAO
             }
 
         }
+        private void loadFechamentoImp()
+        {
+            cmd.CommandText = "Select * from tab_Fechamento where idTransferencia = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                cmd.Connection = conn.conectar();
+
+                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+
+                da.Fill(dt);
+
+                conn.desconectar();
+
+            }
+            catch
+            {
+                MessageBox.Show("Errooooo");
+            }
+
+        }
+
+        public void loadImpFech(String id)
+        {
+            this.id = id;
+            loadFechamentoImp();
+        }
 
         public void selectTransf(String id)
         {
@@ -150,7 +196,91 @@ namespace SistemaTHR.DAO
                 {
 
                 }
+        }
+
+        public String numeroMovimentacao;
+
+        private void deletMovimentacao()
+        {
+
+            cmd.CommandText = "Delete from tab_movimentacao where id = @id";
+            cmd.Parameters.AddWithValue("@id", numeroMovimentacao);
+
+            try
+            {
+                cmd.Connection = conn.conectar();
+                cmd.ExecuteReader();
+
+                conn.desconectar();
+
             }
+            catch
+            {
+
+            }
+
+        }
+
+        public void deletMovi(String numeroMovimentacao)
+        {
+            this.numeroMovimentacao = numeroMovimentacao;
+            deletMovimentacao();
+        }
+
+
+        public String numeroFechamento;
+        private void updateFechamento()
+        {
+            int id = 71;
+
+            cmd.CommandText = "Update tab_Fechamento SET PesoBruto = @pesoBruto, PesoLiquido = @pesoliquido, QtBobinas = @qtBobinas WHERE ID = @id";
+            //cmd.Parameters.AddWithValue("@codigo", "vutir");
+           // cmd.Parameters.AddWithValue("@descricao", "popopopopopo");
+            cmd.Parameters.AddWithValue("@pesoBruto", "anneeeeeeeeeeee");
+            cmd.Parameters.AddWithValue("@pesoliquido", "tESTANDO");
+            cmd.Parameters.AddWithValue("@qtBobinas", "testando");
+            //cmd.Parameters.AddWithValue("@idTransf", "oioioioioioio");
+            cmd.Parameters.AddWithValue("@id", "72");
+
+           /* cmd.CommandText = "Update tab_Fechamento SET Codigo = @codigo, Descricao = @descricao, PesoBruto = @pesoBruto, PesoLiquido = @pesoliquido, QtBobinas = @qtBobinas, IdTransferencia = @idTransf WHERE ID = @id";
+            cmd.Parameters.AddWithValue("@codigo", "oioioioi");
+            cmd.Parameters.AddWithValue("@descricao", "popopopopopo");
+            cmd.Parameters.AddWithValue("@pesoBruto", "teste1");
+            cmd.Parameters.AddWithValue("@pesoliquido", "tESTANDO");
+            cmd.Parameters.AddWithValue("@qtBobinas", "testando");
+            cmd.Parameters.AddWithValue("@idTransf", "oioioioioioio");
+            cmd.Parameters.AddWithValue("@id", "71");*/
+
+            try
+            {
+
+
+                    cmd.Connection = conn.conectar();
+                     cmd.ExecuteReader();
+
+
+                conn.desconectar();
+
+
+
+
+                    
+                
+
+
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        public void updataFech(String numeroFechamento)
+        {
+            this.numeroFechamento = numeroFechamento;
+            updateFechamento();
+        }
 
         public void selecMovimenta(String id)
         {
@@ -304,5 +434,8 @@ namespace SistemaTHR.DAO
             selectIdTransf();
             
         }
+
+
+
     }
 }

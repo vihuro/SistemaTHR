@@ -107,9 +107,39 @@ namespace SistemaTHR.Apllication
             frmTeste.Show();
         }
 
+        public String Empilhadeiras;
+        public String EmpNivel;
+        public String Recebimento;
+        public String RecebNivel;
+        public String Expedicao;
+        public String ExpNivel;
+        public String Adm;
+        public String AdmNivel;
         private void transferênciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmPainelTransferencias frmPainelTransferencias = new frmPainelTransferencias();
+            
+            loginController loginController = new loginController();
+
+            loginController.verificarNivel(this.lblUsuario.Text);
+            this.Empilhadeiras = loginController.Empilhadeiras;
+            this.EmpNivel = loginController.EmpNivel;
+            this.Recebimento = loginController.Recebimento;
+            this.RecebNivel = loginController.RecebNivel;
+            this.Expedicao = loginController.Expedicao;
+            this.ExpNivel = loginController.ExpNivel;
+            this.Adm = loginController.Adm;
+            this.AdmNivel = loginController.AdmNivel;
+
+            frmPainelTransferencias.btnEditar.Enabled = false;
+            frmPainelTransferencias.lblUsuario.Text = this.lblUsuario.Text;
+
+            if(this.ExpNivel == "1")
+            {
+                frmPainelTransferencias.btnEditar.Enabled = true;
+            }
+
+
             frmPainelTransferencias.Show();
         }
 

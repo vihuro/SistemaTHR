@@ -51,7 +51,7 @@ namespace SistemaTHR.Apllication
             {
                 for (int i = 0; i < dataGridView2.Rows.Count; i++)
                 {
-                    MessageBox.Show("Vamos ver: " + dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[1].Value.ToString());
+
 
                     if (dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[1].Value.ToString() == dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[2].Value.ToString())
                     {
@@ -59,6 +59,11 @@ namespace SistemaTHR.Apllication
                         decimal pesoBrutoMovi = Convert.ToDecimal(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[4].Value.ToString());
                         decimal pesoLiquidoMovi = Convert.ToDecimal(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[5].Value.ToString());
                         decimal qtBobinasMovi = Convert.ToDecimal(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[6].Value.ToString());
+
+                        String idMovimento = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString();
+
+                        Modelo.transferenciaController transferencia = new Modelo.transferenciaController();
+                        transferencia.deletMovi(idMovimento);
 
                         decimal pesoBrutoFech = Convert.ToDecimal(dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[3].Value.ToString());
                         decimal pesoLiquidoFech = Convert.ToDecimal(dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[4].Value.ToString());
@@ -82,6 +87,12 @@ namespace SistemaTHR.Apllication
                             dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[4].Value = pesoLiquidoTotal;
                             dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[5].Value = qtBobinasTotal;
 
+                            transferencia.pesoBruto = pesoBrutoTotal.ToString();
+                            transferencia.pesoLiquido = pesoLiquidoTotal.ToString();
+                            transferencia.bobinas = qtBobinasTotal.ToString();
+
+                            transferencia.updateFech(dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[0].Value.ToString());
+
                         }
 
                         break;
@@ -91,6 +102,16 @@ namespace SistemaTHR.Apllication
                 }
                 dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
             }
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }

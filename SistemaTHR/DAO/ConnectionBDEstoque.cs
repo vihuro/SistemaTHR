@@ -34,6 +34,8 @@ namespace SistemaTHR.DAO
             {
                 conn.Close();
             }
+
+
         }
 
     }

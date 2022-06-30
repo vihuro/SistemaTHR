@@ -83,7 +83,7 @@
             // 
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(800, 426);
-            this.splitContainer1.SplitterDistance = 92;
+            this.splitContainer1.SplitterDistance = 364;
             this.splitContainer1.TabIndex = 3;
             // 
             // listView1
@@ -100,7 +100,7 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(796, 88);
+            this.listView1.Size = new System.Drawing.Size(796, 360);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -145,7 +145,7 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmPainelTrocaGas";
-            this.Text = "frmPainelGas";
+            this.Text = "Painel de Trocas de Gás";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

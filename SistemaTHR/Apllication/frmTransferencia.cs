@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaTHR.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -52,8 +53,37 @@ namespace SistemaTHR.Apllication
 
         public void alterarResultado()
         {
-            Modelo.loadPaController loadPaController = new Modelo.loadPaController();
-            loadPaController.selectPA(txtNumeroPA.Text);
+
+
+            if (rdbProducao.Checked == true)
+            {
+                Modelo.loadPaController loadPaController = new Modelo.loadPaController();
+                loadPaController.selectPA(txtNumeroPA.Text);
+                if (loadPaController.codigo != null)
+                {
+                    this.codigo = loadPaController.codigo;
+                    this.descricao = loadPaController.descricao;
+                    this.pesoBruto = loadPaController.pesoBruto.ToString("###,###.#0");
+                    this.pesoLiquido = loadPaController.pesoLiquido.ToString("###,###.#0");
+                    this.qtBobinas = loadPaController.qtBobinas.ToString();
+                }
+            }
+            if (rdbExpedicao.Checked == true)
+            {
+                Modelo.loadPaController loadPaController = new Modelo.loadPaController();
+                loadPaController.selectExp(txtNumeroPA.Text);
+
+                if (loadPaController.codigo != null)
+                {
+
+                    this.codigo = loadPaController.codigo;
+                    this.descricao = loadPaController.descricao;
+                    this.pesoBruto = loadPaController.pesoBruto.ToString("###,###.#0");
+                    this.pesoLiquido = loadPaController.pesoLiquido.ToString("###,###.#0");
+                    this.qtBobinas = loadPaController.qtBobinas.ToString();
+                }
+            }
+
 
             int resultado = -1;
             int resultado2 = listView1.Items.Count;
@@ -64,25 +94,25 @@ namespace SistemaTHR.Apllication
             if (item1.Text == "Resultado:")
             {
                 item1.Text = txtNumeroPA.Text;
-                item1.SubItems[1].Text = loadPaController.codigo;
-                item1.SubItems[2].Text = loadPaController.descricao;
-                item1.SubItems[3].Text = loadPaController.pesoBruto.ToString("###,###.#0");
-                item1.SubItems[4].Text = loadPaController.pesoLiquido.ToString("###,###.#0");
-                item1.SubItems.Add(loadPaController.qtBobinas.ToString());
+                item1.SubItems[1].Text = this.codigo;
+                item1.SubItems[2].Text = this.descricao;
+                item1.SubItems[3].Text = this.pesoBruto;
+                item1.SubItems[4].Text = this.pesoLiquido;
+                item1.SubItems.Add(this.qtBobinas);
 
-                if (loadPaController.codigo != string.Empty)
+                if (codigo != null)
                 {
-                    if (listView2.FindItemWithText(loadPaController.codigo) != null)
+                    if (listView2.FindItemWithText(codigo) != null)
                     {
                         for (var i = 0; i < listView2.Items.Count; i++)
                         {
-                            if (listView2.Items[i].Text == loadPaController.codigo)
+                            if (listView2.Items[i].Text == codigo)
                             {
                                 decimal pesoBruto = Convert.ToDecimal(listView2.Items[i].SubItems[2].Text);
                                 decimal pesoLiquido = Convert.ToDecimal(listView2.Items[i].SubItems[3].Text);
 
-                                decimal BrutoLoadPa = Convert.ToDecimal(loadPaController.pesoBruto);
-                                decimal LiquidoLoadPa = Convert.ToDecimal(loadPaController.pesoLiquido);
+                                decimal BrutoLoadPa = Convert.ToDecimal(this.pesoBruto);
+                                decimal LiquidoLoadPa = Convert.ToDecimal(this.pesoLiquido);
 
                                 decimal resultadoBruto = pesoBruto + BrutoLoadPa;
                                 decimal resultadoLiquido = pesoLiquido + LiquidoLoadPa;
@@ -99,11 +129,11 @@ namespace SistemaTHR.Apllication
                     }
                     else
                     {
-                        ListViewItem listFechamento = new ListViewItem(loadPaController.codigo);
-                        listFechamento.SubItems.Add(loadPaController.descricao);
-                        listFechamento.SubItems.Add(loadPaController.pesoBruto.ToString("###,###.#0"));
-                        listFechamento.SubItems.Add(loadPaController.pesoLiquido.ToString("###,###.#0"));
-                        listFechamento.SubItems.Add(loadPaController.qtBobinas.ToString());
+                        ListViewItem listFechamento = new ListViewItem(this.codigo);
+                        listFechamento.SubItems.Add(this.descricao);
+                        listFechamento.SubItems.Add(this.pesoBruto);
+                        listFechamento.SubItems.Add(this.pesoLiquido);
+                        listFechamento.SubItems.Add(this.qtBobinas);
 
                         listView2.Items.Add(listFechamento);
 
@@ -114,43 +144,89 @@ namespace SistemaTHR.Apllication
             }
 
             txtNumeroPA.Text = string.Empty;
+
+            this.codigo = null;
+            this.descricao = null;
+            this.pesoBruto = null;
+            this.pesoLiquido = null;
+            this.qtBobinas = null;
         }
+
+        private String codigo;
+        private String descricao;
+        private String pesoBruto;
+        private String pesoLiquido;
+        private String qtBobinas;
 
         public void loadPA()
         {
-            Modelo.loadPaController loadPaController = new Modelo.loadPaController();
-            loadPaController.selectPA(txtNumeroPA.Text);
-
-
-            ListViewItem list = new ListViewItem(txtNumeroPA.Text);
-            if(loadPaController.codigo != null)
+            if(rdbProducao.Checked == true)
             {
-           
-                list.SubItems.Add(loadPaController.codigo);
-                list.SubItems.Add(loadPaController.descricao);
-                list.SubItems.Add(loadPaController.pesoBruto.ToString("###,###.#0"));
-                list.SubItems.Add(loadPaController.pesoLiquido.ToString("###,###.#0"));
-                list.SubItems.Add(loadPaController.qtBobinas.ToString());
+                Modelo.loadPaController loadPaController = new Modelo.loadPaController();
+                loadPaController.selectPA(txtNumeroPA.Text);
+                if (loadPaController.codigo != null)
+                {
+                    this.codigo = loadPaController.codigo;
+                    this.descricao = loadPaController.descricao;
+                    this.pesoBruto = loadPaController.pesoBruto.ToString("###,###.#0");
+                    this.pesoLiquido = loadPaController.pesoLiquido.ToString("###,###.#0");
+                    this.qtBobinas = loadPaController.qtBobinas.ToString();
+                }
+            }
+            if(rdbExpedicao.Checked == true)
+            {
+                Modelo.loadPaController loadPaController = new Modelo.loadPaController();
+                loadPaController.selectExp(txtNumeroPA.Text);
+               
+                if (loadPaController.codigo != null)
+                {
+
+                    this.codigo = loadPaController.codigo;
+                    this.descricao = loadPaController.descricao;
+                    this.pesoBruto = loadPaController.pesoBruto.ToString("###,###.#0");
+                    this.pesoLiquido = loadPaController.pesoLiquido.ToString("###,###.#0");
+                    this.qtBobinas = loadPaController.qtBobinas.ToString();
+                }
+            }
+
+            if(codigo!= null)
+            {
+                ListViewItem list = new ListViewItem(txtNumeroPA.Text);
+
+                list.SubItems.Add(codigo);
+                list.SubItems.Add(descricao);
+                list.SubItems.Add(pesoBruto);
+                list.SubItems.Add(pesoLiquido);
+                list.SubItems.Add(qtBobinas);
 
 
 
                 listView1.Items.Add(list);
 
-                if (loadPaController.codigo != string.Empty)
+
+
+            }
+            else
+            {
+                MessageBox.Show("P.A inválida. Tente alterar o local de estocagem!", "THR SISTEMAS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+
+                 if(codigo != null)
                 {
-                    if (listView2.FindItemWithText(loadPaController.codigo) != null)
+                    if (listView2.FindItemWithText(codigo) != null)
                     {
                         for (var i = 0; i < listView2.Items.Count; i++)
                         {
-                            if (listView2.Items[i].Text == loadPaController.codigo)
+                            if (listView2.Items[i].Text == codigo)
                             {
                                 decimal pesoBruto = Convert.ToDecimal(listView2.Items[i].SubItems[2].Text);
                                 decimal pesoLiquido = Convert.ToDecimal(listView2.Items[i].SubItems[3].Text);
                                 double qtBobinas = Convert.ToDouble(listView2.Items[i].SubItems[4].Text);
                                 
-                                decimal BrutoLoadPa = Convert.ToDecimal(loadPaController.pesoBruto);
-                                decimal LiquidoLoadPa = Convert.ToDecimal(loadPaController.pesoLiquido);
-                                double qtbobinasPa = Convert.ToDouble(loadPaController.qtBobinas);
+                                decimal BrutoLoadPa = Convert.ToDecimal(this.pesoBruto);
+                                decimal LiquidoLoadPa = Convert.ToDecimal(this.pesoLiquido);
+                                double qtbobinasPa = Convert.ToDouble(this.qtBobinas);
                                 
                                 decimal resultadoBruto = pesoBruto + BrutoLoadPa;
                                 decimal resultadoLiquido = pesoLiquido + LiquidoLoadPa;
@@ -170,28 +246,40 @@ namespace SistemaTHR.Apllication
                     }
                     else
                     {
-                        ListViewItem listFechamento = new ListViewItem(loadPaController.codigo);
-                        listFechamento.SubItems.Add(loadPaController.descricao);
-                        listFechamento.SubItems.Add(loadPaController.pesoBruto.ToString("###,###.#0"));
-                        listFechamento.SubItems.Add(loadPaController.pesoLiquido.ToString("###,###.#0"));
-                        listFechamento.SubItems.Add(loadPaController.qtBobinas.ToString());
+                        ListViewItem listFechamento = new ListViewItem(codigo);
+                        listFechamento.SubItems.Add(descricao);
+                        listFechamento.SubItems.Add(this.pesoBruto);
+                        listFechamento.SubItems.Add(this.pesoLiquido);
+                        listFechamento.SubItems.Add(this.qtBobinas);
 
                         listView2.Items.Add(listFechamento);
 
                         txtNumeroPA.Text = string.Empty;
                     }
-                }
-            }
+                
+                 }
+
 
             txtNumeroPA.Text = string.Empty;
+
+            this.codigo = null;
+            this.descricao = null;
+            this.pesoBruto = null;
+            this.pesoLiquido = null;
+            this.qtBobinas = null;
         }
 
-        private void btnConectar_Click_1(object sender, EventArgs e)
+    private void btnConectar_Click_1(object sender, EventArgs e)
         {
+            
+
+
             if (listView1.Items.Count == 0)
             {
-                loadPA();
 
+               loadPA();
+
+                
             }
             else
             {
@@ -201,13 +289,31 @@ namespace SistemaTHR.Apllication
 
                 ListViewItem item1 = listView1.Items[numeroLinha];
 
+
+
                 if (item1.Text == "Resultado:")
                 {
-                    alterarResultado();
+                    if (rdbProducao.Checked == true)
+                    {
+                        alterarResultado();
+                    }
+                    if (rdbExpedicao.Checked == true)
+                    {
+                        MessageBox.Show("Origem: EXPEDICÂO");
+                    }
+                    
                 }
                 else
                 {
-                    loadPA();
+                    if (rdbProducao.Checked == true)
+                    {
+                        loadPA();
+                    }
+                    if (rdbExpedicao.Checked == true)
+                    {
+                        MessageBox.Show("Origem: EXPEDICÂO");
+                    }
+                   
                 }
 
 
@@ -253,6 +359,7 @@ namespace SistemaTHR.Apllication
 
 
             listView1.Items.Add(list);
+            
 
         }
         private void txtNumeroPA_KeyUp_1(object sender, KeyEventArgs e)
@@ -466,6 +573,63 @@ namespace SistemaTHR.Apllication
                 }
             }
               
+        }
+        OleDbCommand cmd = new OleDbCommand();
+        OleDbDataReader dr;
+        Connection conn = new Connection();
+        DataTable dt = new DataTable();
+
+        public void loadFechamento()
+        {
+            cmd.CommandText = "Select * from tab_Fechamento where idTransferencia = @id";
+            cmd.Parameters.AddWithValue("@id", "66");
+
+            try
+            {
+                cmd.Connection = conn.conectar();
+
+                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+
+                da.Fill(dt);
+
+                conn.desconectar();
+
+            }
+            catch
+            {
+                MessageBox.Show("Errooooo");
+            }
+
+        }
+
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            //loadFechamento();
+            Modelo.transferenciaController transferenciaController = new Modelo.transferenciaController();
+
+            transferenciaController.selectId();
+            this.id = transferenciaController.id;
+            transferenciaController.loadFechImp(id);
+            this.dt = transferenciaController.dt;
+
+            frmImp imp = new frmImp(dt);
+            imp.ShowDialog();
+            
+
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap Image = Image = new Bitmap(this.listView2.Width, this.listView2.Height);
+            listView2.DrawToBitmap(Image, new Rectangle(0, 0, this.listView2.Width, this.listView2.Height));
+            e.Graphics.DrawImage(Image, 0, 0);
+
+        }
+
+        private void txtNumeroPA_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

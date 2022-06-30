@@ -61,6 +61,8 @@ namespace SistemaTHR.DAO
                 while (dr.Read())
                 {
 
+                        usuario = dr["usuario"].ToString();
+
                         Empilhadeiras = dr["Empilhadeiras"].ToString();
                         EmpNivel = dr["EmpNivel"].ToString();
 

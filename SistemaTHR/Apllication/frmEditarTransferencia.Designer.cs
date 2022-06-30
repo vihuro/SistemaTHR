@@ -39,6 +39,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNumeroPA = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdbProdução = new System.Windows.Forms.RadioButton();
+            this.rdbExpedicao = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -49,6 +52,7 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -79,10 +83,14 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -104,12 +112,10 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.btnRemover);
             this.splitContainer2.Panel1.Controls.Add(this.btnSalvar);
-            this.splitContainer2.Panel1.Controls.Add(this.btnSomar);
-            this.splitContainer2.Panel1.Controls.Add(this.btnConectar);
             this.splitContainer2.Panel1.Controls.Add(this.label1);
             this.splitContainer2.Panel1.Controls.Add(this.txtNumeroPA);
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel1_Paint);
             // 
             // splitContainer2.Panel2
@@ -121,7 +127,7 @@
             // 
             // btnRemover
             // 
-            this.btnRemover.Location = new System.Drawing.Point(246, 81);
+            this.btnRemover.Location = new System.Drawing.Point(246, 72);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(75, 23);
             this.btnRemover.TabIndex = 14;
@@ -131,7 +137,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(47, 124);
+            this.btnSalvar.Location = new System.Drawing.Point(628, 166);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 13;
@@ -140,7 +146,7 @@
             // 
             // btnSomar
             // 
-            this.btnSomar.Location = new System.Drawing.Point(128, 81);
+            this.btnSomar.Location = new System.Drawing.Point(116, 72);
             this.btnSomar.Name = "btnSomar";
             this.btnSomar.Size = new System.Drawing.Size(75, 23);
             this.btnSomar.TabIndex = 12;
@@ -149,7 +155,7 @@
             // 
             // btnConectar
             // 
-            this.btnConectar.Location = new System.Drawing.Point(47, 81);
+            this.btnConectar.Location = new System.Drawing.Point(35, 72);
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(75, 23);
             this.btnConectar.TabIndex = 11;
@@ -174,18 +180,61 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AllowUserToOrderColumns = true;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(800, 185);
             this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rdbExpedicao);
+            this.groupBox1.Controls.Add(this.rdbProdução);
+            this.groupBox1.Controls.Add(this.btnRemover);
+            this.groupBox1.Controls.Add(this.btnConectar);
+            this.groupBox1.Controls.Add(this.btnSomar);
+            this.groupBox1.Location = new System.Drawing.Point(12, 51);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(342, 111);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // rdbProdução
+            // 
+            this.rdbProdução.AutoSize = true;
+            this.rdbProdução.Location = new System.Drawing.Point(35, 19);
+            this.rdbProdução.Name = "rdbProdução";
+            this.rdbProdução.Size = new System.Drawing.Size(71, 17);
+            this.rdbProdução.TabIndex = 16;
+            this.rdbProdução.TabStop = true;
+            this.rdbProdução.Text = "Produção";
+            this.rdbProdução.UseVisualStyleBackColor = true;
+            this.rdbProdução.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // rdbExpedicao
+            // 
+            this.rdbExpedicao.AutoSize = true;
+            this.rdbExpedicao.Location = new System.Drawing.Point(144, 19);
+            this.rdbExpedicao.Name = "rdbExpedicao";
+            this.rdbExpedicao.Size = new System.Drawing.Size(75, 17);
+            this.rdbExpedicao.TabIndex = 17;
+            this.rdbExpedicao.TabStop = true;
+            this.rdbExpedicao.Text = "Expedição";
+            this.rdbExpedicao.UseVisualStyleBackColor = true;
             // 
             // frmEditarTransferencia
             // 
@@ -207,6 +256,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,5 +276,8 @@
         public System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button btnRemover;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rdbProdução;
+        private System.Windows.Forms.RadioButton rdbExpedicao;
     }
 }

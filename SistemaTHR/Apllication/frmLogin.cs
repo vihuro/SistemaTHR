@@ -27,6 +27,7 @@ namespace SistemaTHR
 
         }
 
+        public String nomeUsuario;
         public String Empilhadeiras;
         public String EmpNivel;
         public String Recebimento;
@@ -47,9 +48,10 @@ namespace SistemaTHR
                 frmMenu menu = new frmMenu();
 
 
-                menu.lblUsuario.Text = txtNome.Text;
+
 
                 loginController.verificarNivel(txtNome.Text);
+                this.nomeUsuario = loginController.usuario;
                 this.Empilhadeiras = loginController.Empilhadeiras;
                 this.EmpNivel = loginController.EmpNivel;
                 this.Recebimento = loginController.Recebimento;
@@ -58,6 +60,9 @@ namespace SistemaTHR
                 this.ExpNivel = loginController.ExpNivel;
                 this.Adm = loginController.Adm;
                 this.AdmNivel = loginController.AdmNivel;
+
+
+                menu.lblUsuario.Text = nomeUsuario;
 
                 menu.empilhadeirasToolStripMenuItem.Enabled = false;
                 menu.recebimentoToolStripMenuItem.Enabled = false;

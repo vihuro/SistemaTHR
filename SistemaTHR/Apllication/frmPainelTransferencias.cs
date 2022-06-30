@@ -139,5 +139,14 @@ namespace SistemaTHR.Apllication
             frmEditarTransferencia.dataGridView2.DataSource = transferencia.dt;
             frmEditarTransferencia.Show();
         }
+
+        
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+
+            frmSelectImp selectImp = new frmSelectImp(idSelecionado);
+            selectImp.ShowDialog();
+        }
     }
 }
