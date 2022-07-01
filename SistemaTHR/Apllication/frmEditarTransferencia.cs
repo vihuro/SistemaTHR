@@ -12,10 +12,14 @@ namespace SistemaTHR.Apllication
 {
     public partial class frmEditarTransferencia : Form
     {
-        public frmEditarTransferencia()
+        private String numeroTransferencia;
+        private String usuarioMovimentacao;
+
+        public frmEditarTransferencia(String numeroTransferencia, string usuarioMovimentacao)
         {
             InitializeComponent();
-            
+            this.numeroTransferencia = numeroTransferencia;
+            this.usuarioMovimentacao = usuarioMovimentacao;
         }
 
         private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
@@ -24,7 +28,7 @@ namespace SistemaTHR.Apllication
         }
         public void loadStyleGridView1()
         {
-            dataGridView1.Columns["id"].HeaderText = "ID";
+            dataGridView1.Columns["id"].HeaderText = "Nº/Movimentação";
             dataGridView1.Columns["numeroPA"].HeaderText = "Nº P.A";
             dataGridView1.Columns["codigo"].HeaderText = "Código";
             dataGridView1.Columns["descricao"].HeaderText = "Descrição";
@@ -34,8 +38,17 @@ namespace SistemaTHR.Apllication
             dataGridView1.Columns["idTransferencia"].HeaderText = "Nº/Transfenrecia";
             dataGridView1.Columns["usuarioTransferencia"].HeaderText = "Usuário/Transferencia";
 
-            //dataGridView1.Columns["id"].Visible = false;
-            //dataGridView1.Columns["idTransferencia"].Visible = false;
+
+        }
+        public void loadStyleGridView2()
+        {
+            dataGridView2.Columns["id"].HeaderText = "Nº/Fechamento";
+            dataGridView2.Columns["codigo"].HeaderText = "Código";
+            dataGridView2.Columns["descricao"].HeaderText = "Descrição";
+            dataGridView2.Columns["pesoBruto"].HeaderText = "Peso Bruto";
+            dataGridView2.Columns["pesoLiquido"].HeaderText = "Peso Liquido";
+            dataGridView2.Columns["QTBobinas"].HeaderText = "Qt: Bobinas";
+            dataGridView2.Columns["idTransferencia"].HeaderText = "Nº/Transfenrecia";
 
         }
 
@@ -83,13 +96,13 @@ namespace SistemaTHR.Apllication
                         }
                         else
                         {
-                            dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[3].Value = pesoBrutoTotal;
-                            dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[4].Value = pesoLiquidoTotal;
-                            dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[5].Value = qtBobinasTotal;
+                            dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[3].Value = pesoBrutoTotal.ToString("###,###.#0");
+                            dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[4].Value = pesoLiquidoTotal.ToString("###,###.#0");
+                            dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[5].Value = qtBobinasTotal.ToString("###,###.#0");
 
-                            transferencia.pesoBruto = pesoBrutoTotal.ToString();
-                            transferencia.pesoLiquido = pesoLiquidoTotal.ToString();
-                            transferencia.bobinas = qtBobinasTotal.ToString();
+                            transferencia.pesoBruto = pesoBrutoTotal.ToString("###,###.#0");
+                            transferencia.pesoLiquido = pesoLiquidoTotal.ToString("###,###.#0");
+                            transferencia.bobinas = qtBobinasTotal.ToString("###,###.#0");
 
                             transferencia.updateFech(dataGridView2.Rows[dataGridView2.Rows[i].Index].Cells[0].Value.ToString());
 
@@ -112,6 +125,48 @@ namespace SistemaTHR.Apllication
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private String numeroPa;
+        private String codigo;
+        private String descricao;
+        private String pesoBruto;
+        private String pesoLiquido;
+        private String qtBobinas;
+        private DataTable dt;
+        private void btnConectar_Click(object sender, EventArgs e)
+        {
+            Modelo.loadPaController loadPaController = new Modelo.loadPaController();
+            loadPaController.selectPA(txtNumeroPA.Text);
+            if (loadPaController.codigo != null)
+            {
+                this.numeroPa = loadPaController.numeroPa;
+                this.codigo = loadPaController.codigo;
+                this.descricao = loadPaController.descricao;
+                this.pesoBruto = loadPaController.pesoBruto.ToString("###,###.#0");
+                this.pesoLiquido = loadPaController.pesoLiquido.ToString("###,###.#0");
+                this.qtBobinas = loadPaController.qtBobinas.ToString();
+
+                Modelo.transferenciaController transferenciaController = new Modelo.transferenciaController();
+
+                transferenciaController.insertMov(numeroPa, codigo, descricao, pesoBruto, pesoLiquido, qtBobinas, numeroTransferencia, "vitor");
+                loadGridView1();
+                loadStyleGridView1();
+
+                MessageBox.Show("Adicionado com sucesso");
+            }
+
+        }
+
+        private void loadGridView1()
+        {
+            Modelo.transferenciaController transferenciaController = new Modelo.transferenciaController();
+            transferenciaController.selectMovi(numeroTransferencia);
+            this.dt = transferenciaController.dt;
+
+            dataGridView1.DataSource = dt;
+            dataGridView1.DataMember = dt.TableName;
 
         }
     }

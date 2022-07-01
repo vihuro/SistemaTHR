@@ -32,16 +32,15 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.btnRemover = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
-            this.btnSomar = new System.Windows.Forms.Button();
-            this.btnConectar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNumeroPA = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdbProdução = new System.Windows.Forms.RadioButton();
             this.rdbExpedicao = new System.Windows.Forms.RadioButton();
+            this.rdbProdução = new System.Windows.Forms.RadioButton();
+            this.btnRemover = new System.Windows.Forms.Button();
+            this.btnConectar = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -51,8 +50,8 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -125,42 +124,14 @@
             this.splitContainer2.SplitterDistance = 192;
             this.splitContainer2.TabIndex = 0;
             // 
-            // btnRemover
-            // 
-            this.btnRemover.Location = new System.Drawing.Point(246, 72);
-            this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(75, 23);
-            this.btnRemover.TabIndex = 14;
-            this.btnRemover.Text = "Remover";
-            this.btnRemover.UseVisualStyleBackColor = true;
-            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
-            // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(628, 166);
+            this.btnSalvar.Location = new System.Drawing.Point(632, 166);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 13;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
-            // 
-            // btnSomar
-            // 
-            this.btnSomar.Location = new System.Drawing.Point(116, 72);
-            this.btnSomar.Name = "btnSomar";
-            this.btnSomar.Size = new System.Drawing.Size(75, 23);
-            this.btnSomar.TabIndex = 12;
-            this.btnSomar.Text = "Somar...";
-            this.btnSomar.UseVisualStyleBackColor = true;
-            // 
-            // btnConectar
-            // 
-            this.btnConectar.Location = new System.Drawing.Point(35, 72);
-            this.btnConectar.Name = "btnConectar";
-            this.btnConectar.Size = new System.Drawing.Size(75, 23);
-            this.btnConectar.TabIndex = 11;
-            this.btnConectar.Text = "Carregar";
-            this.btnConectar.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -177,6 +148,62 @@
             this.txtNumeroPA.Name = "txtNumeroPA";
             this.txtNumeroPA.Size = new System.Drawing.Size(100, 20);
             this.txtNumeroPA.TabIndex = 9;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rdbExpedicao);
+            this.groupBox1.Controls.Add(this.rdbProdução);
+            this.groupBox1.Controls.Add(this.btnRemover);
+            this.groupBox1.Controls.Add(this.btnConectar);
+            this.groupBox1.Location = new System.Drawing.Point(12, 51);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(342, 111);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Selecione a origem...";
+            // 
+            // rdbExpedicao
+            // 
+            this.rdbExpedicao.AutoSize = true;
+            this.rdbExpedicao.Location = new System.Drawing.Point(144, 19);
+            this.rdbExpedicao.Name = "rdbExpedicao";
+            this.rdbExpedicao.Size = new System.Drawing.Size(75, 17);
+            this.rdbExpedicao.TabIndex = 17;
+            this.rdbExpedicao.TabStop = true;
+            this.rdbExpedicao.Text = "Expedição";
+            this.rdbExpedicao.UseVisualStyleBackColor = true;
+            // 
+            // rdbProdução
+            // 
+            this.rdbProdução.AutoSize = true;
+            this.rdbProdução.Location = new System.Drawing.Point(35, 19);
+            this.rdbProdução.Name = "rdbProdução";
+            this.rdbProdução.Size = new System.Drawing.Size(71, 17);
+            this.rdbProdução.TabIndex = 16;
+            this.rdbProdução.TabStop = true;
+            this.rdbProdução.Text = "Produção";
+            this.rdbProdução.UseVisualStyleBackColor = true;
+            this.rdbProdução.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // btnRemover
+            // 
+            this.btnRemover.Location = new System.Drawing.Point(144, 72);
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(75, 23);
+            this.btnRemover.TabIndex = 14;
+            this.btnRemover.Text = "Remover";
+            this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
+            // 
+            // btnConectar
+            // 
+            this.btnConectar.Location = new System.Drawing.Point(35, 72);
+            this.btnConectar.Name = "btnConectar";
+            this.btnConectar.Size = new System.Drawing.Size(75, 23);
+            this.btnConectar.TabIndex = 11;
+            this.btnConectar.Text = "Carregar";
+            this.btnConectar.UseVisualStyleBackColor = true;
+            this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
             // 
             // dataGridView2
             // 
@@ -199,43 +226,6 @@
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rdbExpedicao);
-            this.groupBox1.Controls.Add(this.rdbProdução);
-            this.groupBox1.Controls.Add(this.btnRemover);
-            this.groupBox1.Controls.Add(this.btnConectar);
-            this.groupBox1.Controls.Add(this.btnSomar);
-            this.groupBox1.Location = new System.Drawing.Point(12, 51);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(342, 111);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
-            // rdbProdução
-            // 
-            this.rdbProdução.AutoSize = true;
-            this.rdbProdução.Location = new System.Drawing.Point(35, 19);
-            this.rdbProdução.Name = "rdbProdução";
-            this.rdbProdução.Size = new System.Drawing.Size(71, 17);
-            this.rdbProdução.TabIndex = 16;
-            this.rdbProdução.TabStop = true;
-            this.rdbProdução.Text = "Produção";
-            this.rdbProdução.UseVisualStyleBackColor = true;
-            this.rdbProdução.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // rdbExpedicao
-            // 
-            this.rdbExpedicao.AutoSize = true;
-            this.rdbExpedicao.Location = new System.Drawing.Point(144, 19);
-            this.rdbExpedicao.Name = "rdbExpedicao";
-            this.rdbExpedicao.Size = new System.Drawing.Size(75, 17);
-            this.rdbExpedicao.TabIndex = 17;
-            this.rdbExpedicao.TabStop = true;
-            this.rdbExpedicao.Text = "Expedição";
-            this.rdbExpedicao.UseVisualStyleBackColor = true;
-            // 
             // frmEditarTransferencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,9 +245,9 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,7 +259,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Button btnSalvar;
-        private System.Windows.Forms.Button btnSomar;
         private System.Windows.Forms.Button btnConectar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNumeroPA;

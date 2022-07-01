@@ -234,39 +234,20 @@ namespace SistemaTHR.DAO
             int id = 71;
 
             cmd.CommandText = "Update tab_Fechamento SET PesoBruto = @pesoBruto, PesoLiquido = @pesoliquido, QtBobinas = @qtBobinas WHERE ID = @id";
-            //cmd.Parameters.AddWithValue("@codigo", "vutir");
-           // cmd.Parameters.AddWithValue("@descricao", "popopopopopo");
-            cmd.Parameters.AddWithValue("@pesoBruto", "anneeeeeeeeeeee");
-            cmd.Parameters.AddWithValue("@pesoliquido", "tESTANDO");
-            cmd.Parameters.AddWithValue("@qtBobinas", "testando");
-            //cmd.Parameters.AddWithValue("@idTransf", "oioioioioioio");
-            cmd.Parameters.AddWithValue("@id", "72");
 
-           /* cmd.CommandText = "Update tab_Fechamento SET Codigo = @codigo, Descricao = @descricao, PesoBruto = @pesoBruto, PesoLiquido = @pesoliquido, QtBobinas = @qtBobinas, IdTransferencia = @idTransf WHERE ID = @id";
-            cmd.Parameters.AddWithValue("@codigo", "oioioioi");
-            cmd.Parameters.AddWithValue("@descricao", "popopopopopo");
-            cmd.Parameters.AddWithValue("@pesoBruto", "teste1");
-            cmd.Parameters.AddWithValue("@pesoliquido", "tESTANDO");
-            cmd.Parameters.AddWithValue("@qtBobinas", "testando");
-            cmd.Parameters.AddWithValue("@idTransf", "oioioioioioio");
-            cmd.Parameters.AddWithValue("@id", "71");*/
+            cmd.Parameters.AddWithValue("@pesoBruto", pesoBruto);
+            cmd.Parameters.AddWithValue("@pesoliquido", pesoLiquido);
+            cmd.Parameters.AddWithValue("@qtBobinas", bobinas);
+            cmd.Parameters.AddWithValue("@id", numeroFechamento);
+
 
             try
             {
 
-
                     cmd.Connection = conn.conectar();
-                     cmd.ExecuteReader();
+                    cmd.ExecuteReader();
 
-
-                conn.desconectar();
-
-
-
-
-                    
-                
-
+                     conn.desconectar();
 
             }
             catch

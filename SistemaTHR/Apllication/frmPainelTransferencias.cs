@@ -28,7 +28,7 @@ namespace SistemaTHR.Apllication
             dataGridView1.Columns[2].Name = "usuarioTransf";
 
 
-            dataGridView1.Columns["id"].HeaderText = "ID";
+            dataGridView1.Columns["id"].HeaderText = "Nº Transferencia";
             dataGridView1.Columns["dataHoraTransf"].HeaderText = "Data/Hora Transferencia";
             dataGridView1.Columns["usuarioTransf"].HeaderText = "Usuário/Transferencia";
 
@@ -64,8 +64,9 @@ namespace SistemaTHR.Apllication
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if(e.Value != null && e.Value.Equals("Vitor"))
+            if(e.Value != null && e.Value.Equals("vitor"))
             {
+
                 dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.DarkRed;
                 dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.BlueViolet;
                 dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.Black;
@@ -73,6 +74,7 @@ namespace SistemaTHR.Apllication
             }
         }
         String idSelecionado;
+        String usuarioMovimentacao;
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             DataGridView dataGridView = (DataGridView)sender;
@@ -81,6 +83,7 @@ namespace SistemaTHR.Apllication
             if(i > 0)
             {
                 idSelecionado = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString();
+                usuarioMovimentacao = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[2].Value.ToString();
                 loadDataGridView2();
                 loadDataGridView3();
             }
@@ -105,19 +108,20 @@ namespace SistemaTHR.Apllication
             this.dt = transferencia.dt;
 
             dataGridView3.DataSource = dt;
+            loadStyleGridView3();
         }
 
         public void loadStyleGridView2()
         {
             
-            dataGridView2.Columns["id"].HeaderText = "ID";
+            dataGridView2.Columns["id"].HeaderText = "Nº/Movimentação";
             dataGridView2.Columns["numeroPA"].HeaderText = "Nº P.A";
             dataGridView2.Columns["codigo"].HeaderText = "Código";
             dataGridView2.Columns["descricao"].HeaderText = "Descrição";
             dataGridView2.Columns["pesoBruto"].HeaderText = "Peso Bruto";
             dataGridView2.Columns["pesoLiquido"].HeaderText = "Peso Liquido";
             dataGridView2.Columns["Bobinas"].HeaderText = "Qt: Bobinas";
-            dataGridView2.Columns["idTransferencia"].HeaderText = "ID/Transfenrecia";
+            dataGridView2.Columns["idTransferencia"].HeaderText = "Nº/Transfenrecia";
             dataGridView2.Columns["usuarioTransferencia"].HeaderText = "Usuário/Transferencia";
 
             dataGridView2.Columns["id"].Visible = false;
@@ -126,9 +130,27 @@ namespace SistemaTHR.Apllication
 
         }
 
+        public void loadStyleGridView3()
+        {
+
+            dataGridView3.Columns["id"].HeaderText = "Nº/Fechamento";
+            dataGridView3.Columns["codigo"].HeaderText = "Código";
+            dataGridView3.Columns["descricao"].HeaderText = "Descrição";
+            dataGridView3.Columns["pesoBruto"].HeaderText = "Peso Bruto";
+            dataGridView3.Columns["pesoLiquido"].HeaderText = "Peso Liquido";
+            dataGridView3.Columns["qtBobinas"].HeaderText = "Qt: Bobinas";
+            dataGridView3.Columns["idTransferencia"].HeaderText = "Nº/Transfenrecia";
+
+
+            dataGridView3.Columns["id"].Visible = false;
+            dataGridView3.Columns["idTransferencia"].Visible = false;
+
+
+        }
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            frmEditarTransferencia frmEditarTransferencia = new frmEditarTransferencia();
+            frmEditarTransferencia frmEditarTransferencia = new frmEditarTransferencia(idSelecionado,usuarioMovimentacao);
             Modelo.transferenciaController transferencia = new Modelo.transferenciaController();
             transferencia.selectTransf(idSelecionado);
             this.dt = transferencia.dt;
@@ -137,6 +159,7 @@ namespace SistemaTHR.Apllication
             frmEditarTransferencia.loadStyleGridView1();
             transferencia.selecMovimenta(idSelecionado);
             frmEditarTransferencia.dataGridView2.DataSource = transferencia.dt;
+            frmEditarTransferencia.loadStyleGridView2();
             frmEditarTransferencia.Show();
         }
 

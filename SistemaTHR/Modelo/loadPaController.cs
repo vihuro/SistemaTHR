@@ -8,6 +8,7 @@ namespace SistemaTHR.Modelo
 {
     internal class loadPaController
     {
+        public String numeroPa;
         public String descricao;
         public String codigo;
         public double pesoBruto;
@@ -18,7 +19,7 @@ namespace SistemaTHR.Modelo
         {
             DAO.loadPADAO loadPADAO = new DAO.loadPADAO();
             loadPADAO.selectPA(numeroPA);
-
+            this.numeroPa = numeroPA;
             this.descricao = loadPADAO.descricao;
             this.codigo = loadPADAO.codigo;
             this.pesoBruto = loadPADAO.pesoBruto;
