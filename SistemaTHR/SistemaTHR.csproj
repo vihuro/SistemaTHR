@@ -151,6 +151,12 @@
     <Compile Include="Apllication\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Apllication\frmManutencao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apllication\frmManutencao.Designer.cs">
+      <DependentUpon>frmManutencao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Apllication\frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +223,7 @@
     <Compile Include="DAO\loadTrocasDao.cs" />
     <Compile Include="DAO\LoginDao.cs" />
     <Compile Include="DAO\manutecaoEmpilhadeiraDao.cs" />
+    <Compile Include="DAO\OsTHRDAO.cs" />
     <Compile Include="DAO\transferenciaDao.cs" />
     <Compile Include="DAO\trocaGasDao.cs" />
     <Compile Include="DAO\ultimaTrocaDao.cs" />
@@ -260,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apllication\frmManutencao.resx">
+      <DependentUpon>frmManutencao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>

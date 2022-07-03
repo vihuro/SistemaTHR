@@ -313,7 +313,6 @@ namespace SistemaTHR.DAO
                 cmd.Connection = conn.conectar();
                 OleDbDataAdapter da = new OleDbDataAdapter(cmd);
 
-
                 da.Fill(dt);
 
                 conn.desconectar();

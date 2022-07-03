@@ -199,18 +199,13 @@ namespace SistemaTHR.Apllication
                 list.SubItems.Add(pesoLiquido);
                 list.SubItems.Add(qtBobinas);
 
-
-
                 listView1.Items.Add(list);
-
-
 
             }
             else
             {
                 MessageBox.Show("P.A inválida. Tente alterar o local de estocagem!", "THR SISTEMAS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
 
                  if(codigo != null)
                 {

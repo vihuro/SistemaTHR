@@ -28,6 +28,7 @@ namespace SistemaTHR.Apllication
         }
         public void loadStyleGridView1()
         {
+
             dataGridView1.Columns["id"].HeaderText = "Nº/Movimentação";
             dataGridView1.Columns["numeroPA"].HeaderText = "Nº P.A";
             dataGridView1.Columns["codigo"].HeaderText = "Código";
@@ -37,6 +38,7 @@ namespace SistemaTHR.Apllication
             dataGridView1.Columns["Bobinas"].HeaderText = "Qt: Bobinas";
             dataGridView1.Columns["idTransferencia"].HeaderText = "Nº/Transfenrecia";
             dataGridView1.Columns["usuarioTransferencia"].HeaderText = "Usuário/Transferencia";
+  ;
 
 
         }
@@ -167,6 +169,11 @@ namespace SistemaTHR.Apllication
 
             dataGridView1.DataSource = dt;
             dataGridView1.DataMember = dt.TableName;
+
+        }
+
+        private void txtNumeroPA_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

@@ -158,5 +158,12 @@ namespace SistemaTHR.Apllication
         {
 
         }
+
+        private void manutençãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManutencao manutencao = new frmManutencao();
+            manutencao.lblUsuario.Text = this.lblUsuario.Text;
+            manutencao.Show();
+        }
     }
 }

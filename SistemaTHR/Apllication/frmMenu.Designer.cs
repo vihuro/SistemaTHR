@@ -55,6 +55,7 @@
             this.transferênciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
+            this.manutençãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -122,7 +123,8 @@
             this.módulosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.empilhadeirasToolStripMenuItem,
             this.recebimentoToolStripMenuItem,
-            this.expediçãoToolStripMenuItem});
+            this.expediçãoToolStripMenuItem,
+            this.manutençãoToolStripMenuItem});
             this.módulosToolStripMenuItem.Name = "módulosToolStripMenuItem";
             this.módulosToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.módulosToolStripMenuItem.Text = "Módulos";
@@ -134,7 +136,7 @@
             this.solicitarManutençãoToolStripMenuItem,
             this.painéisToolStripMenuItem});
             this.empilhadeirasToolStripMenuItem.Name = "empilhadeirasToolStripMenuItem";
-            this.empilhadeirasToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.empilhadeirasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.empilhadeirasToolStripMenuItem.Text = "Empilhadeiras";
             // 
             // trocaGasToolStripMenuItem
@@ -224,7 +226,7 @@
             // recebimentoToolStripMenuItem
             // 
             this.recebimentoToolStripMenuItem.Name = "recebimentoToolStripMenuItem";
-            this.recebimentoToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.recebimentoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.recebimentoToolStripMenuItem.Text = "Recebimento";
             // 
             // expediçãoToolStripMenuItem
@@ -233,7 +235,7 @@
             this.transfêToolStripMenuItem,
             this.paínesToolStripMenuItem});
             this.expediçãoToolStripMenuItem.Name = "expediçãoToolStripMenuItem";
-            this.expediçãoToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.expediçãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.expediçãoToolStripMenuItem.Text = "Expedição";
             // 
             // transfêToolStripMenuItem
@@ -273,6 +275,13 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // manutençãoToolStripMenuItem
+            // 
+            this.manutençãoToolStripMenuItem.Name = "manutençãoToolStripMenuItem";
+            this.manutençãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manutençãoToolStripMenuItem.Text = "Manutenção";
+            this.manutençãoToolStripMenuItem.Click += new System.EventHandler(this.manutençãoToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -324,5 +333,6 @@
         public System.Windows.Forms.ToolStripMenuItem recebimentoToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem expediçãoToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem gerenciarLoginsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manutençãoToolStripMenuItem;
     }
 }

@@ -64,7 +64,12 @@ namespace SistemaTHR.Apllication
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if(e.Value != null && e.Value.Equals("vitor"))
+            if(e.Value != null && e.Value.Equals("26/06/2022 12:20:43"))
+            {
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ToString();
+            }
+
+            if (e.Value != null && e.Value.Equals("vitor"))
             {
 
                 dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.DarkRed;
@@ -82,6 +87,8 @@ namespace SistemaTHR.Apllication
 
             if(i > 0)
             {
+                MessageBox.Show(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[1].Value.ToString());
+
                 idSelecionado = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString();
                 usuarioMovimentacao = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[2].Value.ToString();
                 loadDataGridView2();
