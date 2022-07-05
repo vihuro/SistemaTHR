@@ -165,5 +165,19 @@ namespace SistemaTHR.Apllication
             manutencao.lblUsuario.Text = this.lblUsuario.Text;
             manutencao.Show();
         }
+
+        private void solicitarManutençãoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmSolicitarManutencaoTHR frmSolicitar = new frmSolicitarManutencaoTHR();
+            frmSolicitar.lblUsuario.Text = this.lblUsuario.Text;
+            frmSolicitar.ShowDialog();
+        }
+
+        private void manutençõesEmAbertoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManutencao manutencao = new frmManutencao();
+            manutencao.lblUsuario.Text = this.lblUsuario.Text;
+            manutencao.Show();
+        }
     }
 }

@@ -28,43 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cboNumeroEmp = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cboPrioridade = new System.Windows.Forms.ComboBox();
             this.lblCaractere = new System.Windows.Forms.Label();
             this.btnSolicitar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cboPrioridade = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboNumeroEmp = new System.Windows.Forms.ComboBox();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cboNumeroEmp
-            // 
-            this.cboNumeroEmp.FormattingEnabled = true;
-            this.cboNumeroEmp.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.cboNumeroEmp.Location = new System.Drawing.Point(101, 45);
-            this.cboNumeroEmp.Name = "cboNumeroEmp";
-            this.cboNumeroEmp.Size = new System.Drawing.Size(58, 21);
-            this.cboNumeroEmp.TabIndex = 0;
-            this.cboNumeroEmp.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nº Empilhadeira:";
             // 
             // txtDescricao
             // 
@@ -84,26 +60,6 @@
             this.label2.Size = new System.Drawing.Size(111, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Descreva o problema:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 111);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Prioridade:";
-            // 
-            // cboPrioridade
-            // 
-            this.cboPrioridade.FormattingEnabled = true;
-            this.cboPrioridade.Items.AddRange(new object[] {
-            "Normal",
-            "Alta"});
-            this.cboPrioridade.Location = new System.Drawing.Point(101, 103);
-            this.cboPrioridade.Name = "cboPrioridade";
-            this.cboPrioridade.Size = new System.Drawing.Size(90, 21);
-            this.cboPrioridade.TabIndex = 6;
             // 
             // lblCaractere
             // 
@@ -150,6 +106,50 @@
             this.lblUsuario.Size = new System.Drawing.Size(118, 17);
             this.lblUsuario.Text = "toolStripStatusLabel1";
             // 
+            // cboPrioridade
+            // 
+            this.cboPrioridade.FormattingEnabled = true;
+            this.cboPrioridade.Items.AddRange(new object[] {
+            "Normal",
+            "Alta"});
+            this.cboPrioridade.Location = new System.Drawing.Point(101, 103);
+            this.cboPrioridade.Name = "cboPrioridade";
+            this.cboPrioridade.Size = new System.Drawing.Size(90, 21);
+            this.cboPrioridade.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 111);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Prioridade:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Nº Empilhadeira:";
+            // 
+            // cboNumeroEmp
+            // 
+            this.cboNumeroEmp.FormattingEnabled = true;
+            this.cboNumeroEmp.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.cboNumeroEmp.Location = new System.Drawing.Point(101, 45);
+            this.cboNumeroEmp.Name = "cboNumeroEmp";
+            this.cboNumeroEmp.Size = new System.Drawing.Size(58, 21);
+            this.cboNumeroEmp.TabIndex = 0;
+            this.cboNumeroEmp.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // frmSolicitarManutencao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,17 +180,16 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cboNumeroEmp;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cboPrioridade;
         private System.Windows.Forms.Label lblCaractere;
         private System.Windows.Forms.Button btnSolicitar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.StatusStrip statusStrip1;
         public System.Windows.Forms.ToolStripStatusLabel lblUsuario;
+        private System.Windows.Forms.ComboBox cboPrioridade;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboNumeroEmp;
     }
 }

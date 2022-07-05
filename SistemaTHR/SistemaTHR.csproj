@@ -199,6 +199,12 @@
     <Compile Include="Apllication\frmSolicitarManutencao.Designer.cs">
       <DependentUpon>frmSolicitarManutencao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Apllication\frmSolicitarManutencaoTHR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apllication\frmSolicitarManutencaoTHR.Designer.cs">
+      <DependentUpon>frmSolicitarManutencaoTHR.cs</DependentUpon>
+    </Compile>
     <Compile Include="Apllication\frmTeste.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +238,7 @@
     <Compile Include="Modelo\loadTrocaGasController.cs" />
     <Compile Include="Modelo\loginController.cs" />
     <Compile Include="Modelo\manutecaoEmpilhadeirasController.cs" />
+    <Compile Include="Modelo\OSTHRController.cs" />
     <Compile Include="Modelo\transferenciaController.cs" />
     <Compile Include="Modelo\trocaGasController.cs" />
     <Compile Include="Modelo\ultimaTrocaController.cs" />
@@ -291,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmSolicitarManutencao.resx">
       <DependentUpon>frmSolicitarManutencao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apllication\frmSolicitarManutencaoTHR.resx">
+      <DependentUpon>frmSolicitarManutencaoTHR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmTeste.resx">
       <DependentUpon>frmTeste.cs</DependentUpon>
@@ -399,6 +409,8 @@
     <Content Include="bd-Sistem.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\mais.png" />
+    <None Include="Resources\order.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -178,5 +178,10 @@ namespace SistemaTHR.Apllication
             frmSelectImp selectImp = new frmSelectImp(idSelecionado);
             selectImp.ShowDialog();
         }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

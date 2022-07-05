@@ -257,3 +257,5 @@ C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllica
 C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmSelectImp.resources
 C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.csproj.CopyComplete
 C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmManutencao.resources
+C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmManutencao.resources
+C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmSolicitarManutencaoTHR.resources

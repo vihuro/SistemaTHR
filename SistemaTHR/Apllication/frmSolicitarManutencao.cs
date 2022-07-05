@@ -33,6 +33,7 @@ namespace SistemaTHR.Apllication
             lblCaractere.Text = "Restam " + totalCaractere + " caracteres";
         }
 
+
         private void btnSolicitar_Click(object sender, EventArgs e)
         {
             String emAberto = "Em aberto";
@@ -42,6 +43,8 @@ namespace SistemaTHR.Apllication
             {
                 Modelo.manutecaoEmpilhadeirasController manutecaoEmpilhadeirasController = new Modelo.manutecaoEmpilhadeirasController();
                 manutecaoEmpilhadeirasController.insertSolicitacao(cboNumeroEmp.Text, txtDescricao.Text, cboPrioridade.Text, emAberto, dataHora, lblUsuario.Text);
+
+                
 
                 MessageBox.Show("Solicitaçao realizada com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
