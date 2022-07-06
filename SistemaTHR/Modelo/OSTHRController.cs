@@ -57,6 +57,7 @@ namespace SistemaTHR.Modelo
         public String dataHoraAlteracao;
         public String usuarioAlteracao;
         public String observacao;
+        String numeroStatus;
         private void insertSTatusOP()
         {
             DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
@@ -99,6 +100,22 @@ namespace SistemaTHR.Modelo
         {
             this.numeroOSTHR = numeroOSTHR;
             selecStatus();
+        }
+
+        private void updateObservacao()
+        {
+            DAO.OsTHRDAO osTHRDAO = new DAO.OsTHRDAO();
+            osTHRDAO.dataHoraApontament = this.dataHoraApontament;
+            osTHRDAO.usuarioApontamento = this.usuarioApontamento;
+            osTHRDAO.dataHoraAlteracao = this.dataHoraAlteracao;
+            osTHRDAO.usuarioAlteracao = this.usuarioAlteracao;
+            osTHRDAO.observacao = this.observacao;
+            osTHRDAO.updateOBS(numeroStatus);
+        }
+        public void updateOBS(String numeroStatus)
+        {
+            this.numeroStatus = numeroStatus;
+            updateObservacao();
         }
     }
 }

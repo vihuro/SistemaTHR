@@ -18,7 +18,15 @@ namespace SistemaTHR.Apllication
         {
             InitializeComponent();
             loadGridView1();
+            // clearAll();
 
+        }
+
+        private void clearAll()
+        {
+            dataGridView2.ClearSelection();
+            dataGridView2.DataSource = null;
+            dataGridView1.ClearSelection();
         }
 
         private void loadGridView1()
@@ -28,14 +36,22 @@ namespace SistemaTHR.Apllication
             this.dt = controller.dt;
 
             dataGridView1.DataSource = dt;
+            
 
-            styleGridView1();
 
-        }
+            for (var i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                
+                if(i == dataGridView1.Rows.Count -1)
+                {
+                    dataGridView1.CurrentCell = dataGridView1.Rows[i - 1].Cells[0];
 
-        private void styleGridView1()
-        {
-            dataGridView1.ClearSelection();
+                    
+                    break;
+                }
+                
+            }
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -47,13 +63,15 @@ namespace SistemaTHR.Apllication
         {
             DataGridView dataGrid = (DataGridView)sender;
             int i = dataGrid.SelectedRows.Count;
-
-            if( i > 0)
+            
+            if ( i > 0)
             {
                 numeroOS = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString();
-                loadDataGridView2();
 
+                loadDataGridView2();
+                
             }
+
         }
 
         private void loadStyleDataGridView2()
@@ -65,6 +83,10 @@ namespace SistemaTHR.Apllication
             dataGridView2.Columns["NUMEROStatus"].Visible = false;
             dataGridView2.Columns["NUMEROOSTHR"].Visible = false;
             dataGridView2.Columns["Observacao"].Visible = false;
+
+            dataGridView2.EnableHeadersVisualStyles = false;
+            dataGridView2.Columns[4].DefaultCellStyle.SelectionForeColor = Color.BlueViolet;
+
         }
 
         private void loadDataGridView2()
@@ -98,6 +120,9 @@ namespace SistemaTHR.Apllication
                 dataGridView2.SelectedRows[0].Cells[5].Value = datahora;
                 dataGridView2.SelectedRows[0].Cells[6].Value = lblUsuario.Text;
             }
+            Modelo.OSTHRController controller = new Modelo.OSTHRController();
+            controller.dataHoraApontament = datahora.ToString();
+
 
         }
 
@@ -113,6 +138,41 @@ namespace SistemaTHR.Apllication
                     }
 
                 }
+
+        }
+
+        private void frmManutencao_Load(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
+
+            dataGridView2.DataSource = null;
+
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+            DataGridView dataGrid = (DataGridView)sender;
+            int i = dataGrid.SelectedRows.Count;
+
+            if (dataGridView2.CurrentCell != null)
+            {
+                //MessageBox.Show(dataGridView2.CurrentCell.ToString());
+                if (i > 0)
+                {
+                    if (dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[0].Value != null)
+                    {
+                       // MessageBox.Show(dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[1].Value.ToString());
+                    }
+
+                }
+            }
+
 
         }
     }

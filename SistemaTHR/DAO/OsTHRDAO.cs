@@ -184,5 +184,45 @@ namespace SistemaTHR.DAO
             this.numeroOSTHR = numeroOSTHR;
             selecStatus();
         }
+        String numeroStatus;
+        
+        private void updateObservacao()
+        {
+            cmd.CommandText = "Update tab_StatusOSTHR set Observacao = @obeservacao" +
+                "DataHoraApontamento = @dataHoraApontamento" +
+                "usuarioApontamento = @usuarioApontamento" +
+                "DataHoraAlteracao = @dataHoraAlteracao" +
+                "@usuarioAlteracao = @usuarioAlteracao" +
+                " where numeroStatus = @numeroStatus";
+
+            cmd.Parameters.AddWithValue("@dataHoraApontamento", dataHoraApontament);
+            cmd.Parameters.AddWithValue("@usuarioApontamento", usuarioApontamento);
+            cmd.Parameters.AddWithValue("@dataHoraAlteracao", dataHoraAlteracao);
+            cmd.Parameters.AddWithValue("@usuarioAlteracao", usuarioAlteracao);
+
+            cmd.Parameters.AddWithValue("@numeroStatus", numeroStatus);
+            cmd.Parameters.AddWithValue("@observacao", observacao);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+                cmd.ExecuteReader();
+
+                con.desconectar();
+                
+
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        public void updateOBS(String numeroStatus)
+        {
+            this.numeroStatus = numeroStatus;
+            updateObservacao();
+        }
     }
 }
