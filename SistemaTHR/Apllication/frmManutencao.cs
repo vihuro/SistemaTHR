@@ -18,16 +18,9 @@ namespace SistemaTHR.Apllication
         {
             InitializeComponent();
             loadGridView1();
-            // clearAll();
 
         }
 
-        private void clearAll()
-        {
-            dataGridView2.ClearSelection();
-            dataGridView2.DataSource = null;
-            dataGridView1.ClearSelection();
-        }
 
         private void loadGridView1()
         {
@@ -36,8 +29,8 @@ namespace SistemaTHR.Apllication
             this.dt = controller.dt;
 
             dataGridView1.DataSource = dt;
-            
 
+            loadStyleGridView1();
 
             for (var i = 0; i < dataGridView1.Rows.Count; i++)
             {
@@ -46,13 +39,25 @@ namespace SistemaTHR.Apllication
                 {
                     dataGridView1.CurrentCell = dataGridView1.Rows[i - 1].Cells[0];
 
-                    
                     break;
                 }
                 
             }
 
         }
+
+        private void loadStyleGridView1()
+        {
+            
+
+            dataGridView1.Columns["descricaoServico"].Visible = false;
+            dataGridView1.Columns["UsuarioManutencao"].Visible = false;
+            dataGridView1.Columns["DataHoraFinalizacao"].Visible = false;
+            dataGridView1.Columns["ProblemaResolvido"].Visible = false;
+            dataGridView1.Columns["UsuarioVistoria"].Visible = false;
+
+        }
+
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -67,11 +72,19 @@ namespace SistemaTHR.Apllication
             if ( i > 0)
             {
                 numeroOS = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString();
-
+                txtOrdemServico.Text = numeroOS; 
+                loadInfoDataGridView1();
                 loadDataGridView2();
                 
             }
 
+        }
+
+        private void loadInfoDataGridView1()
+        {
+            Modelo.OSTHRController controller = new Modelo.OSTHRController();
+            controller.loadINFO(numeroOS);
+            txtDescricao.Text = controller.descricaoServico;
         }
 
         private void loadStyleDataGridView2()
@@ -97,6 +110,7 @@ namespace SistemaTHR.Apllication
             loadStyleDataGridView2();
 
             dataGridView2.ClearSelection();
+            txtObservacao.Text = string.Empty;
             
         }
 
@@ -105,7 +119,13 @@ namespace SistemaTHR.Apllication
 
         }
         DateTime datahora;
-        
+
+        String numeroStatus;
+        String dataHoraApontamento;
+        String usuarioApontamento;
+        String dataHoraAlteracao;
+        String usuarioAlteracao;
+        String observacao;
         private void btnApontar_Click(object sender, EventArgs e)
         {
             datahora = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
@@ -120,9 +140,24 @@ namespace SistemaTHR.Apllication
                 dataGridView2.SelectedRows[0].Cells[5].Value = datahora;
                 dataGridView2.SelectedRows[0].Cells[6].Value = lblUsuario.Text;
             }
-            Modelo.OSTHRController controller = new Modelo.OSTHRController();
-            controller.dataHoraApontament = datahora.ToString();
 
+            numeroStatus = dataGridView2.SelectedRows[0].Cells[0].Value.ToString();
+            dataHoraApontamento = dataGridView2.SelectedRows[0].Cells[3].Value.ToString();
+            usuarioApontamento = dataGridView2.SelectedRows[0].Cells[4].Value.ToString();
+            dataHoraAlteracao = dataGridView2.SelectedRows[0].Cells[5].Value.ToString();
+            usuarioAlteracao = dataGridView2.SelectedRows[0].Cells[6].Value.ToString();
+            observacao = txtObservacao.Text;
+
+
+            Modelo.OSTHRController controller = new Modelo.OSTHRController();
+            controller.dataHoraApontament = this.dataHoraApontamento;
+            controller.usuarioApontamento = this.usuarioApontamento;
+            controller.dataHoraAlteracao = this.dataHoraAlteracao;
+            controller.usuarioAlteracao = this.usuarioAlteracao;
+            controller.observacao = this.observacao;
+            controller.updateStatus(numeroStatus);
+
+            dataGridView2.ClearSelection();
 
         }
 
@@ -131,22 +166,64 @@ namespace SistemaTHR.Apllication
 
                 for (int i = 0; i < dataGridView2.Rows.Count; i++)
                 {
-
+                    dataGridView2.Rows[i].DefaultCellStyle.SelectionBackColor = Color.Black;
                     if (dataGridView2.Rows[i].Cells[4].Value != "")
                     {
                         dataGridView2.Rows[i].DefaultCellStyle.ForeColor = Color.Green;
+                        dataGridView2.Rows[i].DefaultCellStyle.SelectionForeColor = Color.BlueViolet;
+
                     }
 
                 }
 
         }
 
-        private void frmManutencao_Load(object sender, EventArgs e)
+        private void clearAll()
         {
             dataGridView1.ClearSelection();
 
-            dataGridView2.DataSource = null;
+            while(dataGridView2.Rows.Count > 0)
+            {
+                for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                {
 
+                  dataGridView2.Rows.Remove(dataGridView2.Rows[i]);
+
+                }
+            }
+
+
+            dataGridView2.ClearSelection();
+            txtDescricao.Text = string.Empty;
+            txtOrdemServico.Text = string.Empty;
+            cboPrioridade.Text = string.Empty;
+        }
+
+        private void frmManutencao_Load(object sender, EventArgs e)
+        {
+
+            
+            dataGridView1.ClearSelection();
+
+            int i = dataGridView2.Rows.Count;
+            for (int j = 0; j < i; j++)
+            {
+                if (dataGridView2.CurrentCell != null)
+                {
+                    if (i > 0)
+                    {
+                        if (dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[0].Value != null)
+                        {
+                            dataGridView2.Rows.Remove(dataGridView2.CurrentRow);
+                        }
+                    }
+                }
+            }
+
+            dataGridView2.ClearSelection();
+            txtDescricao.Text = string.Empty;
+            txtOrdemServico.Text = string.Empty;
+            cboPrioridade.Text = string.Empty;
 
         }
 
@@ -162,18 +239,43 @@ namespace SistemaTHR.Apllication
 
             if (dataGridView2.CurrentCell != null)
             {
-                //MessageBox.Show(dataGridView2.CurrentCell.ToString());
+
                 if (i > 0)
                 {
                     if (dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[0].Value != null)
                     {
-                       // MessageBox.Show(dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[1].Value.ToString());
+                        numeroStatus = dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[0].Value.ToString();
+
+                        Modelo.OSTHRController controller = new Modelo.OSTHRController();
+                        controller.selectOBS(numeroStatus);
+                        txtObservacao.Text = controller.observacao;
                     }
 
                 }
             }
 
 
+        }
+
+
+        private void btnLimpar_MouseMove(object sender, MouseEventArgs e)
+        {
+            toolTip1.SetToolTip(btnLimpar, "Limpar");
+        }
+
+        private void btnFiltrar_MouseMove(object sender, MouseEventArgs e)
+        {
+            toolTip1.SetToolTip(btnFiltrar, "Filtrar");
+        }
+
+        private void btnCompra_MouseMove(object sender, MouseEventArgs e)
+        {
+            toolTip1.SetToolTip(btnCompra, "Solicitar peça");
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            clearAll();
         }
     }
 }

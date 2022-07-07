@@ -32,8 +32,6 @@ namespace SistemaTHR.Apllication
             dataGridView1.Columns["dataHoraTransf"].HeaderText = "Data/Hora Transferencia";
             dataGridView1.Columns["usuarioTransf"].HeaderText = "Usuário/Transferencia";
 
-
-            //dataGridView1.Columns["id"].Visible = false;
         }
         private void loadGridView1()
         {
@@ -87,8 +85,6 @@ namespace SistemaTHR.Apllication
 
             if(i > 0)
             {
-                MessageBox.Show(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[1].Value.ToString());
-
                 idSelecionado = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString();
                 usuarioMovimentacao = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[2].Value.ToString();
                 loadDataGridView2();
@@ -96,6 +92,7 @@ namespace SistemaTHR.Apllication
             }
             
         }
+
 
         private void loadDataGridView2() 
         {

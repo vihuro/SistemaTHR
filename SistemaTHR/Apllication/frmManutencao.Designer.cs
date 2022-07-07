@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
@@ -40,14 +41,17 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.BtnSalvar = new System.Windows.Forms.Button();
+            this.clNOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTipoServico = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clDataHoraGeracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clUsuarioSolicitacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clPrioridade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnDesfazer = new System.Windows.Forms.Button();
             this.btnApontar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtObservacao = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,14 +63,13 @@
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboPrioridade = new System.Windows.Forms.ComboBox();
             this.txtOrdemServico = new System.Windows.Forms.TextBox();
-            this.clNOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clTipoServico = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clDataHoraGeracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clUsuarioSolicitacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clPrioridade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.BtnSalvar = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -77,6 +80,7 @@
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -84,7 +88,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.lblUsuario});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 727);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 690);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1337, 22);
             this.statusStrip1.TabIndex = 0;
@@ -124,6 +128,7 @@
             this.btnCompra.Size = new System.Drawing.Size(28, 24);
             this.btnCompra.TabIndex = 2;
             this.btnCompra.UseVisualStyleBackColor = true;
+            this.btnCompra.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCompra_MouseMove);
             // 
             // btnFiltrar
             // 
@@ -136,6 +141,7 @@
             this.btnFiltrar.Size = new System.Drawing.Size(28, 24);
             this.btnFiltrar.TabIndex = 1;
             this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnFiltrar_MouseMove);
             // 
             // btnLimpar
             // 
@@ -149,9 +155,13 @@
             this.btnLimpar.TabIndex = 0;
             this.btnLimpar.Text = "button1";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            this.btnLimpar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnLimpar_MouseMove);
             // 
             // splitContainer1
             // 
+            this.splitContainer1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.splitContainer1.AllowDrop = true;
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 24);
@@ -161,32 +171,39 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.btnImprimir);
-            this.splitContainer1.Panel2.Controls.Add(this.btnCancelar);
-            this.splitContainer1.Panel2.Controls.Add(this.BtnSalvar);
+            this.splitContainer1.Panel2.AllowDrop = true;
+            this.splitContainer1.Panel2.AutoScroll = true;
+            this.splitContainer1.Panel2.AutoScrollMargin = new System.Drawing.Size(0, 50);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(1337, 703);
-            this.splitContainer1.SplitterDistance = 191;
+            this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.splitContainer1.Size = new System.Drawing.Size(1337, 666);
+            this.splitContainer1.SplitterDistance = 180;
             this.splitContainer1.TabIndex = 2;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clNOP,
@@ -201,65 +218,80 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1333, 187);
+            this.dataGridView1.Size = new System.Drawing.Size(1333, 176);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
-            // btnImprimir
+            // clNOP
             // 
-            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimir.Location = new System.Drawing.Point(1248, 478);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(75, 23);
-            this.btnImprimir.TabIndex = 3;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.clNOP.DataPropertyName = "NOP";
+            this.clNOP.HeaderText = "Nº Ordem/Serviço";
+            this.clNOP.Name = "clNOP";
+            this.clNOP.ReadOnly = true;
+            this.clNOP.Width = 150;
             // 
-            // btnCancelar
+            // clTipoServico
             // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(1167, 478);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 2;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.clTipoServico.DataPropertyName = "TipoServico";
+            this.clTipoServico.HeaderText = "Tipo de Serviço";
+            this.clTipoServico.Name = "clTipoServico";
+            this.clTipoServico.ReadOnly = true;
+            this.clTipoServico.Width = 130;
             // 
-            // BtnSalvar
+            // clDataHoraGeracao
             // 
-            this.BtnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSalvar.Location = new System.Drawing.Point(1086, 478);
-            this.BtnSalvar.Name = "BtnSalvar";
-            this.BtnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalvar.TabIndex = 1;
-            this.BtnSalvar.Text = "Salvar";
-            this.BtnSalvar.UseVisualStyleBackColor = true;
+            this.clDataHoraGeracao.DataPropertyName = "dataHoraGeracao";
+            this.clDataHoraGeracao.HeaderText = "Data/Hora Geração";
+            this.clDataHoraGeracao.Name = "clDataHoraGeracao";
+            this.clDataHoraGeracao.ReadOnly = true;
+            this.clDataHoraGeracao.Width = 220;
+            // 
+            // clUsuarioSolicitacao
+            // 
+            this.clUsuarioSolicitacao.DataPropertyName = "usuarioSolicitacao";
+            this.clUsuarioSolicitacao.HeaderText = "Usuário da Solicitação";
+            this.clUsuarioSolicitacao.Name = "clUsuarioSolicitacao";
+            this.clUsuarioSolicitacao.ReadOnly = true;
+            this.clUsuarioSolicitacao.Width = 150;
+            // 
+            // clPrioridade
+            // 
+            this.clPrioridade.DataPropertyName = "Prioridade";
+            this.clPrioridade.HeaderText = "Prioridade";
+            this.clPrioridade.Name = "clPrioridade";
+            this.clPrioridade.ReadOnly = true;
+            this.clPrioridade.Width = 130;
+            // 
+            // clStatus
+            // 
+            this.clStatus.DataPropertyName = "StatusOP";
+            this.clStatus.HeaderText = "StatusOS";
+            this.clStatus.Name = "clStatus";
+            this.clStatus.ReadOnly = true;
+            this.clStatus.Width = 130;
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.btnDesfazer);
             this.groupBox1.Controls.Add(this.btnApontar);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.txtObservacao);
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtDescricao);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cboPrioridade);
             this.groupBox1.Controls.Add(this.txtOrdemServico);
             this.groupBox1.Location = new System.Drawing.Point(12, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBox1.Size = new System.Drawing.Size(1311, 455);
+            this.groupBox1.Size = new System.Drawing.Size(1311, 423);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ordem de Serviço";
@@ -267,7 +299,7 @@
             // 
             // btnDesfazer
             // 
-            this.btnDesfazer.Location = new System.Drawing.Point(1209, 320);
+            this.btnDesfazer.Location = new System.Drawing.Point(1209, 291);
             this.btnDesfazer.Name = "btnDesfazer";
             this.btnDesfazer.Size = new System.Drawing.Size(75, 23);
             this.btnDesfazer.TabIndex = 13;
@@ -276,7 +308,7 @@
             // 
             // btnApontar
             // 
-            this.btnApontar.Location = new System.Drawing.Point(1209, 291);
+            this.btnApontar.Location = new System.Drawing.Point(1209, 262);
             this.btnApontar.Name = "btnApontar";
             this.btnApontar.Size = new System.Drawing.Size(75, 23);
             this.btnApontar.TabIndex = 12;
@@ -287,41 +319,46 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(467, 371);
+            this.label6.Location = new System.Drawing.Point(467, 321);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 13);
             this.label6.TabIndex = 11;
             this.label6.Text = "Obsevação:";
             // 
-            // textBox4
+            // txtObservacao
             // 
-            this.textBox4.Location = new System.Drawing.Point(470, 387);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(733, 61);
-            this.textBox4.TabIndex = 10;
+            this.txtObservacao.Location = new System.Drawing.Point(470, 337);
+            this.txtObservacao.Multiline = true;
+            this.txtObservacao.Name = "txtObservacao";
+            this.txtObservacao.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtObservacao.Size = new System.Drawing.Size(733, 61);
+            this.txtObservacao.TabIndex = 10;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Location = new System.Drawing.Point(470, 162);
+            this.panel2.Location = new System.Drawing.Point(470, 133);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(733, 181);
             this.panel2.TabIndex = 9;
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnStatus,
@@ -385,7 +422,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 248);
+            this.label4.Location = new System.Drawing.Point(17, 198);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 13);
             this.label4.TabIndex = 7;
@@ -393,16 +430,18 @@
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(17, 267);
+            this.txtDescricao.BackColor = System.Drawing.Color.White;
+            this.txtDescricao.Location = new System.Drawing.Point(13, 217);
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.ReadOnly = true;
             this.txtDescricao.Size = new System.Drawing.Size(339, 181);
             this.txtDescricao.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 137);
+            this.label3.Location = new System.Drawing.Point(14, 105);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 5;
@@ -417,17 +456,17 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Nº/Ordem de Serviço:";
             // 
-            // comboBox1
+            // cboPrioridade
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cboPrioridade.FormattingEnabled = true;
+            this.cboPrioridade.Items.AddRange(new object[] {
             "Baixa",
             "Normal",
             "Alta"});
-            this.comboBox1.Location = new System.Drawing.Point(129, 129);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cboPrioridade.Location = new System.Drawing.Point(129, 97);
+            this.cboPrioridade.Name = "cboPrioridade";
+            this.cboPrioridade.Size = new System.Drawing.Size(100, 21);
+            this.cboPrioridade.TabIndex = 1;
             // 
             // txtOrdemServico
             // 
@@ -436,59 +475,56 @@
             this.txtOrdemServico.Size = new System.Drawing.Size(100, 20);
             this.txtOrdemServico.TabIndex = 0;
             // 
-            // clNOP
+            // btnImprimir
             // 
-            this.clNOP.DataPropertyName = "NOP";
-            this.clNOP.HeaderText = "Nº Ordem/Serviço";
-            this.clNOP.Name = "clNOP";
-            this.clNOP.ReadOnly = true;
-            this.clNOP.Width = 150;
+            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimir.Location = new System.Drawing.Point(1250, 10);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(75, 23);
+            this.btnImprimir.TabIndex = 3;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
             // 
-            // clTipoServico
+            // btnCancelar
             // 
-            this.clTipoServico.DataPropertyName = "TipoServico";
-            this.clTipoServico.HeaderText = "Tipo de Serviço";
-            this.clTipoServico.Name = "clTipoServico";
-            this.clTipoServico.ReadOnly = true;
-            this.clTipoServico.Width = 130;
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.Location = new System.Drawing.Point(1175, 10);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // clDataHoraGeracao
+            // BtnSalvar
             // 
-            this.clDataHoraGeracao.DataPropertyName = "dataHoraGeracao";
-            this.clDataHoraGeracao.HeaderText = "Data/Hora Geração";
-            this.clDataHoraGeracao.Name = "clDataHoraGeracao";
-            this.clDataHoraGeracao.ReadOnly = true;
-            this.clDataHoraGeracao.Width = 220;
+            this.BtnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSalvar.Location = new System.Drawing.Point(1094, 10);
+            this.BtnSalvar.Name = "BtnSalvar";
+            this.BtnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.BtnSalvar.TabIndex = 1;
+            this.BtnSalvar.Text = "Salvar";
+            this.BtnSalvar.UseVisualStyleBackColor = true;
             // 
-            // clUsuarioSolicitacao
+            // panel3
             // 
-            this.clUsuarioSolicitacao.DataPropertyName = "usuarioSolicitacao";
-            this.clUsuarioSolicitacao.HeaderText = "Usuário da Solicitação";
-            this.clUsuarioSolicitacao.Name = "clUsuarioSolicitacao";
-            this.clUsuarioSolicitacao.ReadOnly = true;
-            this.clUsuarioSolicitacao.Width = 150;
-            // 
-            // clPrioridade
-            // 
-            this.clPrioridade.DataPropertyName = "Prioridade";
-            this.clPrioridade.HeaderText = "Prioridade";
-            this.clPrioridade.Name = "clPrioridade";
-            this.clPrioridade.ReadOnly = true;
-            this.clPrioridade.Width = 130;
-            // 
-            // clStatus
-            // 
-            this.clStatus.DataPropertyName = "StatusOP";
-            this.clStatus.HeaderText = "StatusOS";
-            this.clStatus.Name = "clStatus";
-            this.clStatus.ReadOnly = true;
-            this.clStatus.Width = 130;
+            this.panel3.Controls.Add(this.btnImprimir);
+            this.panel3.Controls.Add(this.BtnSalvar);
+            this.panel3.Controls.Add(this.btnCancelar);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 654);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1337, 36);
+            this.panel3.TabIndex = 14;
             // 
             // frmManutencao
             // 
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1337, 749);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1337, 712);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
@@ -507,6 +543,7 @@
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -526,12 +563,12 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboPrioridade;
         private System.Windows.Forms.TextBox txtOrdemServico;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtObservacao;
         private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnDesfazer;
@@ -550,5 +587,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clUsuarioSolicitacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn clPrioridade;
         private System.Windows.Forms.DataGridViewTextBoxColumn clStatus;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

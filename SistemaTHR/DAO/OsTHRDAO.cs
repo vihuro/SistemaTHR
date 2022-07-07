@@ -91,7 +91,7 @@ namespace SistemaTHR.DAO
         public String usuarioApontamento;
         public String dataHoraAlteracao;
         public String usuarioAlteracao;
-        public String observacao;
+        public String observacao = "";
 
         private void insertSTatusOP()
         {
@@ -186,22 +186,23 @@ namespace SistemaTHR.DAO
         }
         String numeroStatus;
         
-        private void updateObservacao()
+        private void updateStatusOS()
         {
-            cmd.CommandText = "Update tab_StatusOSTHR set Observacao = @obeservacao" +
-                "DataHoraApontamento = @dataHoraApontamento" +
-                "usuarioApontamento = @usuarioApontamento" +
-                "DataHoraAlteracao = @dataHoraAlteracao" +
-                "@usuarioAlteracao = @usuarioAlteracao" +
-                " where numeroStatus = @numeroStatus";
+            cmd.CommandText = "Update tab_StatusOSTHR SET DataHoraApontamento = @dataHoraApontamento," +
+                "UsuarioApontamento = @usuarioApontamento," +
+                "DataHoraAlteracao = @dataHoraAlteracao," +
+                "UsuarioAlteracao = @usuarioAlteracao," +
+                "Observacao = @observacao" +
+                " WHERE NUMEROStatus = @numeroStatus";
 
+           
             cmd.Parameters.AddWithValue("@dataHoraApontamento", dataHoraApontament);
             cmd.Parameters.AddWithValue("@usuarioApontamento", usuarioApontamento);
             cmd.Parameters.AddWithValue("@dataHoraAlteracao", dataHoraAlteracao);
             cmd.Parameters.AddWithValue("@usuarioAlteracao", usuarioAlteracao);
+            cmd.Parameters.AddWithValue("@observacao",observacao);
 
             cmd.Parameters.AddWithValue("@numeroStatus", numeroStatus);
-            cmd.Parameters.AddWithValue("@observacao", observacao);
 
             try
             {
@@ -209,8 +210,6 @@ namespace SistemaTHR.DAO
                 cmd.ExecuteReader();
 
                 con.desconectar();
-                
-
             }
             catch
             {
@@ -219,10 +218,74 @@ namespace SistemaTHR.DAO
 
         }
 
-        public void updateOBS(String numeroStatus)
+        public void updateStatus(String numeroStatus)
         {
             this.numeroStatus = numeroStatus;
-            updateObservacao();
+            updateStatusOS();
+        }
+
+        private void selectObservacao()
+        {
+            cmd.CommandText = "Select Observacao from tab_StatusOSTHR where NumeroStatus = @NumeroStatus";
+            cmd.Parameters.AddWithValue("@NumeroStatus", numeroStatus);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+                dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    observacao = dr["Observacao"].ToString();
+                }
+
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                con.desconectar();
+            }
+        }
+
+        public void selectOBS(String numeroStatus)
+        {
+            this.numeroStatus = numeroStatus;
+            selectObservacao();
+            
+        }
+
+        private void loadInfoOS()
+        {
+            cmd.CommandText = "Select * from tab_OSTHR where NOP = @numeroOS";
+            cmd.Parameters.AddWithValue("@numeroOS", numeroOSTHR);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+                dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    descricaoServico = dr["DescricaoServico"].ToString();
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                con.desconectar();
+            }
+        }
+
+        public void loadINFO(String numeroOSTHR)
+        {
+            this.numeroOSTHR = numeroOSTHR;
+            loadInfoOS();
         }
     }
 }

@@ -102,7 +102,7 @@ namespace SistemaTHR.Modelo
             selecStatus();
         }
 
-        private void updateObservacao()
+        private void updateStatusOS()
         {
             DAO.OsTHRDAO osTHRDAO = new DAO.OsTHRDAO();
             osTHRDAO.dataHoraApontament = this.dataHoraApontament;
@@ -110,12 +110,38 @@ namespace SistemaTHR.Modelo
             osTHRDAO.dataHoraAlteracao = this.dataHoraAlteracao;
             osTHRDAO.usuarioAlteracao = this.usuarioAlteracao;
             osTHRDAO.observacao = this.observacao;
-            osTHRDAO.updateOBS(numeroStatus);
+            osTHRDAO.updateStatus(numeroStatus);
         }
-        public void updateOBS(String numeroStatus)
+        public void updateStatus(String numeroStatus)
         {
             this.numeroStatus = numeroStatus;
-            updateObservacao();
+            updateStatusOS();
+        }
+
+        private void selectObservacao()
+        {
+            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+            dao.selectOBS(numeroStatus);
+            this.observacao = dao.observacao;
+        }
+
+        public void selectOBS(String numeroStatus)
+        {
+            this.numeroStatus = numeroStatus;
+            selectObservacao();
+        }
+
+        private void loadInfoOS()
+        {
+            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+            dao.loadINFO(numeroOSTHR);
+            this.descricaoServico = dao.descricaoServico;
+        }
+
+        public void loadINFO(String numeroOSTHR)
+        {
+            this.numeroOSTHR = numeroOSTHR;
+            loadInfoOS();
         }
     }
 }
