@@ -193,6 +193,12 @@
     <Compile Include="Apllication\frmSelectImp.Designer.cs">
       <DependentUpon>frmSelectImp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Apllication\frmSolicitacaoPeca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apllication\frmSolicitacaoPeca.Designer.cs">
+      <DependentUpon>frmSolicitacaoPeca.cs</DependentUpon>
+    </Compile>
     <Compile Include="Apllication\frmSolicitarManutencao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmSelectImp.resx">
       <DependentUpon>frmSelectImp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apllication\frmSolicitacaoPeca.resx">
+      <DependentUpon>frmSolicitacaoPeca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Apllication\frmSolicitarManutencao.resx">
       <DependentUpon>frmSolicitarManutencao.cs</DependentUpon>

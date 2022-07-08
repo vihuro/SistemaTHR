@@ -50,6 +50,10 @@ namespace SistemaTHR.Apllication
 
                 oSTHRController.insertStatusOS(numeroOP, FinMan, "00/00/0000 00:00:00", "00/00/0000 00:00:00", "", "00/00/0000 00:00:00", "", "");
 
+                String OSNaoProcede = "Manutenção N/C";
+
+                String OSFin = "OS Finalizada";
+
 
                 MessageBox.Show("Serviço solicitado com sucesso!", "THR SISTEMAS", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -65,6 +69,11 @@ namespace SistemaTHR.Apllication
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmSolicitarManutencaoTHR_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

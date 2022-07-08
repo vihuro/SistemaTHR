@@ -111,6 +111,7 @@ namespace SistemaTHR.Apllication
 
             dataGridView2.ClearSelection();
             txtObservacao.Text = string.Empty;
+            btnApontar.Enabled = false;
             
         }
 
@@ -158,6 +159,7 @@ namespace SistemaTHR.Apllication
             controller.updateStatus(numeroStatus);
 
             dataGridView2.ClearSelection();
+            btnApontar.Enabled = false;
 
         }
 
@@ -172,6 +174,11 @@ namespace SistemaTHR.Apllication
                         dataGridView2.Rows[i].DefaultCellStyle.ForeColor = Color.Green;
                         dataGridView2.Rows[i].DefaultCellStyle.SelectionForeColor = Color.BlueViolet;
 
+                    }
+                    if (dataGridView2.Rows[i].Cells[4].Value == "" && dataGridView2.Rows[i].Cells[2].Value.ToString() == "Início de manutenção")
+                    {
+                        //MessageBox.Show(dataGridView2.Rows[i].Cells[0].Value.ToString());
+                        dataGridView2.Rows[4].DefaultCellStyle.ForeColor = Color.Gray;
                     }
 
                 }
@@ -197,6 +204,7 @@ namespace SistemaTHR.Apllication
             txtDescricao.Text = string.Empty;
             txtOrdemServico.Text = string.Empty;
             cboPrioridade.Text = string.Empty;
+            btnApontar.Enabled = false;
         }
 
         private void frmManutencao_Load(object sender, EventArgs e)
@@ -224,6 +232,7 @@ namespace SistemaTHR.Apllication
             txtDescricao.Text = string.Empty;
             txtOrdemServico.Text = string.Empty;
             cboPrioridade.Text = string.Empty;
+            btnApontar.Enabled = false;
 
         }
 
@@ -251,9 +260,21 @@ namespace SistemaTHR.Apllication
                         txtObservacao.Text = controller.observacao;
                     }
 
+                    for(i = 0; i < dataGridView2.Rows.Count; i++)
+                    {
+                        if(dataGridView2.CurrentRow.DefaultCellStyle.ForeColor == Color.Gray)
+                        {
+                            btnApontar.Enabled = false;
+
+                        }
+                        else
+                        {
+                            btnApontar.Enabled = true;
+                        }
+                    }
+
                 }
             }
-
 
         }
 
@@ -276,6 +297,13 @@ namespace SistemaTHR.Apllication
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             clearAll();
+        }
+
+        private void btnCompra_Click(object sender, EventArgs e)
+        {
+            frmSolicitacaoPeca peca = new frmSolicitacaoPeca();
+            peca.lblUsuario.Text = this.lblUsuario.Text;
+            peca.ShowDialog();
         }
     }
 }

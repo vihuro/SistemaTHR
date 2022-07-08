@@ -40,6 +40,8 @@
             this.cboAondeSera = new System.Windows.Forms.ComboBox();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -159,7 +161,10 @@
             "CQ",
             "PCP",
             "EXPEDIÇÂO",
-            "ESTOQUE"});
+            "ESTOQUE",
+            "ADMINISTRATIVO",
+            "REFEITORIO",
+            "AREA EXTERNA"});
             this.cboAondeSera.Location = new System.Drawing.Point(19, 30);
             this.cboAondeSera.Name = "cboAondeSera";
             this.cboAondeSera.Size = new System.Drawing.Size(121, 21);
@@ -185,11 +190,29 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(16, 138);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 122);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(185, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Data ideal para realização do serviço:";
+            // 
             // frmSolicitarManutencaoTHR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(315, 446);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.cboAondeSera);
@@ -202,6 +225,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmSolicitarManutencaoTHR";
             this.Text = "Solicitar Manutenção";
+            this.Load += new System.EventHandler(this.frmSolicitarManutencaoTHR_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -223,5 +247,7 @@
         private System.Windows.Forms.ComboBox cboAondeSera;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label4;
     }
 }
