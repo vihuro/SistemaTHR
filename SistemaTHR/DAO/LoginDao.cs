@@ -15,6 +15,7 @@ namespace SistemaTHR.DAO
         OleDbDataReader dr;
         Connection con = new Connection();
         public String menssagem = "";
+        public String nomeUsuario;
 
         public bool verificar(String usuario, String senha)
         {
@@ -164,6 +165,38 @@ namespace SistemaTHR.DAO
             this.usuario = usuario;
             verificarNivel();
 
+        }
+
+        private void SelectNome()
+        {
+            cmd.CommandText = "Select * from tbUsuario where usuario = @usuario";
+            cmd.Parameters.AddWithValue("usuario", usuario);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    nomeUsuario = dr["Nome"].ToString();
+
+
+                }
+                con.desconectar();
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        public void SelecNomeUsuario(String usuario)
+        {
+            this.usuario = usuario;
+            SelectNome();
         }
 
     }

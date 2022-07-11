@@ -86,11 +86,16 @@ namespace SistemaTHR.Apllication
 
 
             frmOrdemServico frmOrdemServico = new frmOrdemServico();
-            frmMenu frmMenu = new frmMenu();
+           // frmMenu frmMenu = new frmMenu();
             frmOrdemServico.lblUsuario.Text = this.lblUsuario.Text;
             frmOrdemServico.txtId.Text = listView1.SelectedItems[0].SubItems[0].Text;
             frmOrdemServico.txtNumeroEmp.Text = listView1.SelectedItems[0].SubItems[1].Text;
             frmOrdemServico.Show();
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

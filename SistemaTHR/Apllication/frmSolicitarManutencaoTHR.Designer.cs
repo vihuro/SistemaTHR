@@ -40,7 +40,7 @@
             this.cboAondeSera = new System.Windows.Forms.ComboBox();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDataIdeal = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -190,12 +190,12 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // textBox1
+            // txtDataIdeal
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 138);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 11;
+            this.txtDataIdeal.Location = new System.Drawing.Point(16, 138);
+            this.txtDataIdeal.Name = "txtDataIdeal";
+            this.txtDataIdeal.Size = new System.Drawing.Size(100, 20);
+            this.txtDataIdeal.TabIndex = 11;
             // 
             // label4
             // 
@@ -212,7 +212,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(315, 446);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDataIdeal);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.cboAondeSera);
@@ -247,7 +247,7 @@
         private System.Windows.Forms.ComboBox cboAondeSera;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDataIdeal;
         private System.Windows.Forms.Label label4;
     }
 }

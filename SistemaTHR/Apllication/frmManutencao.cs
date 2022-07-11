@@ -14,9 +14,13 @@ namespace SistemaTHR.Apllication
     {
 
         DataTable dt = new DataTable();
-        public frmManutencao()
+        String Usuario;
+        String Status;
+        
+        public frmManutencao(String usuario)
         {
             InitializeComponent();
+            this.Usuario = usuario;
             loadGridView1();
 
         }
@@ -48,13 +52,10 @@ namespace SistemaTHR.Apllication
 
         private void loadStyleGridView1()
         {
-            
 
             dataGridView1.Columns["descricaoServico"].Visible = false;
-            dataGridView1.Columns["UsuarioManutencao"].Visible = false;
+
             dataGridView1.Columns["DataHoraFinalizacao"].Visible = false;
-            dataGridView1.Columns["ProblemaResolvido"].Visible = false;
-            dataGridView1.Columns["UsuarioVistoria"].Visible = false;
 
         }
 
@@ -85,6 +86,7 @@ namespace SistemaTHR.Apllication
             Modelo.OSTHRController controller = new Modelo.OSTHRController();
             controller.loadINFO(numeroOS);
             txtDescricao.Text = controller.descricaoServico;
+            cboPrioridade.Text = controller.Prioridade;
         }
 
         private void loadStyleDataGridView2()
@@ -119,8 +121,8 @@ namespace SistemaTHR.Apllication
         {
 
         }
-        DateTime datahora;
 
+        DateTime datahora;
         String numeroStatus;
         String dataHoraApontamento;
         String usuarioApontamento;
@@ -131,24 +133,50 @@ namespace SistemaTHR.Apllication
         {
             datahora = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
 
+
             if(dataGridView2.SelectedRows[0].Cells[3].Value.Equals("00/00/0000 00:00:00"))
             {
-                dataGridView2.SelectedRows[0].Cells[3].Value = datahora;
-                dataGridView2.SelectedRows[0].Cells[4].Value = lblUsuario.Text;
+                dataGridView2.SelectedRows[0].Cells[3].Value = Convert.ToString(datahora);
+                dataGridView2.SelectedRows[0].Cells[4].Value = Usuario;
             }
             if(!dataGridView2.SelectedRows[0].Cells[3].Value.Equals("00/00/0000 00:00:00"))
             {
-                dataGridView2.SelectedRows[0].Cells[5].Value = datahora;
-                dataGridView2.SelectedRows[0].Cells[6].Value = lblUsuario.Text;
+                dataGridView2.SelectedRows[0].Cells[5].Value = Convert.ToString(datahora);
+                dataGridView2.SelectedRows[0].Cells[6].Value = Usuario;
             }
 
             numeroStatus = dataGridView2.SelectedRows[0].Cells[0].Value.ToString();
+            numeroOS = dataGridView2.SelectedRows[0].Cells[1].Value.ToString();
             dataHoraApontamento = dataGridView2.SelectedRows[0].Cells[3].Value.ToString();
             usuarioApontamento = dataGridView2.SelectedRows[0].Cells[4].Value.ToString();
             dataHoraAlteracao = dataGridView2.SelectedRows[0].Cells[5].Value.ToString();
             usuarioAlteracao = dataGridView2.SelectedRows[0].Cells[6].Value.ToString();
             observacao = txtObservacao.Text;
 
+            if(dataGridView2.SelectedRows[0].Cells[2].Value.ToString() == "Início de manutenção")
+            {
+                Status = "Manutenção/INI";
+            }
+            if (dataGridView2.SelectedRows[0].Cells[2].Value.ToString() == "Requisição de peça")
+            {
+                Status = "Aguardando/AUT. Peça";
+            }
+            if (dataGridView2.SelectedRows[0].Cells[2].Value.ToString() == "Inconsistência da OS")
+            {
+                Status = "OS/INC";
+            }
+            if (dataGridView2.SelectedRows[0].Cells[2].Value.ToString() == "Fim de manutenção")
+            {
+                Status = "Manutenção/FIN";
+            }
+            if (dataGridView2.SelectedRows[0].Cells[2].Value.ToString() == "Manutenção N/C")
+            {
+                Status = "Manutenção/NC";
+            }
+            if (dataGridView2.SelectedRows[0].Cells[2].Value.ToString() == "OS Finalizada")
+            {
+                Status = "OS/Finalizada";
+            }
 
             Modelo.OSTHRController controller = new Modelo.OSTHRController();
             controller.dataHoraApontament = this.dataHoraApontamento;
@@ -158,7 +186,11 @@ namespace SistemaTHR.Apllication
             controller.observacao = this.observacao;
             controller.updateStatus(numeroStatus);
 
+            controller.statusOP = Status;
+            controller.UpdateStaOS(numeroOS);
+
             dataGridView2.ClearSelection();
+            loadDataGridView2();
             btnApontar.Enabled = false;
 
         }
@@ -177,7 +209,7 @@ namespace SistemaTHR.Apllication
                     }
                     if (dataGridView2.Rows[i].Cells[4].Value == "" && dataGridView2.Rows[i].Cells[2].Value.ToString() == "Início de manutenção")
                     {
-                        //MessageBox.Show(dataGridView2.Rows[i].Cells[0].Value.ToString());
+
                         dataGridView2.Rows[4].DefaultCellStyle.ForeColor = Color.Gray;
                     }
 
@@ -251,6 +283,7 @@ namespace SistemaTHR.Apllication
 
                 if (i > 0)
                 {
+
                     if (dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[0].Value != null)
                     {
                         numeroStatus = dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[0].Value.ToString();
@@ -301,9 +334,37 @@ namespace SistemaTHR.Apllication
 
         private void btnCompra_Click(object sender, EventArgs e)
         {
-            frmSolicitacaoPeca peca = new frmSolicitacaoPeca();
+            frmSolicitacaoPeca peca = new frmSolicitacaoPeca(Usuario,numeroOS);
+
             peca.lblUsuario.Text = this.lblUsuario.Text;
             peca.ShowDialog();
+        }
+
+        private void btnDesfazer_Click(object sender, EventArgs e)
+        {
+
+            dataGridView2.SelectedRows[0].Cells[3].Value = "00/00/0000 00:00:00";
+            dataGridView2.SelectedRows[0].Cells[4].Value = "";
+            dataGridView2.SelectedRows[0].Cells[5].Value = "00/00/0000 00:00:00";
+            dataGridView2.SelectedRows[0].Cells[6].Value = Usuario;
+
+        }
+
+        private void BtnSalvar_Click(object sender, EventArgs e)
+        {
+            Modelo.OSTHRController controller = new Modelo.OSTHRController();
+            controller.VerificarPriori(numeroOS);
+            if(cboPrioridade.Text != controller.Prioridade)
+            {
+                controller.Prioridade = cboPrioridade.Text;
+                controller.usuarioPrioridade = Usuario;
+                controller.dataHoraPrioridade = "";
+                controller.UpdatePriori(numeroOS);
+            }
+
+            loadGridView1();
+            clearAll();
+
         }
     }
 }

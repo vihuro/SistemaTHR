@@ -27,7 +27,7 @@ namespace SistemaTHR
 
         }
 
-        public String nomeUsuario;
+        public String Usuario;
         public String Empilhadeiras;
         public String EmpNivel;
         public String Recebimento;
@@ -36,6 +36,7 @@ namespace SistemaTHR
         public String ExpNivel;
         public String Adm;
         public String AdmNivel;
+        public String nomeUsuario;
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
@@ -45,13 +46,9 @@ namespace SistemaTHR
             if (loginController.tem)
             {
 
-                frmMenu menu = new frmMenu();
-
-
-
 
                 loginController.verificarNivel(txtNome.Text);
-                this.nomeUsuario = loginController.usuario;
+                this.Usuario = loginController.usuario;
                 this.Empilhadeiras = loginController.Empilhadeiras;
                 this.EmpNivel = loginController.EmpNivel;
                 this.Recebimento = loginController.Recebimento;
@@ -61,9 +58,12 @@ namespace SistemaTHR
                 this.Adm = loginController.Adm;
                 this.AdmNivel = loginController.AdmNivel;
 
+                loginController.SelecNomeUsuario(Usuario);
+                this.nomeUsuario = loginController.nomeUsuario;
 
-                menu.lblUsuario.Text = nomeUsuario;
+                frmMenu menu = new frmMenu(nomeUsuario);
 
+                menu.lblUsuario.Text = Usuario;
                 menu.empilhadeirasToolStripMenuItem.Enabled = false;
                 menu.recebimentoToolStripMenuItem.Enabled = false;
                 menu.expediçãoToolStripMenuItem.Enabled = false;

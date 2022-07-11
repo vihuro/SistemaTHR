@@ -12,9 +12,11 @@ namespace SistemaTHR.Apllication
 {
     public partial class frmMenu : Form
     {
-        public frmMenu()
+        String Usuario;
+        public frmMenu(String Usuario)
         {
             InitializeComponent();
+            this.Usuario = Usuario;
         }
 
         private void empilhadeira1ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -161,21 +163,21 @@ namespace SistemaTHR.Apllication
 
         private void manutençãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManutencao manutencao = new frmManutencao();
+            frmManutencao manutencao = new frmManutencao(Usuario);
             manutencao.lblUsuario.Text = this.lblUsuario.Text;
             manutencao.Show();
         }
 
         private void solicitarManutençãoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmSolicitarManutencaoTHR frmSolicitar = new frmSolicitarManutencaoTHR();
+            frmSolicitarManutencaoTHR frmSolicitar = new frmSolicitarManutencaoTHR(Usuario);
             frmSolicitar.lblUsuario.Text = this.lblUsuario.Text;
             frmSolicitar.ShowDialog();
         }
 
         private void manutençõesEmAbertoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManutencao manutencao = new frmManutencao();
+            frmManutencao manutencao = new frmManutencao(Usuario);
             manutencao.lblUsuario.Text = this.lblUsuario.Text;
             manutencao.Show();
         }

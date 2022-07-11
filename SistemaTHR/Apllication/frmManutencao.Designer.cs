@@ -36,14 +36,11 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCompra = new System.Windows.Forms.Button();
+            this.btnFiltrar = new System.Windows.Forms.Button();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.clNOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clTipoServico = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clDataHoraGeracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clUsuarioSolicitacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clPrioridade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnDesfazer = new System.Windows.Forms.Button();
             this.btnApontar = new System.Windows.Forms.Button();
@@ -67,9 +64,16 @@
             this.BtnSalvar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnCompra = new System.Windows.Forms.Button();
-            this.btnFiltrar = new System.Windows.Forms.Button();
-            this.btnLimpar = new System.Windows.Forms.Button();
+            this.clNOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTipoServico = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clDataHoraGeracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clUsuarioSolicitacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnASE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clPrioridade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnUsuarioPrioridade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnDataHoraPrioridade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnDataIdeal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -114,8 +118,50 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1337, 24);
+            this.panel1.Size = new System.Drawing.Size(1337, 25);
             this.panel1.TabIndex = 1;
+            // 
+            // btnCompra
+            // 
+            this.btnCompra.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompra.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCompra.Image = global::SistemaTHR.Properties.Resources.order;
+            this.btnCompra.Location = new System.Drawing.Point(56, 0);
+            this.btnCompra.Name = "btnCompra";
+            this.btnCompra.Size = new System.Drawing.Size(28, 25);
+            this.btnCompra.TabIndex = 2;
+            this.btnCompra.UseVisualStyleBackColor = true;
+            this.btnCompra.Click += new System.EventHandler(this.btnCompra_Click);
+            this.btnCompra.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCompra_MouseMove);
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFiltrar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnFiltrar.Image = global::SistemaTHR.Properties.Resources.filtro__1_;
+            this.btnFiltrar.Location = new System.Drawing.Point(28, 0);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(28, 25);
+            this.btnFiltrar.TabIndex = 1;
+            this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnFiltrar_MouseMove);
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLimpar.Image = global::SistemaTHR.Properties.Resources.mais;
+            this.btnLimpar.Location = new System.Drawing.Point(0, 0);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(28, 25);
+            this.btnLimpar.TabIndex = 0;
+            this.btnLimpar.Text = "button1";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            this.btnLimpar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnLimpar_MouseMove);
             // 
             // splitContainer1
             // 
@@ -123,7 +169,7 @@
             this.splitContainer1.AllowDrop = true;
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -139,8 +185,8 @@
             this.splitContainer1.Panel2.AutoScrollMargin = new System.Drawing.Size(0, 50);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer1.Size = new System.Drawing.Size(1337, 666);
-            this.splitContainer1.SplitterDistance = 180;
+            this.splitContainer1.Size = new System.Drawing.Size(1337, 665);
+            this.splitContainer1.SplitterDistance = 179;
             this.splitContainer1.TabIndex = 2;
             // 
             // dataGridView1
@@ -169,8 +215,12 @@
             this.clTipoServico,
             this.clDataHoraGeracao,
             this.clUsuarioSolicitacao,
+            this.clnASE,
             this.clPrioridade,
-            this.clStatus});
+            this.clnUsuarioPrioridade,
+            this.clnDataHoraPrioridade,
+            this.clStatus,
+            this.clnDataIdeal});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -181,58 +231,10 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1333, 176);
+            this.dataGridView1.Size = new System.Drawing.Size(1333, 175);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // clNOP
-            // 
-            this.clNOP.DataPropertyName = "NOP";
-            this.clNOP.HeaderText = "Nº Ordem/Serviço";
-            this.clNOP.Name = "clNOP";
-            this.clNOP.ReadOnly = true;
-            this.clNOP.Width = 150;
-            // 
-            // clTipoServico
-            // 
-            this.clTipoServico.DataPropertyName = "TipoServico";
-            this.clTipoServico.HeaderText = "Tipo de Serviço";
-            this.clTipoServico.Name = "clTipoServico";
-            this.clTipoServico.ReadOnly = true;
-            this.clTipoServico.Width = 130;
-            // 
-            // clDataHoraGeracao
-            // 
-            this.clDataHoraGeracao.DataPropertyName = "dataHoraGeracao";
-            this.clDataHoraGeracao.HeaderText = "Data/Hora Geração";
-            this.clDataHoraGeracao.Name = "clDataHoraGeracao";
-            this.clDataHoraGeracao.ReadOnly = true;
-            this.clDataHoraGeracao.Width = 220;
-            // 
-            // clUsuarioSolicitacao
-            // 
-            this.clUsuarioSolicitacao.DataPropertyName = "usuarioSolicitacao";
-            this.clUsuarioSolicitacao.HeaderText = "Usuário da Solicitação";
-            this.clUsuarioSolicitacao.Name = "clUsuarioSolicitacao";
-            this.clUsuarioSolicitacao.ReadOnly = true;
-            this.clUsuarioSolicitacao.Width = 150;
-            // 
-            // clPrioridade
-            // 
-            this.clPrioridade.DataPropertyName = "Prioridade";
-            this.clPrioridade.HeaderText = "Prioridade";
-            this.clPrioridade.Name = "clPrioridade";
-            this.clPrioridade.ReadOnly = true;
-            this.clPrioridade.Width = 130;
-            // 
-            // clStatus
-            // 
-            this.clStatus.DataPropertyName = "StatusOP";
-            this.clStatus.HeaderText = "StatusOS";
-            this.clStatus.Name = "clStatus";
-            this.clStatus.ReadOnly = true;
-            this.clStatus.Width = 130;
             // 
             // groupBox1
             // 
@@ -264,6 +266,7 @@
             this.btnDesfazer.TabIndex = 13;
             this.btnDesfazer.Text = "Desfazer";
             this.btnDesfazer.UseVisualStyleBackColor = true;
+            this.btnDesfazer.Click += new System.EventHandler(this.btnDesfazer_Click);
             // 
             // btnApontar
             // 
@@ -463,6 +466,7 @@
             this.BtnSalvar.TabIndex = 1;
             this.BtnSalvar.Text = "Salvar";
             this.BtnSalvar.UseVisualStyleBackColor = true;
+            this.BtnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 
             // panel3
             // 
@@ -475,47 +479,81 @@
             this.panel3.Size = new System.Drawing.Size(1337, 36);
             this.panel3.TabIndex = 14;
             // 
-            // btnCompra
+            // clNOP
             // 
-            this.btnCompra.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCompra.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCompra.Image = global::SistemaTHR.Properties.Resources.order;
-            this.btnCompra.Location = new System.Drawing.Point(56, 0);
-            this.btnCompra.Name = "btnCompra";
-            this.btnCompra.Size = new System.Drawing.Size(28, 24);
-            this.btnCompra.TabIndex = 2;
-            this.btnCompra.UseVisualStyleBackColor = true;
-            this.btnCompra.Click += new System.EventHandler(this.btnCompra_Click);
-            this.btnCompra.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCompra_MouseMove);
+            this.clNOP.DataPropertyName = "NOP";
+            this.clNOP.HeaderText = "Nº Ordem/Serviço";
+            this.clNOP.Name = "clNOP";
+            this.clNOP.ReadOnly = true;
+            this.clNOP.Width = 150;
             // 
-            // btnFiltrar
+            // clTipoServico
             // 
-            this.btnFiltrar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFiltrar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnFiltrar.Image = global::SistemaTHR.Properties.Resources.filtro__1_;
-            this.btnFiltrar.Location = new System.Drawing.Point(28, 0);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(28, 24);
-            this.btnFiltrar.TabIndex = 1;
-            this.btnFiltrar.UseVisualStyleBackColor = true;
-            this.btnFiltrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnFiltrar_MouseMove);
+            this.clTipoServico.DataPropertyName = "TipoServico";
+            this.clTipoServico.HeaderText = "Tipo de Serviço";
+            this.clTipoServico.Name = "clTipoServico";
+            this.clTipoServico.ReadOnly = true;
+            this.clTipoServico.Width = 130;
             // 
-            // btnLimpar
+            // clDataHoraGeracao
             // 
-            this.btnLimpar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLimpar.Image = global::SistemaTHR.Properties.Resources.mais;
-            this.btnLimpar.Location = new System.Drawing.Point(0, 0);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(28, 24);
-            this.btnLimpar.TabIndex = 0;
-            this.btnLimpar.Text = "button1";
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
-            this.btnLimpar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnLimpar_MouseMove);
+            this.clDataHoraGeracao.DataPropertyName = "dataHoraGeracao";
+            this.clDataHoraGeracao.HeaderText = "Data/Hora Geração";
+            this.clDataHoraGeracao.Name = "clDataHoraGeracao";
+            this.clDataHoraGeracao.ReadOnly = true;
+            this.clDataHoraGeracao.Width = 220;
+            // 
+            // clUsuarioSolicitacao
+            // 
+            this.clUsuarioSolicitacao.DataPropertyName = "usuarioSolicitacao";
+            this.clUsuarioSolicitacao.HeaderText = "Usuário da Solicitação";
+            this.clUsuarioSolicitacao.Name = "clUsuarioSolicitacao";
+            this.clUsuarioSolicitacao.ReadOnly = true;
+            this.clUsuarioSolicitacao.Width = 150;
+            // 
+            // clnASE
+            // 
+            this.clnASE.DataPropertyName = "ASE";
+            this.clnASE.HeaderText = "ASE";
+            this.clnASE.Name = "clnASE";
+            this.clnASE.ReadOnly = true;
+            // 
+            // clPrioridade
+            // 
+            this.clPrioridade.DataPropertyName = "Prioridade";
+            this.clPrioridade.HeaderText = "Prioridade";
+            this.clPrioridade.Name = "clPrioridade";
+            this.clPrioridade.ReadOnly = true;
+            this.clPrioridade.Width = 130;
+            // 
+            // clnUsuarioPrioridade
+            // 
+            this.clnUsuarioPrioridade.DataPropertyName = "UsuarioPrioridade";
+            this.clnUsuarioPrioridade.HeaderText = "Usuário/Prioridade";
+            this.clnUsuarioPrioridade.Name = "clnUsuarioPrioridade";
+            this.clnUsuarioPrioridade.ReadOnly = true;
+            // 
+            // clnDataHoraPrioridade
+            // 
+            this.clnDataHoraPrioridade.DataPropertyName = "DataHoraPrioridade";
+            this.clnDataHoraPrioridade.HeaderText = "Data/Hora Prioridade";
+            this.clnDataHoraPrioridade.Name = "clnDataHoraPrioridade";
+            this.clnDataHoraPrioridade.ReadOnly = true;
+            // 
+            // clStatus
+            // 
+            this.clStatus.DataPropertyName = "StatusOP";
+            this.clStatus.HeaderText = "StatusOS";
+            this.clStatus.Name = "clStatus";
+            this.clStatus.ReadOnly = true;
+            this.clStatus.Width = 130;
+            // 
+            // clnDataIdeal
+            // 
+            this.clnDataIdeal.DataPropertyName = "DataIdeal";
+            this.clnDataIdeal.HeaderText = "Data Ideal";
+            this.clnDataIdeal.Name = "clnDataIdeal";
+            this.clnDataIdeal.ReadOnly = true;
             // 
             // frmManutencao
             // 
@@ -582,13 +620,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clUsuarioApontamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDataHoraAlteracao;
         private System.Windows.Forms.DataGridViewTextBoxColumn clUsuarioAlteracao;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DataGridViewTextBoxColumn clNOP;
         private System.Windows.Forms.DataGridViewTextBoxColumn clTipoServico;
         private System.Windows.Forms.DataGridViewTextBoxColumn clDataHoraGeracao;
         private System.Windows.Forms.DataGridViewTextBoxColumn clUsuarioSolicitacao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnASE;
         private System.Windows.Forms.DataGridViewTextBoxColumn clPrioridade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnUsuarioPrioridade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnDataHoraPrioridade;
         private System.Windows.Forms.DataGridViewTextBoxColumn clStatus;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnDataIdeal;
     }
 }

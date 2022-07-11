@@ -17,18 +17,25 @@ namespace SistemaTHR.DAO
 
         public String descricaoServico;
         public String tipoServico;
-        public DateTime dataHoraGeraca;
+        public String dataHoraGeraca;
         public String usuarioSolicitacao;
         public String statusOP;
+        public String ASE;
+        public String DataIdeal;
+        public String Prioridade;
+        public String usuarioPrioridade;
+        public String dataHoraPrioridade;
 
         private void insertOS()
         {
-            cmd.CommandText = "Insert into tab_OSTHR (DescricaoServico, TipoServico,DataHoraGeracao,UsuarioSolicitacao,StatusOP) " +
-                            "Values (@DescricaoServico, @TipoServico, @DataHoraGeracao, @UsuarioSolicitacao, @StatusOP)";
+            cmd.CommandText = "Insert into tab_OSTHR (DescricaoServico, TipoServico,DataHoraGeracao,UsuarioSolicitacao,ASE,DataIdeal,StatusOP) " +
+                            "Values (@DescricaoServico, @TipoServico, @DataHoraGeracao, @UsuarioSolicitacao,@ASE,@DataIdeal, @StatusOP)";
             cmd.Parameters.AddWithValue("@DescricaoServico", descricaoServico);
             cmd.Parameters.AddWithValue("@TipoServico", tipoServico);
             cmd.Parameters.AddWithValue("@DataHoraGeracao", dataHoraGeraca);
             cmd.Parameters.AddWithValue("@UsuarioSolicitacao", usuarioSolicitacao);
+            cmd.Parameters.AddWithValue("@ASE", ASE);
+            cmd.Parameters.AddWithValue("@DataIdeal", DataIdeal);
             cmd.Parameters.AddWithValue("@StatusOP", statusOP);
 
             try
@@ -45,12 +52,14 @@ namespace SistemaTHR.DAO
             }
         }
 
-        public void insertOrdemServico(String descricaoServico, String tipoServico, DateTime dataHoraGeraca, String usuarioSolicitacao, String statusOP)
+        public void insertOrdemServico(String descricaoServico, String tipoServico, String dataHoraGeraca, String usuarioSolicitacao,String ASE,String DataIdeal, String statusOP)
         {
             this.descricaoServico = descricaoServico;
             this.tipoServico = tipoServico;
             this.dataHoraGeraca = dataHoraGeraca;
             this.usuarioSolicitacao = usuarioSolicitacao;
+            this.ASE = ASE;
+            this.DataIdeal = DataIdeal;
             this.statusOP = statusOP;
             insertOS();
         }
@@ -116,12 +125,11 @@ namespace SistemaTHR.DAO
 
         }
 
-        public void insertStatusOS(String numeroOSTHR, String Andamento, String dataHoraApontament, String dataAlteracao, String usuarioApontamento, String dataHoraAlteracao, String usuarioAlteracao, String observacao)
+        public void insertStatusOS(String numeroOSTHR, String Andamento, String dataHoraApontament,  String usuarioApontamento, String dataHoraAlteracao, String usuarioAlteracao, String observacao)
         {
             this.numeroOSTHR = numeroOSTHR;
             this.Andamento = Andamento;
             this.dataHoraApontament = dataHoraApontament;
-            this.dataAlteracao = dataAlteracao;
             this.usuarioApontamento = usuarioApontamento;
             this.dataHoraAlteracao = dataHoraAlteracao;
             this.usuarioAlteracao = usuarioAlteracao;
@@ -130,11 +138,11 @@ namespace SistemaTHR.DAO
 
         }
 
-        String status = "EM ABERTO";
+        public String status = "OS/Finalizada";
         private void selectOSAberto()
         {
-            cmd.CommandText = "Select * from tab_OSTHR where StatusOP = @status";
-            cmd.Parameters.AddWithValue("@status", status);
+            cmd.CommandText = "Select * from tab_OSTHR";
+
 
             try
             {
@@ -226,7 +234,7 @@ namespace SistemaTHR.DAO
 
         private void selectObservacao()
         {
-            cmd.CommandText = "Select Observacao from tab_StatusOSTHR where NumeroStatus = @NumeroStatus";
+            cmd.CommandText = "Select * from tab_StatusOSTHR where NumeroStatus = @NumeroStatus order by NUMEROStatus asc";
             cmd.Parameters.AddWithValue("@NumeroStatus", numeroStatus);
 
             try
@@ -270,6 +278,7 @@ namespace SistemaTHR.DAO
                 if (dr.Read())
                 {
                     descricaoServico = dr["DescricaoServico"].ToString();
+                    Prioridade = dr["Prioridade"].ToString();
                 }
             }
             catch
@@ -286,6 +295,154 @@ namespace SistemaTHR.DAO
         {
             this.numeroOSTHR = numeroOSTHR;
             loadInfoOS();
+        }
+
+        private void verificarPrioridade()
+        {
+            cmd.CommandText = "Select * from tab_OSTHR where NOP = @NOP";
+            cmd.Parameters.AddWithValue("@NOP",numeroOSTHR);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Prioridade = dr["Prioridade"].ToString();
+                }
+                con.desconectar();
+            }
+            catch
+            {
+
+            }
+        }
+
+        public void VerificarPriori(String NumeroOSTHR)
+        {
+            this.numeroOSTHR = NumeroOSTHR;
+            verificarPrioridade();
+        }
+
+        private void UpdatePrioridade()
+        {
+            cmd.CommandText = "Update tab_OSTHR set Prioridade = @Prioridade," +
+                " UsuarioPrioridade = @UsuarioPrioridade, " +
+                "DataHoraPrioridade = @DataHoraPrioridade " +
+                "where NOP = @NumeroOSTHR";
+            cmd.Parameters.AddWithValue("@Prioridade", Prioridade);
+            cmd.Parameters.AddWithValue("@UsuarioPrioridade", usuarioPrioridade);
+            cmd.Parameters.AddWithValue("@DataHoraPrioridade", dataHoraPrioridade);
+            cmd.Parameters.AddWithValue("@NumeroOSTHR", numeroOSTHR);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+                cmd.ExecuteReader();
+
+                con.desconectar();
+            }
+            catch
+            {
+
+            }
+        }
+
+        public void UpdatePriori(String numeroOSTHR)
+        {
+            this.numeroOSTHR = numeroOSTHR;
+            UpdatePrioridade();
+        }
+
+        private void UpdateStatusOS()
+        {
+            cmd.CommandText = "Update tab_OSTHR set StatusOP = @StatusOS where NOP = @numeroOS";
+            cmd.Parameters.AddWithValue("@StatusOS", status);
+            cmd.Parameters.AddWithValue("@NumeroOS", numeroOSTHR);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+                cmd.ExecuteReader();
+
+                con.desconectar();
+            }
+            catch
+            {
+
+            }
+        }
+
+        public void UpdateStaOS(String numeroOSTHR)
+        {
+            this.numeroOSTHR = numeroOSTHR;
+            UpdateStatusOS();
+        }
+
+        public String codigoPeca;
+        public String descricaoPeca;
+        public String QTD;
+        public String unidade;
+        public String nomeSolicitante;
+        public String dataHoraSolicitacao;
+        public String statusSolicitacao;
+        private void insertRequisicaoPeca()
+        {
+            cmd.CommandText = "Insert into tab_SolicitacaoPecaOSTHR (NOS, CodigoPeca,DescricaoPeca,QTD,Unidade,NomeSolicitante,DataHoraSolicitacao," +
+                "StatusSolicitacao) Values (@NOS, @CodigoPeca,@DescricaoPeca, @QTD, @Unidade, @NomeSolicitante, @DataHoraSolicitacao,@StatusSolicitacao)";
+            cmd.Parameters.AddWithValue("@NOS", numeroOSTHR);
+            cmd.Parameters.AddWithValue("@CodigoPeca", codigoPeca);
+            cmd.Parameters.AddWithValue("@descricaoPeca", descricaoPeca);
+            cmd.Parameters.AddWithValue("@Qtd", QTD);
+            cmd.Parameters.AddWithValue("@Unidade", unidade);
+            cmd.Parameters.AddWithValue("@NomeSolicitante", nomeSolicitante);
+            cmd.Parameters.AddWithValue("@DataHoraSolicitacao",dataHoraSolicitacao);
+            cmd.Parameters.AddWithValue("@StatusSolicitacao", statusSolicitacao);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+                cmd.ExecuteReader();
+
+                con.desconectar();
+            }
+            catch
+            {
+
+            }
+        }
+
+        public void insertRequisicaoPecas()
+        {
+            insertRequisicaoPeca();
+        }
+
+        private void selectRequisicaoPeca()
+        {
+            cmd.CommandText = "Select * from tab_SolicitacaoPecaOSTHR where NOS = @NumeroOS";
+            cmd.Parameters.AddWithValue("@NumeroOS", numeroOSTHR);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+
+                da.Fill(dt);
+
+                con.desconectar();
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        public void selectPecas()
+        {
+            selectRequisicaoPeca();
         }
     }
 }

@@ -11,10 +11,15 @@ namespace SistemaTHR.Modelo
     {
         public String descricaoServico;
         public String tipoServico;
-        public DateTime dataHoraGeraca;
+        public String dataHoraGeraca;
         public String usuarioSolicitacao;
         public String statusOP;
         public DataTable dt = new DataTable();
+        public String ASE;
+        public String DataIdeal;
+        public String Prioridade;
+        public String usuarioPrioridade;
+        public String dataHoraPrioridade;
 
         private void insertOS()
         {
@@ -24,15 +29,17 @@ namespace SistemaTHR.Modelo
             tHRDAO.dataHoraGeraca = this.dataHoraGeraca;
             tHRDAO.usuarioSolicitacao = this.usuarioSolicitacao;
             tHRDAO.statusOP = this.statusOP;
-            tHRDAO.insertOrdemServico(descricaoServico, tipoServico, dataHoraGeraca, usuarioSolicitacao, statusOP);
+            tHRDAO.insertOrdemServico(descricaoServico, tipoServico, dataHoraGeraca, usuarioSolicitacao,ASE,DataIdeal,statusOP);
         }
 
-        public void insertOrdemServico(String descricaoServico, String tipoServico, DateTime dataHoraGeraca, String usuarioSolicitacao, String statusOP)
+        public void insertOrdemServico(String descricaoServico, String tipoServico, String dataHoraGeraca, String usuarioSolicitacao,String ASE, String DataIdeal, String statusOP)
         {
             this.descricaoServico = descricaoServico;
             this.tipoServico = tipoServico;
             this.dataHoraGeraca = dataHoraGeraca;
             this.usuarioSolicitacao = usuarioSolicitacao;
+            this.ASE = ASE;
+            this.DataIdeal = DataIdeal;
             this.statusOP = statusOP;
             insertOS();
         }
@@ -61,15 +68,14 @@ namespace SistemaTHR.Modelo
         private void insertSTatusOP()
         {
             DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
-            dao.insertStatusOS(numeroOSTHR, Andamento, dataHoraApontament, dataAlteracao, usuarioApontamento, dataHoraAlteracao, usuarioAlteracao, observacao);
+            dao.insertStatusOS(numeroOSTHR, Andamento, dataHoraApontament,  usuarioApontamento, dataHoraAlteracao, usuarioAlteracao, observacao);
         }
 
-        public void insertStatusOS(String numeroOSTHR, String Andamento, String dataHoraApontament, String dataAlteracao, String usuarioApontamento, String dataHoraAlteracao, String usuarioAlteracao, String observacao)
+        public void insertStatusOS(String numeroOSTHR, String Andamento, String dataHoraApontament,  String usuarioApontamento, String dataHoraAlteracao, String usuarioAlteracao, String observacao)
         {
             this.numeroOSTHR = numeroOSTHR;
             this.Andamento = Andamento;
             this.dataHoraApontament = dataHoraApontament;
-            this.dataAlteracao = dataAlteracao;
             this.usuarioApontamento = usuarioApontamento;
             this.dataHoraAlteracao = dataHoraAlteracao;
             this.usuarioAlteracao = usuarioAlteracao;
@@ -136,12 +142,98 @@ namespace SistemaTHR.Modelo
             DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
             dao.loadINFO(numeroOSTHR);
             this.descricaoServico = dao.descricaoServico;
+            this.Prioridade = dao.Prioridade;
         }
 
         public void loadINFO(String numeroOSTHR)
         {
             this.numeroOSTHR = numeroOSTHR;
             loadInfoOS();
+        }
+
+        private void verificarPrioridade()
+        {
+            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+            dao.VerificarPriori(numeroOSTHR);
+            this.Prioridade = dao.Prioridade;
+
+        }
+
+        public void VerificarPriori(String NumeroOSTHR)
+        {
+            this.numeroOSTHR = NumeroOSTHR;
+            verificarPrioridade();
+
+        }
+
+        private void UpdatePrioridade()
+        {
+            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+            dao.Prioridade = this.Prioridade;
+            dao.usuarioPrioridade = this.usuarioPrioridade;
+            dao.dataHoraPrioridade = this.dataHoraPrioridade;
+            dao.UpdatePriori(numeroOSTHR);
+
+        }
+
+        public void UpdatePriori(String numeroOSTHR)
+        {
+            this.numeroOSTHR = numeroOSTHR;
+            UpdatePrioridade();
+        }
+
+        private void UpdateStatusOS()
+        {
+            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+            dao.status = statusOP;
+            dao.UpdateStaOS(numeroOSTHR);
+        }
+
+        public void UpdateStaOS(String numeroOSTHR)
+        {
+            this.numeroOSTHR = numeroOSTHR;
+            UpdateStatusOS();
+        }
+
+        public String codigoPeca;
+        public String descricaoPeca;
+        public String QTD;
+        public String unidade;
+        public String nomeSolicitante;
+        public String dataHoraSolicitacao;
+        public String statusSolicitacao;
+
+        private void insertRequisicaoPeca()
+        {
+            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+            dao.numeroOSTHR = numeroOSTHR;
+            dao.codigoPeca = codigoPeca;
+            dao.descricaoPeca = descricaoPeca;
+            dao.QTD = QTD;
+            dao.unidade = unidade;
+            dao.nomeSolicitante = nomeSolicitante;
+            dao.dataHoraSolicitacao = dataHoraSolicitacao;
+            dao.statusSolicitacao = statusSolicitacao;
+            dao.insertRequisicaoPecas();
+        }
+
+        public void insertRequisicaoPecas()
+        {
+            insertRequisicaoPeca();
+        }
+
+        private void selectRequisicaoPeca()
+        {
+            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+            dao.numeroOSTHR = numeroOSTHR;
+            dao.selectPecas();
+            this.dt = dao.dt;
+
+        }
+
+        public void selectPecas()
+        {
+            selectRequisicaoPeca();
         }
     }
 }

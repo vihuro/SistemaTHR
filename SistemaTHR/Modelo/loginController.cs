@@ -20,6 +20,7 @@ namespace SistemaTHR
         public String ExpNivel = "0";
         public String Adm = "Não";
         public String AdmNivel = "0";
+        public String nomeUsuario;
 
         public bool aceesar(String nome, String senha)
         {
@@ -93,6 +94,20 @@ namespace SistemaTHR
             this.usuario = usuario;
             loadInformacoes();
 
+        }
+
+        private void SelectNome()
+        {
+            DAO.LoginDao dao = new DAO.LoginDao();
+            dao.SelecNomeUsuario(usuario);
+            this.nomeUsuario = dao.nomeUsuario;
+
+        }
+
+        public void SelecNomeUsuario(String usuario)
+        {
+            this.usuario = usuario;
+            SelectNome();
         }
     }
 }
