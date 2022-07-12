@@ -20,6 +20,9 @@ namespace SistemaTHR.Modelo
         public String Prioridade;
         public String usuarioPrioridade;
         public String dataHoraPrioridade;
+        public String numeroRequisicao;
+        public String nomeAutorizador;
+        public String dataHoraAutorizacao;
 
         private void insertOS()
         {
@@ -235,5 +238,36 @@ namespace SistemaTHR.Modelo
         {
             selectRequisicaoPeca();
         }
+
+        private void SelectInfoRequisicao()
+        {
+            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+            dao.numeroRequisicao = numeroRequisicao;
+            dao.selectInfoRequi();
+            codigoPeca = dao.codigoPeca;
+            descricaoPeca = dao.descricaoPeca;
+            QTD = dao.QTD;
+            unidade = dao.unidade;
+        }
+
+        public void selectInfoRequi()
+        {
+            SelectInfoRequisicao();
+
+        }
+        private void autRequisicao()
+        {
+            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+            dao.numeroRequisicao = numeroRequisicao;
+            dao.nomeAutorizador = nomeAutorizador;
+            dao.dataHoraAutorizacao = dataHoraAutorizacao;
+            dao.autorizarRequisicao();
+        }
+
+        public void autorizarRequisicao()
+        {
+            autRequisicao();
+        }
+
     }
 }

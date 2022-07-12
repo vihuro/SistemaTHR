@@ -25,6 +25,9 @@ namespace SistemaTHR.DAO
         public String Prioridade;
         public String usuarioPrioridade;
         public String dataHoraPrioridade;
+        public String numeroRequisicao;
+        public String nomeAutorizador;
+        public String dataHoraAutorizacao;
 
         private void insertOS()
         {
@@ -443,6 +446,65 @@ namespace SistemaTHR.DAO
         public void selectPecas()
         {
             selectRequisicaoPeca();
+        }
+
+        private void SelectInfoRequisicao()
+        {
+            cmd.CommandText = "Select * from tab_SolicitacaoPecaOSTHR where NRequisicao = @NRequisicao";
+            cmd.Parameters.AddWithValue("@Nrequisicao", numeroRequisicao);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    codigoPeca = dr["codigoPeca"].ToString();
+                    descricaoPeca = dr["descricaoPeca"].ToString();
+                    QTD = dr["qtd"].ToString();
+                    unidade = dr["Unidade"].ToString();
+
+                }
+
+                con.desconectar();
+            }
+            catch
+            {
+
+            }
+        }
+
+        public void selectInfoRequi()
+        {
+            SelectInfoRequisicao();
+
+        }
+
+        private void autRequisicao()
+        {
+            cmd.CommandText = "Update tab_SolicitacaoPecaOSTHR set NomeAutorizador = @nomeAutorizador, dataHoraAutorizacao = @DataHoraAutorizacao, StatusSolicitacao = 'AUTORIZADO'" +
+                "where NRequisicao = @numeroRequisicao ";
+            cmd.Parameters.AddWithValue("@nomeAutorizador", nomeAutorizador);
+            cmd.Parameters.AddWithValue("@dataHoraAutorizacao", dataHoraAutorizacao);
+            cmd.Parameters.AddWithValue("@numeroRequisicao", numeroRequisicao);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+                cmd.ExecuteReader();
+
+                con.desconectar();
+            }
+            catch
+            {
+
+            }
+        }
+
+        public void autorizarRequisicao()
+        {
+            autRequisicao();
         }
     }
 }

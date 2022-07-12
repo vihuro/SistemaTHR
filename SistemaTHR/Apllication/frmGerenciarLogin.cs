@@ -42,12 +42,19 @@ namespace SistemaTHR.Apllication
 
                 loginController login = new loginController();
                 login.loadInfo(nomeUsuario);
+                login.usuario = nomeUsuario;
+                login.selectNomeUsuario();
+                txtNome.Text = login.nomeUsuario;
+                txtSenha.Text = login.senha;
 
                 txtUsuario.Text = nomeUsuario;
+                txtUsuario.ReadOnly = true;
+                txtUsuario.BackColor = Color.White;
 
                 if(login.Expedicao == "Sim")
                 {
                     rbExpSim.Checked = true;
+                    cboExp.Enabled = true;
                 }
 
                 else
@@ -59,17 +66,19 @@ namespace SistemaTHR.Apllication
                 if (login.Empilhadeiras == "Sim")
                 {
                     rbEmpSim.Checked = true;
+                    cboEmp.Enabled = true;
                 }
 
                 else
                 {
                     rbEmpNao.Checked = true;
-                    cboExp.Enabled = false;
+                    cboEmp.Enabled = false;
                 }
 
                 if (login.Recebimento == "Sim")
                 {
                     rbEmpRecebSim.Checked = true;
+                    cboReceb.Enabled = true;
                 }
                 else
                 {
@@ -80,6 +89,7 @@ namespace SistemaTHR.Apllication
                 if (login.Adm == "Sim")
                 {
                     rbAdmSim.Checked = true;
+                    cboAdm.Enabled = true;
                 }
                 else
                 {
@@ -92,7 +102,6 @@ namespace SistemaTHR.Apllication
                 cboExp.Text = login.ExpNivel;
                 cboReceb.Text = login.RecebNivel;
 
-                //MessageBox.Show(nomeUsuario);
 
             }
 
@@ -100,7 +109,7 @@ namespace SistemaTHR.Apllication
 
         private void cboEmp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(rbEmpSim.Checked = true)
+            if(rbEmpSim.Checked == true)
             {
                 cboExp.Enabled = false;
             }
@@ -112,7 +121,7 @@ namespace SistemaTHR.Apllication
 
         private void rbEmpSim_CheckedChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void rbEmpSim_Click(object sender, EventArgs e)
@@ -144,6 +153,273 @@ namespace SistemaTHR.Apllication
             {
                 cboEmp.Enabled = true;
             }
+
+        }
+
+        private void rbEmpNao_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbEmpNao_CheckedChanged_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbEmpRecebSim_Click(object sender, EventArgs e)
+        {
+            if (rbEmpRecebSim.Checked == true)
+            {
+                cboReceb.Enabled = true;
+            }
+            else
+            {
+                cboReceb.Enabled = false;
+            }
+        }
+
+        private void rbRecebeNao_Click(object sender, EventArgs e)
+        {
+            if (rbRecebeNao.Checked == true)
+            {
+                cboReceb.Enabled = false;
+            }
+            else
+            {
+                cboReceb.Enabled = true;
+            }
+        }
+
+        private void rbExpSim_Click(object sender, EventArgs e)
+        {
+            if(rbExpSim.Checked == true)
+            {
+                cboExp.Enabled = true;
+            }
+            else
+            {
+                cboExp.Enabled = true;
+            }
+        }
+
+        private void rbExpNao_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbExpNao_Click(object sender, EventArgs e)
+        {
+            if(rbExpNao.Checked == true)
+            {
+                cboExp.Enabled = false;
+            }
+            else
+            {
+                cboExp.Enabled = true;
+            }
+        }
+
+        private void rbAdmSim_Click(object sender, EventArgs e)
+        {
+            if(rbAdmSim.Checked == true)
+            {
+                cboAdm.Enabled = true;
+            }
+            else
+            {
+                cboAdm.Enabled = false;
+            }
+        }
+
+        private void rbAdmNao_Click(object sender, EventArgs e)
+        {
+            if(rbEmpNao.Checked == true)
+            {
+                cboAdm.Enabled = false;
+            }
+            else
+            {
+                cboAdm.Enabled = true;
+            }
+        }
+
+        private void rdbManutencaoSim_Click(object sender, EventArgs e)
+        {
+            if(rdbManutencaoSim.Checked == true)
+            {
+                cboManutencao.Enabled = true;
+            }
+            else
+            {
+                cboManutencao.Enabled = false;
+            }
+        }
+
+        private void rdbManutencaoNao_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rdbManutencaoNao.Checked == true)
+            {
+                cboManutencao.Enabled = false;
+            }
+            else
+            {
+                cboManutencao.Enabled = true;
+            }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void clearAll()
+        {
+            txtUsuario.ReadOnly = false;
+            txtUsuario.Text = string.Empty;
+            txtNome.Text = string.Empty;
+            txtSenha.Text = string.Empty;
+
+            cboAdm.Enabled = true;
+            cboEmp.Enabled = true;
+            cboManutencao.Enabled = true;
+            cboReceb.Enabled = true;
+            cboExp.Enabled = true;
+
+            cboAdm.Text = string.Empty;
+            cboExp.Text = string.Empty;
+            cboEmp.Text = string.Empty;
+            cboManutencao.Text = string.Empty;
+            cboEmp.Text = string.Empty;
+
+            rbAdmSim.Checked = false;
+            rbAdmNao.Checked = false;
+
+            rbEmpSim.Checked = false;
+            rbEmpNao.Checked = false;
+
+            rbEmpRecebSim.Checked = false;
+            rbRecebeNao.Checked = false;
+
+            rbExpSim.Checked = false;
+            rbExpNao.Checked = false;
+
+            rdbManutencaoSim.Checked = false;
+            rdbManutencaoNao.Checked = false;
+
+            dataGridView1.ClearSelection();
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            clearAll();
+
+
+        }
+
+        private void btnSalvar_Click_1(object sender, EventArgs e)
+        {
+            loginController controller = new loginController();
+            controller.usuario = txtUsuario.Text;
+            controller.verificarUsuario();
+
+            if(txtNome.Text != string.Empty && txtUsuario.Text != string.Empty && txtSenha.Text != string.Empty)
+            {
+                String empilhadeiras = "Não";
+                String recebimento = "Não";
+                String expedicao = "Não";
+                String aDM = "Não";
+                String manutencao = "Não";
+
+                if (rbEmpSim.Checked == true)
+                {
+                    empilhadeiras = rbEmpSim.Text;
+                }
+                if (rbEmpNao.Checked == true)
+                {
+                    empilhadeiras = rbEmpNao.Text;
+                }
+
+                if (rbEmpRecebSim.Checked == true)
+                {
+                    recebimento = rbEmpRecebSim.Text;
+                }
+                if (rbRecebeNao.Checked == true)
+                {
+                    recebimento = rbRecebeNao.Text;
+                }
+
+                if (rbExpSim.Checked == true)
+                {
+                    expedicao = rbExpSim.Text;
+                }
+                if (rbExpNao.Checked == true)
+                {
+                    expedicao = rbExpNao.Text;
+                }
+
+                if (rbAdmSim.Checked == true)
+                {
+                    aDM = rbAdmSim.Text;
+                }
+                if (rbEmpNao.Checked == true)
+                {
+                    aDM = rbAdmNao.Text;
+                }
+
+                if (rdbManutencaoSim.Checked == true)
+                {
+                    manutencao = rdbManutencaoSim.Text;
+                }
+                if (rdbManutencaoNao.Checked == true)
+                {
+                    manutencao = rdbManutencaoNao.Text;
+                }
+
+                controller.Empilhadeiras = empilhadeiras;
+                controller.EmpNivel = cboEmp.Text;
+                controller.Recebimento = recebimento;
+                controller.RecebNivel = cboReceb.Text;
+                controller.Expedicao = expedicao;
+                controller.ExpNivel = cboExp.Text;
+                controller.Adm = aDM;
+                controller.AdmNivel = cboAdm.Text;
+                controller.manutencao = manutencao;
+                controller.manutencaoNivel = cboManutencao.Text;
+                controller.nomeUsuario = txtNome.Text;
+                controller.senha = txtSenha.Text;
+
+
+                if (controller.tem == true)
+                {
+                    MessageBox.Show("Já existe");
+                    controller.uptadeModulosUsuario();
+                    controller.updateUser();
+                }
+                else
+                {
+                    MessageBox.Show("Não existe");
+                    controller.inserUsuario();
+                    controller.insertMod();
+
+                }
+
+                clearAll();
+            }
+            else
+            {
+                MessageBox.Show("Campo(s) obrigatório(s) vazio(s)!", "SISTEMA THR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
         }
     }

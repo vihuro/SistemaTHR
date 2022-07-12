@@ -96,7 +96,7 @@
             this.cboTipoServico.Location = new System.Drawing.Point(19, 94);
             this.cboTipoServico.Name = "cboTipoServico";
             this.cboTipoServico.Size = new System.Drawing.Size(121, 21);
-            this.cboTipoServico.TabIndex = 4;
+            this.cboTipoServico.TabIndex = 1;
             // 
             // label3
             // 
@@ -113,7 +113,7 @@
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(287, 121);
-            this.txtDescricao.TabIndex = 6;
+            this.txtDescricao.TabIndex = 3;
             // 
             // lblCaractere
             // 
@@ -168,14 +168,14 @@
             this.cboAondeSera.Location = new System.Drawing.Point(19, 30);
             this.cboAondeSera.Name = "cboAondeSera";
             this.cboAondeSera.Size = new System.Drawing.Size(121, 21);
-            this.cboAondeSera.TabIndex = 8;
+            this.cboAondeSera.TabIndex = 0;
             // 
             // btnSalvar
             // 
             this.btnSalvar.Location = new System.Drawing.Point(16, 388);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 9;
+            this.btnSalvar.TabIndex = 4;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -185,7 +185,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(228, 388);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 10;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -195,7 +195,7 @@
             this.txtDataIdeal.Location = new System.Drawing.Point(16, 138);
             this.txtDataIdeal.Name = "txtDataIdeal";
             this.txtDataIdeal.Size = new System.Drawing.Size(100, 20);
-            this.txtDataIdeal.TabIndex = 11;
+            this.txtDataIdeal.TabIndex = 2;
             // 
             // label4
             // 

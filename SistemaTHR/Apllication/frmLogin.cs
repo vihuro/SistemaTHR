@@ -36,6 +36,8 @@ namespace SistemaTHR
         public String ExpNivel;
         public String Adm;
         public String AdmNivel;
+        public String manutencao;
+        public String manutencaoNivel;
         public String nomeUsuario;
 
         private void btnEntrar_Click(object sender, EventArgs e)
@@ -57,6 +59,8 @@ namespace SistemaTHR
                 this.ExpNivel = loginController.ExpNivel;
                 this.Adm = loginController.Adm;
                 this.AdmNivel = loginController.AdmNivel;
+                this.manutencao = loginController.manutencao;
+                this.manutencaoNivel = loginController.manutencaoNivel;
 
                 loginController.SelecNomeUsuario(Usuario);
                 this.nomeUsuario = loginController.nomeUsuario;
@@ -68,6 +72,7 @@ namespace SistemaTHR
                 menu.recebimentoToolStripMenuItem.Enabled = false;
                 menu.expediçãoToolStripMenuItem.Enabled = false;
                 menu.gerenciarLoginsToolStripMenuItem.Enabled = false;
+                menu.manutençãoToolStripMenuItem.Enabled = false;
 
                 if(this.Empilhadeiras == "Sim")
                 {
@@ -85,6 +90,12 @@ namespace SistemaTHR
                 {
                     menu.gerenciarLoginsToolStripMenuItem.Enabled = true;
                 }
+                if(this.manutencao == "Sim")
+                {
+                    menu.manutençãoToolStripMenuItem.Enabled = true;
+                }
+
+
 
                 this.txtNome.Text = string.Empty;
                 this.txtSenha.Text = string.Empty;

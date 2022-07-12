@@ -21,6 +21,9 @@ namespace SistemaTHR
         public String Adm = "Não";
         public String AdmNivel = "0";
         public String nomeUsuario;
+        public String manutencao;
+        public String manutencaoNivel;
+        public String senha;
 
         public bool aceesar(String nome, String senha)
         {
@@ -47,6 +50,8 @@ namespace SistemaTHR
             this.ExpNivel = loginDao.ExpNivel;
             this.Adm = loginDao.Adm;
             this.AdmNivel = loginDao.AdmNivel;
+            this.manutencao = loginDao.manutencao;
+            this.manutencaoNivel = loginDao.manutencaoNivel;
 
         }
         public void verificarNivel(String usuario)
@@ -108,6 +113,107 @@ namespace SistemaTHR
         {
             this.usuario = usuario;
             SelectNome();
+        }
+
+        private void selectNome()
+        {
+            DAO.LoginDao dao = new DAO.LoginDao();
+            dao.usuario = usuario;
+            dao.selectNomeUsuario();
+            this.nomeUsuario = dao.nomeUsuario;
+            this.senha = dao.senha;
+
+        }
+
+        public void selectNomeUsuario()
+        {
+            selectNome();
+        }
+
+        private void updateUsuario()
+        {
+            DAO.LoginDao dao = new DAO.LoginDao();
+            dao.nomeUsuario = nomeUsuario;
+            dao.usuario = usuario;
+            dao.updateUser();
+        }
+
+        public void updateUser()
+        {
+            updateUsuario();
+        }
+
+        private void updateModulosUser()
+        {
+            DAO.LoginDao dao = new DAO.LoginDao();
+            dao.usuario = usuario;
+            dao.nomeUsuario = nomeUsuario;
+            dao.Empilhadeiras = Empilhadeiras;
+            dao.EmpNivel = EmpNivel;
+            dao.Recebimento = Recebimento;
+            dao.RecebNivel = RecebNivel;
+            dao.Expedicao = Expedicao;
+            dao.ExpNivel = ExpNivel;
+            dao.Adm = Adm;
+            dao.AdmNivel = AdmNivel;
+            dao.manutencao = manutencao;
+            dao.manutencaoNivel = manutencaoNivel;
+            dao.uptadeModulosUsuario();
+        }
+
+        public void uptadeModulosUsuario()
+        {
+            updateModulosUser();
+        }
+
+        private void verificarUser()
+        {
+            DAO.LoginDao dao = new DAO.LoginDao();
+            dao.usuario = usuario;
+            dao.verificarUsuario();
+            tem = dao.tem;
+        }
+
+        public void verificarUsuario()
+        {
+            verificarUser();
+        }
+
+        private void insertUser()
+        {
+            DAO.LoginDao dao = new DAO.LoginDao();
+            dao.usuario = usuario;
+            dao.nomeUsuario = nomeUsuario;
+            dao.senha = senha;
+            dao.inserUsuario();
+        }
+
+        public void inserUsuario()
+        {
+            insertUser();
+        }
+
+        private void insertModulos()
+        {
+            DAO.LoginDao dao = new DAO.LoginDao();
+            dao.usuario = usuario;
+            dao.Empilhadeiras = Empilhadeiras;
+            dao.EmpNivel = EmpNivel;
+            dao.Recebimento = Recebimento;
+            dao.RecebNivel = RecebNivel;
+            dao.Expedicao = Expedicao;
+            dao.ExpNivel = ExpNivel;
+            dao.Adm = Adm;
+            dao.AdmNivel = AdmNivel;
+            dao.manutencao = manutencao;
+            dao.manutencaoNivel = manutencaoNivel;
+            dao.insertMod();
+
+        }
+
+        public void insertMod()
+        {
+            insertModulos();
         }
     }
 }

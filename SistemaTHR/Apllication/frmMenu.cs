@@ -13,6 +13,16 @@ namespace SistemaTHR.Apllication
     public partial class frmMenu : Form
     {
         String Usuario;
+        public String Empilhadeiras;
+        public String EmpNivel;
+        public String Recebimento;
+        public String RecebNivel;
+        public String Expedicao;
+        public String ExpNivel;
+        public String Adm;
+        public String AdmNivel;
+        public String manutencao;
+        public String manutencaoNivel;
         public frmMenu(String Usuario)
         {
             InitializeComponent();
@@ -109,14 +119,24 @@ namespace SistemaTHR.Apllication
             frmTeste.Show();
         }
 
-        public String Empilhadeiras;
-        public String EmpNivel;
-        public String Recebimento;
-        public String RecebNivel;
-        public String Expedicao;
-        public String ExpNivel;
-        public String Adm;
-        public String AdmNivel;
+        private void verificarLogin()
+        {
+            loginController loginController = new loginController();
+
+            loginController.verificarNivel(this.lblUsuario.Text);
+            this.Empilhadeiras = loginController.Empilhadeiras;
+            this.EmpNivel = loginController.EmpNivel;
+            this.Recebimento = loginController.Recebimento;
+            this.RecebNivel = loginController.RecebNivel;
+            this.Expedicao = loginController.Expedicao;
+            this.ExpNivel = loginController.ExpNivel;
+            this.Adm = loginController.Adm;
+            this.AdmNivel = loginController.AdmNivel;
+            this.manutencao = loginController.manutencao;
+            this.manutencaoNivel = loginController.manutencaoNivel;
+        }
+
+
         private void transferênciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmPainelTransferencias frmPainelTransferencias = new frmPainelTransferencias();
@@ -132,6 +152,8 @@ namespace SistemaTHR.Apllication
             this.ExpNivel = loginController.ExpNivel;
             this.Adm = loginController.Adm;
             this.AdmNivel = loginController.AdmNivel;
+            this.manutencao = loginController.manutencao;
+            this.manutencaoNivel = loginController.manutencaoNivel;
 
             frmPainelTransferencias.btnEditar.Enabled = false;
             frmPainelTransferencias.lblUsuario.Text = this.lblUsuario.Text;
@@ -165,6 +187,7 @@ namespace SistemaTHR.Apllication
         {
             frmManutencao manutencao = new frmManutencao(Usuario);
             manutencao.lblUsuario.Text = this.lblUsuario.Text;
+
             manutencao.Show();
         }
 
@@ -178,8 +201,27 @@ namespace SistemaTHR.Apllication
         private void manutençõesEmAbertoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManutencao manutencao = new frmManutencao(Usuario);
-            manutencao.lblUsuario.Text = this.lblUsuario.Text;
+            verificarLogin();
+
+            manutencao.btnCompra.Enabled = false;
+            manutencao.btnDesfazer.Enabled = false;
+            if (this.manutencaoNivel == "2" || this.manutencaoNivel == "1")
+            {
+                manutencao.btnCompra.Enabled = true;
+
+            }
+            if(this.manutencaoNivel == "1")
+            {
+                manutencao.btnDesfazer.Enabled = true;
+            }
+
+            manutencao.manutencaoNivel = this.manutencaoNivel;
             manutencao.Show();
+        }
+
+        private void expediçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

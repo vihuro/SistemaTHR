@@ -16,6 +16,7 @@ namespace SistemaTHR.Apllication
         DataTable dt = new DataTable();
         String Usuario;
         String Status;
+        public String manutencaoNivel;
         
         public frmManutencao(String usuario)
         {
@@ -335,8 +336,12 @@ namespace SistemaTHR.Apllication
         private void btnCompra_Click(object sender, EventArgs e)
         {
             frmSolicitacaoPeca peca = new frmSolicitacaoPeca(Usuario,numeroOS);
-
             peca.lblUsuario.Text = this.lblUsuario.Text;
+            peca.btnAutorizar.Enabled = false;
+            if(manutencaoNivel == "1")
+            {
+                peca.btnAutorizar.Enabled = true;
+            }
             peca.ShowDialog();
         }
 

@@ -266,15 +266,11 @@ namespace SistemaTHR.Apllication
 
     private void btnConectar_Click_1(object sender, EventArgs e)
         {
-            
-
 
             if (listView1.Items.Count == 0)
             {
+                loadPA();
 
-               loadPA();
-
-                
             }
             else
             {
@@ -284,31 +280,13 @@ namespace SistemaTHR.Apllication
 
                 ListViewItem item1 = listView1.Items[numeroLinha];
 
-
-
                 if (item1.Text == "Resultado:")
                 {
-                    if (rdbProducao.Checked == true)
-                    {
-                        alterarResultado();
-                    }
-                    if (rdbExpedicao.Checked == true)
-                    {
-                        MessageBox.Show("Origem: EXPEDICÂO");
-                    }
-                    
+                    alterarResultado();
                 }
                 else
                 {
-                    if (rdbProducao.Checked == true)
-                    {
-                        loadPA();
-                    }
-                    if (rdbExpedicao.Checked == true)
-                    {
-                        MessageBox.Show("Origem: EXPEDICÂO");
-                    }
-                   
+                    loadPA();
                 }
 
 

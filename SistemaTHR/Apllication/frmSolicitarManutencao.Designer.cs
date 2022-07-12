@@ -49,7 +49,7 @@
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(317, 134);
-            this.txtDescricao.TabIndex = 3;
+            this.txtDescricao.TabIndex = 2;
             this.txtDescricao.TextChanged += new System.EventHandler(this.txtDescricao_TextChanged);
             // 
             // label2
@@ -75,7 +75,7 @@
             this.btnSolicitar.Location = new System.Drawing.Point(16, 438);
             this.btnSolicitar.Name = "btnSolicitar";
             this.btnSolicitar.Size = new System.Drawing.Size(75, 23);
-            this.btnSolicitar.TabIndex = 8;
+            this.btnSolicitar.TabIndex = 3;
             this.btnSolicitar.Text = "Solicitar";
             this.btnSolicitar.UseVisualStyleBackColor = true;
             this.btnSolicitar.Click += new System.EventHandler(this.btnSolicitar_Click);
@@ -85,7 +85,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(258, 438);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -115,7 +115,7 @@
             this.cboPrioridade.Location = new System.Drawing.Point(101, 103);
             this.cboPrioridade.Name = "cboPrioridade";
             this.cboPrioridade.Size = new System.Drawing.Size(90, 21);
-            this.cboPrioridade.TabIndex = 6;
+            this.cboPrioridade.TabIndex = 1;
             // 
             // label3
             // 
