@@ -217,7 +217,7 @@ namespace SistemaTHR.Apllication
                 manutencao.cboPrioridade.Enabled = true;
 
             }
-
+            manutencao.lblUsuario.Text = this.lblUsuario.Text;
             manutencao.manutencaoNivel = this.manutencaoNivel;
             manutencao.Show();
         }
@@ -225,6 +225,12 @@ namespace SistemaTHR.Apllication
         private void expediçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void painelManutençõesmEmAbertoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPainelManutencoesTHR painel = new frmPainelManutencoesTHR();
+            painel.Show();
         }
     }
 }

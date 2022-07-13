@@ -473,7 +473,7 @@
             </Style>
           </Line>
         </ReportItems>
-        <Height>3.4375in</Height>
+        <Height>3.52083in</Height>
         <Style />
       </Body>
       <Width>6.5in</Width>
@@ -524,16 +524,6 @@
             </Border>
           </Style>
         </PageHeader>
-        <PageFooter>
-          <Height>2.54cm</Height>
-          <PrintOnFirstPage>true</PrintOnFirstPage>
-          <PrintOnLastPage>true</PrintOnLastPage>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>

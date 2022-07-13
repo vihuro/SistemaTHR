@@ -260,3 +260,6 @@ C:\Users\Vitor_2\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllica
 C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmManutencao.resources
 C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmSolicitarManutencaoTHR.resources
 C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmSolicitacaoPeca.resources
+C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmObservacoes.resources
+C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmPainelManutencoesTHR.resources
+C:\Users\thr\source\repos\SistemaTHR\SistemaTHR\obj\Debug\SistemaTHR.Apllication.frmOSTHR.resources

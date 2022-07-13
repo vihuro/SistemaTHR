@@ -56,7 +56,7 @@
             this.manutençãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.solicitarManutençãoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.manutençõesEmAbertoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manutençõesFinalizadasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.painelManutençõesmEmAbertoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
@@ -269,7 +269,7 @@
             this.manutençãoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.solicitarManutençãoToolStripMenuItem1,
             this.manutençõesEmAbertoToolStripMenuItem,
-            this.manutençõesFinalizadasToolStripMenuItem});
+            this.painelManutençõesmEmAbertoToolStripMenuItem});
             this.manutençãoToolStripMenuItem.Name = "manutençãoToolStripMenuItem";
             this.manutençãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.manutençãoToolStripMenuItem.Text = "Manutenção";
@@ -278,22 +278,23 @@
             // solicitarManutençãoToolStripMenuItem1
             // 
             this.solicitarManutençãoToolStripMenuItem1.Name = "solicitarManutençãoToolStripMenuItem1";
-            this.solicitarManutençãoToolStripMenuItem1.Size = new System.Drawing.Size(206, 22);
+            this.solicitarManutençãoToolStripMenuItem1.Size = new System.Drawing.Size(253, 22);
             this.solicitarManutençãoToolStripMenuItem1.Text = "Solicitar Manutenção";
             this.solicitarManutençãoToolStripMenuItem1.Click += new System.EventHandler(this.solicitarManutençãoToolStripMenuItem1_Click);
             // 
             // manutençõesEmAbertoToolStripMenuItem
             // 
             this.manutençõesEmAbertoToolStripMenuItem.Name = "manutençõesEmAbertoToolStripMenuItem";
-            this.manutençõesEmAbertoToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.manutençõesEmAbertoToolStripMenuItem.Text = "Manutenções em Aberto";
+            this.manutençõesEmAbertoToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.manutençõesEmAbertoToolStripMenuItem.Text = "Manutenções";
             this.manutençõesEmAbertoToolStripMenuItem.Click += new System.EventHandler(this.manutençõesEmAbertoToolStripMenuItem_Click);
             // 
-            // manutençõesFinalizadasToolStripMenuItem
+            // painelManutençõesmEmAbertoToolStripMenuItem
             // 
-            this.manutençõesFinalizadasToolStripMenuItem.Name = "manutençõesFinalizadasToolStripMenuItem";
-            this.manutençõesFinalizadasToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.manutençõesFinalizadasToolStripMenuItem.Text = "Manutenções Finalizadas";
+            this.painelManutençõesmEmAbertoToolStripMenuItem.Name = "painelManutençõesmEmAbertoToolStripMenuItem";
+            this.painelManutençõesmEmAbertoToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.painelManutençõesmEmAbertoToolStripMenuItem.Text = "Painel/Manutençõesm em Aberto";
+            this.painelManutençõesmEmAbertoToolStripMenuItem.Click += new System.EventHandler(this.painelManutençõesmEmAbertoToolStripMenuItem_Click);
             // 
             // ajudaToolStripMenuItem
             // 
@@ -309,6 +310,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmMenu
@@ -363,7 +365,7 @@
         public System.Windows.Forms.ToolStripMenuItem gerenciarLoginsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem solicitarManutençãoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem manutençõesEmAbertoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manutençõesFinalizadasToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem manutençãoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem painelManutençõesmEmAbertoToolStripMenuItem;
     }
 }

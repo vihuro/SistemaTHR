@@ -38,7 +38,7 @@ namespace SistemaTHR.Apllication
                 String geracao = "Geração" ;
 
 
-                oSTHRController.insertStatusOS(numeroOP,geracao, Convert.ToString(dataHora),  usuario, Convert.ToString(dataHora), lblUsuario.Text, "");
+                oSTHRController.insertStatusOS(numeroOP,geracao, Convert.ToString(dataHora),  usuario, Convert.ToString(dataHora), usuario, "");
 
                 String IniMan = "Início de manutenção";
 
@@ -81,6 +81,47 @@ namespace SistemaTHR.Apllication
         }
 
         private void frmSolicitarManutencaoTHR_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDescricao_TextChanged(object sender, EventArgs e)
+        {
+            int totalCaractere = 1000;
+
+            foreach (char item in txtDescricao.Text)
+            {
+                totalCaractere = totalCaractere - 1;
+            }
+            lblCaractere.Text = "Caracteres restantes: " + totalCaractere;
+        }
+
+        private void lblCaractere_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDataIdeal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboTipoServico_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

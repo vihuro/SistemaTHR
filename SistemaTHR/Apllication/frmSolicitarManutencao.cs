@@ -66,5 +66,10 @@ namespace SistemaTHR.Apllication
         {
 
         }
+
+        private void lblCaractere_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
