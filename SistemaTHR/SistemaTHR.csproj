@@ -364,7 +364,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Report2.rdlc" />
-    <EmbeddedResource Include="rptOSTHR.rdlc" />
+    <EmbeddedResource Include="Ordem de Serviço THR.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

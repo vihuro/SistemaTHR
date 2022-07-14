@@ -506,5 +506,31 @@ namespace SistemaTHR.DAO
         {
             autRequisicao();
         }
+
+        private void selectImpOS()
+        {
+            cmd.CommandText = "Select * from tab_OSTHR where NOP = @numeroOS";
+            cmd.Parameters.AddWithValue("@numeroOS", numeroOSTHR);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+
+                da.Fill(dt);
+
+                con.desconectar();
+
+            }
+            catch(Exception e)
+            {
+                
+            }
+        }
+
+        public void selectImpOrdemServico()
+        {
+            selectImpOS();
+        }
     }
 }

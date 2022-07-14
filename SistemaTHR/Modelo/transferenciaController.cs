@@ -10,11 +10,13 @@ namespace SistemaTHR.Modelo
 {
     internal class transferenciaController
     {
-       public DateTime dataHoraTransf;
+        public DateTime dataHoraTransf;
         String usuarioTransf;
+        public String idFechamento;
+        DAO.transferenciaDao transferencia = new DAO.transferenciaDao();
         private void insertTransferencia()
         {
-            DAO.transferenciaDao transferencDao= new DAO.transferenciaDao();
+            DAO.transferenciaDao transferencDao = new DAO.transferenciaDao();
             transferencDao.insert(dataHoraTransf, usuarioTransf);
         }
 
@@ -33,8 +35,10 @@ namespace SistemaTHR.Modelo
         public String bobinas;
         public String idTransferencia;
         public String usuarioTransferencia;
+        public String numeroFech;
         String numeroMovimentacao;
         public DataTable dt = new DataTable();
+        DAO.transferenciaDao transferenciaDao = new DAO.transferenciaDao();
 
         private void insertMovimentaoca()
         {
@@ -60,19 +64,20 @@ namespace SistemaTHR.Modelo
 
         private void insertIntoFechamento()
         {
-            DAO.transferenciaDao transferenciaDao = new DAO.transferenciaDao();
+            transferenciaDao.codigo = this.codigo;
+            transferencia.descricao = this.descricao;
+            transferencia.pesoBruto = this.pesoBruto;
+            transferencia.pesoLiquido = this.pesoLiquido;
+            transferencia.pesoBruto = this.pesoBruto;
+            transferencia.bobinas = this.bobinas;
+
             transferenciaDao.InsertFechamento(codigo, descricao, pesoBruto, pesoLiquido, bobinas, idTransferencia);
 
         }
 
-        public void InsertFechamento(String codigo, String descricao, String pesoBruto, String pesoLiquido, String bobinas, String idTransferencia)
+        public void InsertFechamento()
         {
-            this.codigo = codigo;
-            this.descricao = descricao;
-            this.pesoBruto = pesoBruto;
-            this.pesoLiquido = pesoLiquido;
-            this.bobinas = bobinas;
-            this.idTransferencia = idTransferencia;
+
 
             insertIntoFechamento();
 
@@ -85,7 +90,7 @@ namespace SistemaTHR.Modelo
             DAO.transferenciaDao transferenciaDao = new DAO.transferenciaDao();
             transferenciaDao.selectId();
             this.id = transferenciaDao.id;
-            
+
         }
 
         public void selectId()
@@ -104,7 +109,7 @@ namespace SistemaTHR.Modelo
         {
             this.id = id;
             selectFechamento();
-            
+
         }
 
         private void selectTransfenrecia()
@@ -176,15 +181,27 @@ namespace SistemaTHR.Modelo
             transferencia.pesoBruto = this.pesoBruto;
             transferencia.pesoLiquido = this.pesoLiquido;
             transferencia.bobinas = this.bobinas;
-            transferencia.updataFech(numeroFechamento);
+
+            transferencia.updataFech(numeroFech);
 
         }
 
-        public void updateFech(String numeroFechamento)
+        public void updateFech()
         {
-            this.numeroFechamento = numeroFechamento;
+
             updateFechamento();
         }
+
+        private void deleteFechamento ()
+        {
+            transferencia.idFechamento = idFechamento;
+            transferencia.deleteFech();
+        }
+        public void deleteFech()
+        {
+            deleteFechamento();
+        }
+
 
         private void loadFechamentoImp()
         {

@@ -13,19 +13,32 @@ namespace SistemaTHR.Apllication
     public partial class frmOSTHR : Form
     {
         DataTable dt = new DataTable();
-        public frmOSTHR()
+        String numeroOS;
+        
+        public frmOSTHR(String numeroOS)
         {
             InitializeComponent();
+            this.numeroOS = numeroOS;
+
         }
 
         private void frmOSTHR_Load(object sender, EventArgs e)
         {
+            loadInfoDataGridView1();
+
             this.reportViewer1.LocalReport.DataSources.Clear();
-            this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet3", dt));
-
-
+            this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", dt));
 
             this.reportViewer1.RefreshReport();
+        }
+
+        private void loadInfoDataGridView1()
+        {
+            Modelo.OSTHRController controller = new Modelo.OSTHRController();
+            controller.numeroOSTHR = numeroOS;
+            controller.selectImpOrdemServico();
+            dt = controller.dt;
+
         }
     }
 }

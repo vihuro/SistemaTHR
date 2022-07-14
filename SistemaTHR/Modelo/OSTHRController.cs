@@ -23,16 +23,17 @@ namespace SistemaTHR.Modelo
         public String numeroRequisicao;
         public String nomeAutorizador;
         public String dataHoraAutorizacao;
+        DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
 
         private void insertOS()
         {
-            DAO.OsTHRDAO tHRDAO = new DAO.OsTHRDAO();
-            tHRDAO.descricaoServico = this.descricaoServico;
-            tHRDAO.tipoServico = this.tipoServico;
-            tHRDAO.dataHoraGeraca = this.dataHoraGeraca;
-            tHRDAO.usuarioSolicitacao = this.usuarioSolicitacao;
-            tHRDAO.statusOP = this.statusOP;
-            tHRDAO.insertOrdemServico(descricaoServico, tipoServico, dataHoraGeraca, usuarioSolicitacao,ASE,DataIdeal,statusOP);
+
+            dao.descricaoServico = this.descricaoServico;
+            dao.tipoServico = this.tipoServico;
+            dao.dataHoraGeraca = this.dataHoraGeraca;
+            dao.usuarioSolicitacao = this.usuarioSolicitacao;
+            dao.statusOP = this.statusOP;
+            dao.insertOrdemServico(descricaoServico, tipoServico, dataHoraGeraca, usuarioSolicitacao,ASE,DataIdeal,statusOP);
         }
 
         public void insertOrdemServico(String descricaoServico, String tipoServico, String dataHoraGeraca, String usuarioSolicitacao,String ASE, String DataIdeal, String statusOP)
@@ -50,9 +51,9 @@ namespace SistemaTHR.Modelo
         public String numeroOP;
         private void selectOS()
         {
-            DAO.OsTHRDAO osTHRDAO = new DAO.OsTHRDAO();
-            osTHRDAO.selectOrdemServico();
-            this.numeroOP = osTHRDAO.numeroOP;
+
+            dao.selectOrdemServico();
+            this.numeroOP = dao.numeroOP;
         }
 
         public void selectOrdemServico()
@@ -70,7 +71,7 @@ namespace SistemaTHR.Modelo
         String numeroStatus;
         private void insertSTatusOP()
         {
-            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+
             dao.insertStatusOS(numeroOSTHR, Andamento, dataHoraApontament,  usuarioApontamento, dataHoraAlteracao, usuarioAlteracao, observacao);
         }
 
@@ -88,9 +89,9 @@ namespace SistemaTHR.Modelo
 
         private void SelectOSAberto()
         {
-            DAO.OsTHRDAO osTHRDAO = new DAO.OsTHRDAO();
-            osTHRDAO.selecOSAber();
-            this.dt = osTHRDAO.dt;
+
+            dao.selecOSAber();
+            this.dt = dao.dt;
         }
 
         public void selecOSAber()
@@ -100,9 +101,9 @@ namespace SistemaTHR.Modelo
 
         private void selecStatus()
         {
-            DAO.OsTHRDAO tHRDAO = new DAO.OsTHRDAO();
-            tHRDAO.SelecStatusOS(numeroOSTHR);
-            this.dt = tHRDAO.dt;
+
+            dao.SelecStatusOS(numeroOSTHR);
+            this.dt = dao.dt;
         }
 
         public void SelecStatusOS(String numeroOSTHR)
@@ -113,13 +114,13 @@ namespace SistemaTHR.Modelo
 
         private void updateStatusOS()
         {
-            DAO.OsTHRDAO osTHRDAO = new DAO.OsTHRDAO();
-            osTHRDAO.dataHoraApontament = this.dataHoraApontament;
-            osTHRDAO.usuarioApontamento = this.usuarioApontamento;
-            osTHRDAO.dataHoraAlteracao = this.dataHoraAlteracao;
-            osTHRDAO.usuarioAlteracao = this.usuarioAlteracao;
-            osTHRDAO.observacao = this.observacao;
-            osTHRDAO.updateStatus(numeroStatus);
+
+            dao.dataHoraApontament = this.dataHoraApontament;
+            dao.usuarioApontamento = this.usuarioApontamento;
+            dao.dataHoraAlteracao = this.dataHoraAlteracao;
+            dao.usuarioAlteracao = this.usuarioAlteracao;
+            dao.observacao = this.observacao;
+            dao.updateStatus(numeroStatus);
         }
         public void updateStatus(String numeroStatus)
         {
@@ -129,7 +130,7 @@ namespace SistemaTHR.Modelo
 
         private void selectObservacao()
         {
-            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+
             dao.selectOBS(numeroStatus);
             this.observacao = dao.observacao;
         }
@@ -142,7 +143,7 @@ namespace SistemaTHR.Modelo
 
         private void loadInfoOS()
         {
-            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+
             dao.loadINFO(numeroOSTHR);
             this.descricaoServico = dao.descricaoServico;
             this.Prioridade = dao.Prioridade;
@@ -156,7 +157,7 @@ namespace SistemaTHR.Modelo
 
         private void verificarPrioridade()
         {
-            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+
             dao.VerificarPriori(numeroOSTHR);
             this.Prioridade = dao.Prioridade;
 
@@ -171,7 +172,7 @@ namespace SistemaTHR.Modelo
 
         private void UpdatePrioridade()
         {
-            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+
             dao.Prioridade = this.Prioridade;
             dao.usuarioPrioridade = this.usuarioPrioridade;
             dao.dataHoraPrioridade = this.dataHoraPrioridade;
@@ -187,7 +188,7 @@ namespace SistemaTHR.Modelo
 
         private void UpdateStatusOS()
         {
-            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+
             dao.status = statusOP;
             dao.UpdateStaOS(numeroOSTHR);
         }
@@ -208,7 +209,7 @@ namespace SistemaTHR.Modelo
 
         private void insertRequisicaoPeca()
         {
-            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+
             dao.numeroOSTHR = numeroOSTHR;
             dao.codigoPeca = codigoPeca;
             dao.descricaoPeca = descricaoPeca;
@@ -227,7 +228,7 @@ namespace SistemaTHR.Modelo
 
         private void selectRequisicaoPeca()
         {
-            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+
             dao.numeroOSTHR = numeroOSTHR;
             dao.selectPecas();
             this.dt = dao.dt;
@@ -241,7 +242,7 @@ namespace SistemaTHR.Modelo
 
         private void SelectInfoRequisicao()
         {
-            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+
             dao.numeroRequisicao = numeroRequisicao;
             dao.selectInfoRequi();
             codigoPeca = dao.codigoPeca;
@@ -257,7 +258,7 @@ namespace SistemaTHR.Modelo
         }
         private void autRequisicao()
         {
-            DAO.OsTHRDAO dao = new DAO.OsTHRDAO();
+
             dao.numeroRequisicao = numeroRequisicao;
             dao.nomeAutorizador = nomeAutorizador;
             dao.dataHoraAutorizacao = dataHoraAutorizacao;
@@ -267,6 +268,18 @@ namespace SistemaTHR.Modelo
         public void autorizarRequisicao()
         {
             autRequisicao();
+        }
+
+        private void selectImpOS()
+        {
+            dao.numeroOSTHR = numeroOSTHR;
+            dao.selectImpOrdemServico();
+            dt = dao.dt;
+        }
+
+        public void selectImpOrdemServico()
+        {
+            selectImpOS();
         }
 
     }

@@ -377,7 +377,8 @@ namespace SistemaTHR.Apllication
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            frmOSTHR oSTHR = new frmOSTHR();
+            frmOSTHR oSTHR = new frmOSTHR(numeroOS);
+            
             oSTHR.Show();
         }
     }
