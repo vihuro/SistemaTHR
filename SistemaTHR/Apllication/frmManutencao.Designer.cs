@@ -32,6 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+<<<<<<< HEAD
+=======
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManutencao));
+>>>>>>> 7a328b02c9f995744a126cbdebf5faa74faa114e
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
@@ -122,6 +126,52 @@
             this.panel1.Size = new System.Drawing.Size(1337, 25);
             this.panel1.TabIndex = 1;
             // 
+<<<<<<< HEAD
+=======
+            // btnCompra
+            // 
+            this.btnCompra.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompra.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCompra.Image = global::SistemaTHR.Properties.Resources.order;
+            this.btnCompra.Location = new System.Drawing.Point(56, 0);
+            this.btnCompra.Name = "btnCompra";
+            this.btnCompra.Size = new System.Drawing.Size(28, 25);
+            this.btnCompra.TabIndex = 2;
+            this.btnCompra.UseVisualStyleBackColor = true;
+            this.btnCompra.Click += new System.EventHandler(this.btnCompra_Click);
+            this.btnCompra.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCompra_MouseMove);
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFiltrar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnFiltrar.Image = global::SistemaTHR.Properties.Resources.filtro__1_;
+            this.btnFiltrar.Location = new System.Drawing.Point(28, 0);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(28, 25);
+            this.btnFiltrar.TabIndex = 1;
+            this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            this.btnFiltrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnFiltrar_MouseMove);
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLimpar.Image = global::SistemaTHR.Properties.Resources.mais;
+            this.btnLimpar.Location = new System.Drawing.Point(0, 0);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(28, 25);
+            this.btnLimpar.TabIndex = 0;
+            this.btnLimpar.Text = "button1";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            this.btnLimpar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnLimpar_MouseMove);
+            // 
+>>>>>>> 7a328b02c9f995744a126cbdebf5faa74faa114e
             // splitContainer1
             // 
             this.splitContainer1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -591,6 +641,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.statusStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmManutencao";
             this.Text = "Ordem de Serviço";
             this.Load += new System.EventHandler(this.frmManutencao_Load);

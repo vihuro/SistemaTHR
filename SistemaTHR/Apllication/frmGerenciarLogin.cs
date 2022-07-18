@@ -12,13 +12,21 @@ namespace SistemaTHR.Apllication
 {
     public partial class frmGerenciarLogin : Form
     {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7a328b02c9f995744a126cbdebf5faa74faa114e
         String empilhadeiras = "Não";
         String recebimento = "Não";
         String expedicao = "Não";
         String aDM = "Não";
         String manutencao = "Não";
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 7a328b02c9f995744a126cbdebf5faa74faa114e
         public frmGerenciarLogin()
         {
             InitializeComponent();
@@ -289,6 +297,54 @@ namespace SistemaTHR.Apllication
 
         }
 
+        private void verificarCampos()
+        {
+            if (rbEmpSim.Checked == true)
+            {
+                empilhadeiras = rbEmpSim.Text;
+            }
+            if (rbEmpNao.Checked == true)
+            {
+                empilhadeiras = rbEmpNao.Text;
+            }
+
+            if (rbEmpRecebSim.Checked == true)
+            {
+                recebimento = rbEmpRecebSim.Text;
+            }
+            if (rbRecebeNao.Checked == true)
+            {
+                recebimento = rbRecebeNao.Text;
+            }
+
+            if (rbExpSim.Checked == true)
+            {
+                expedicao = rbExpSim.Text;
+            }
+            if (rbExpNao.Checked == true)
+            {
+                expedicao = rbExpNao.Text;
+            }
+
+            if (rbAdmSim.Checked == true)
+            {
+                aDM = rbAdmSim.Text;
+            }
+            if (rbEmpNao.Checked == true)
+            {
+                aDM = rbAdmNao.Text;
+            }
+
+            if (rdbManutencaoSim.Checked == true)
+            {
+                manutencao = rdbManutencaoSim.Text;
+            }
+            if (rdbManutencaoNao.Checked == true)
+            {
+                manutencao = rdbManutencaoNao.Text;
+            }
+        }
+
         private void clearAll()
         {
             txtUsuario.ReadOnly = false;
@@ -390,8 +446,11 @@ namespace SistemaTHR.Apllication
             if(txtNome.Text != string.Empty && txtUsuario.Text != string.Empty && txtSenha.Text != string.Empty)
             {
 
+<<<<<<< HEAD
 
                 verificarChecked();
+=======
+>>>>>>> 7a328b02c9f995744a126cbdebf5faa74faa114e
 
                 controller.Empilhadeiras = empilhadeiras;
                 controller.EmpNivel = cboEmp.Text;

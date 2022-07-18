@@ -32,12 +32,19 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+<<<<<<< HEAD
+=======
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPainelManutencoesTHR));
+>>>>>>> 7a328b02c9f995744a126cbdebf5faa74faa114e
             this.panel1 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+<<<<<<< HEAD
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblSegundos = new System.Windows.Forms.Label();
+=======
+>>>>>>> 7a328b02c9f995744a126cbdebf5faa74faa114e
             this.clNOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clTipoServico = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clDataHoraGeracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +55,11 @@
             this.clnASE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUsuarioPrioridade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDataHoraPrioridade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+<<<<<<< HEAD
+=======
+            this.lblSegundos = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+>>>>>>> 7a328b02c9f995744a126cbdebf5faa74faa114e
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -148,6 +160,7 @@
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
+<<<<<<< HEAD
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
@@ -162,6 +175,8 @@
             this.lblSegundos.Text = "label1";
             this.lblSegundos.Visible = false;
             // 
+=======
+>>>>>>> 7a328b02c9f995744a126cbdebf5faa74faa114e
             // clNOP
             // 
             this.clNOP.DataPropertyName = "NOP";
@@ -241,6 +256,23 @@
             this.clnDataHoraPrioridade.ReadOnly = true;
             this.clnDataHoraPrioridade.Visible = false;
             // 
+<<<<<<< HEAD
+=======
+            // lblSegundos
+            // 
+            this.lblSegundos.AutoSize = true;
+            this.lblSegundos.Location = new System.Drawing.Point(54, 44);
+            this.lblSegundos.Name = "lblSegundos";
+            this.lblSegundos.Size = new System.Drawing.Size(35, 13);
+            this.lblSegundos.TabIndex = 0;
+            this.lblSegundos.Text = "label1";
+            this.lblSegundos.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+>>>>>>> 7a328b02c9f995744a126cbdebf5faa74faa114e
             // frmPainelManutencoesTHR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,6 +281,10 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
+<<<<<<< HEAD
+=======
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+>>>>>>> 7a328b02c9f995744a126cbdebf5faa74faa114e
             this.Name = "frmPainelManutencoesTHR";
             this.Text = "Painel de Manutenções";
             this.Load += new System.EventHandler(this.frmPainelManutencoesTHR_Load);
