@@ -560,5 +560,9 @@ namespace SistemaTHR.Apllication
 
         }
 
+        private void splitContainer3_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

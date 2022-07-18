@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.OleDb;
 using SistemaTHR.Apllication;
 
 namespace SistemaTHR
@@ -39,7 +31,6 @@ namespace SistemaTHR
         public String manutencao;
         public String manutencaoNivel;
         public String nomeUsuario;
-
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             loginController loginController = new loginController();
@@ -101,7 +92,7 @@ namespace SistemaTHR
                 this.txtSenha.Text = string.Empty;
 
                 menu.Show();
-
+                
             }
             else
             {
@@ -121,6 +112,7 @@ namespace SistemaTHR
   
                 this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
             }
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -139,6 +131,11 @@ namespace SistemaTHR
             {
                 txtSenha.PasswordChar = '•';
             }
+        }
+
+        private void frmLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

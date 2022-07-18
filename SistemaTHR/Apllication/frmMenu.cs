@@ -206,6 +206,7 @@ namespace SistemaTHR.Apllication
             manutencao.btnCompra.Enabled = false;
             manutencao.btnDesfazer.Enabled = false;
             manutencao.cboPrioridade.Enabled = false;
+
             if (this.manutencaoNivel == "2" || this.manutencaoNivel == "1")
             {
                 manutencao.btnCompra.Enabled = true;

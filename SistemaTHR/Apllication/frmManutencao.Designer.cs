@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManutencao));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
@@ -147,6 +148,7 @@
             this.btnFiltrar.Size = new System.Drawing.Size(28, 25);
             this.btnFiltrar.TabIndex = 1;
             this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             this.btnFiltrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnFiltrar_MouseMove);
             // 
             // btnLimpar
@@ -236,6 +238,7 @@
             this.dataGridView1.TabStop = false;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
             // clNOP
             // 
@@ -385,6 +388,7 @@
             this.txtObservacao.Size = new System.Drawing.Size(733, 61);
             this.txtObservacao.TabIndex = 10;
             this.txtObservacao.DoubleClick += new System.EventHandler(this.txtObservacao_DoubleClick);
+            this.txtObservacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtOrdemServico_KeyDown);
             // 
             // panel2
             // 
@@ -434,6 +438,7 @@
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             this.dataGridView2.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView2_CellFormatting);
             this.dataGridView2.SelectionChanged += new System.EventHandler(this.dataGridView2_SelectionChanged);
+            this.dataGridView2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtOrdemServico_KeyDown);
             // 
             // clnStatus
             // 
@@ -491,6 +496,7 @@
             this.txtDescricao.ReadOnly = true;
             this.txtDescricao.Size = new System.Drawing.Size(339, 181);
             this.txtDescricao.TabIndex = 2;
+            this.txtDescricao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtOrdemServico_KeyDown);
             // 
             // label3
             // 
@@ -521,6 +527,7 @@
             this.cboPrioridade.Name = "cboPrioridade";
             this.cboPrioridade.Size = new System.Drawing.Size(100, 21);
             this.cboPrioridade.TabIndex = 1;
+            this.cboPrioridade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtOrdemServico_KeyDown);
             // 
             // txtOrdemServico
             // 
@@ -528,6 +535,7 @@
             this.txtOrdemServico.Name = "txtOrdemServico";
             this.txtOrdemServico.Size = new System.Drawing.Size(100, 20);
             this.txtOrdemServico.TabIndex = 0;
+            this.txtOrdemServico.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtOrdemServico_KeyDown);
             // 
             // btnImprimir
             // 
@@ -584,9 +592,12 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.statusStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmManutencao";
             this.Text = "Ordem de Serviço";
             this.Load += new System.EventHandler(this.frmManutencao_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmManutencao_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmManutencao_KeyPress);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
