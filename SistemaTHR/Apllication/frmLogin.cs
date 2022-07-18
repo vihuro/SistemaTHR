@@ -121,6 +121,7 @@ namespace SistemaTHR
   
                 this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
             }
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -139,6 +140,11 @@ namespace SistemaTHR
             {
                 txtSenha.PasswordChar = '•';
             }
+        }
+
+        private void frmLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

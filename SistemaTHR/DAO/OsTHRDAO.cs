@@ -28,6 +28,7 @@ namespace SistemaTHR.DAO
         public String numeroRequisicao;
         public String nomeAutorizador;
         public String dataHoraAutorizacao;
+        public String msg;
 
         private void insertOS()
         {
@@ -44,14 +45,18 @@ namespace SistemaTHR.DAO
             try
             {
                 cmd.Connection = con.conectar();
-                cmd.ExecuteReader();
+                cmd.ExecuteNonQuery();
 
-                con.desconectar();
+
 
             }
-            catch
+            catch(Exception ex)
             {
-
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
+                con.desconectar();
             }
         }
 
@@ -77,17 +82,22 @@ namespace SistemaTHR.DAO
                 cmd.Connection = con.conectar();
                 dr = cmd.ExecuteReader();
 
-
                 while (dr.Read())
                 {
                     numeroOP = dr["NOP"].ToString();
                 }
-
             }
-            catch
+            catch(Exception ex)
             {
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
+                con.desconectar();
 
             }
+ 
+
         }
 
         public void selectOrdemServico()
@@ -99,7 +109,6 @@ namespace SistemaTHR.DAO
         public String numeroOSTHR;
         public String Andamento;
         public String dataHoraApontament;
-        public String dataAlteracao;
         public String usuarioApontamento;
         public String dataHoraAlteracao;
         public String usuarioAlteracao;
@@ -117,13 +126,19 @@ namespace SistemaTHR.DAO
             cmd.Parameters.AddWithValue("@usuarioAlteracao", usuarioAlteracao);
             cmd.Parameters.AddWithValue("@observacao", observacao);
 
-
-
+            try
+            {
                 cmd.Connection = con.conectar();
-                cmd.ExecuteReader();
-
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
                 con.desconectar();
-
+            }
 
 
         }
@@ -144,7 +159,7 @@ namespace SistemaTHR.DAO
         public String status = "OS/Finalizada";
         private void selectOSAberto()
         {
-            cmd.CommandText = "Select * from tab_OSTHR";
+            cmd.CommandText = "Select * from tab_OSTHR order by NOP asc";
 
 
             try
@@ -155,12 +170,16 @@ namespace SistemaTHR.DAO
 
                 da.Fill(dt);
 
-                con.desconectar();
+
 
             }
-            catch
+            catch(Exception ex)
             {
-
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
+                con.desconectar();
             }
 
         }
@@ -182,11 +201,15 @@ namespace SistemaTHR.DAO
 
                 da.Fill(dt);
 
-                con.desconectar();
-            }
-            catch
-            {
 
+            }
+            catch(Exception ex)
+            {
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
+                con.desconectar();
             }
         }
 
@@ -218,13 +241,17 @@ namespace SistemaTHR.DAO
             try
             {
                 cmd.Connection = con.conectar();
-                cmd.ExecuteReader();
+                cmd.ExecuteNonQuery();
 
-                con.desconectar();
+
             }
-            catch
+            catch(Exception ex)
             {
-
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
+                con.desconectar();
             }
 
         }
@@ -251,9 +278,9 @@ namespace SistemaTHR.DAO
                 }
 
             }
-            catch
+            catch(Exception ex)
             {
-
+                msg = "Erro, " + ex;
             }
             finally
             {
@@ -284,9 +311,9 @@ namespace SistemaTHR.DAO
                     Prioridade = dr["Prioridade"].ToString();
                 }
             }
-            catch
+            catch(Exception ex)
             {
-
+                msg = "Erro, " + ex;
             }
             finally
             {
@@ -315,11 +342,15 @@ namespace SistemaTHR.DAO
                 {
                     Prioridade = dr["Prioridade"].ToString();
                 }
-                con.desconectar();
-            }
-            catch
-            {
 
+            }
+            catch(Exception ex)
+            {
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
+                con.desconectar();
             }
         }
 
@@ -343,13 +374,15 @@ namespace SistemaTHR.DAO
             try
             {
                 cmd.Connection = con.conectar();
-                cmd.ExecuteReader();
-
-                con.desconectar();
+                cmd.ExecuteNonQuery();
             }
-            catch
+            catch(Exception ex)
             {
-
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
+                con.desconectar();
             }
         }
 
@@ -368,13 +401,17 @@ namespace SistemaTHR.DAO
             try
             {
                 cmd.Connection = con.conectar();
-                cmd.ExecuteReader();
+                cmd.ExecuteNonQuery();
 
-                con.desconectar();
+           
             }
-            catch
+            catch(Exception ex)
             {
-
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
+                con.desconectar();
             }
         }
 
@@ -407,13 +444,17 @@ namespace SistemaTHR.DAO
             try
             {
                 cmd.Connection = con.conectar();
-                cmd.ExecuteReader();
+                cmd.ExecuteNonQuery();
 
-                con.desconectar();
+
             }
-            catch
+            catch(Exception ex)
             {
-
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
+                con.desconectar();
             }
         }
 
@@ -434,11 +475,15 @@ namespace SistemaTHR.DAO
 
                 da.Fill(dt);
 
-                con.desconectar();
-            }
-            catch
-            {
 
+            }
+            catch(Exception ex)
+            {
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
+                con.desconectar();
             }
 
         }
@@ -467,11 +512,15 @@ namespace SistemaTHR.DAO
 
                 }
 
-                con.desconectar();
-            }
-            catch
-            {
 
+            }
+            catch(Exception ex)
+            {
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
+                con.desconectar();
             }
         }
 
@@ -492,19 +541,52 @@ namespace SistemaTHR.DAO
             try
             {
                 cmd.Connection = con.conectar();
-                cmd.ExecuteReader();
+                cmd.ExecuteNonQuery();
 
-                con.desconectar();
             }
-            catch
+            catch(Exception ex)
             {
-
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
+                con.desconectar();
             }
         }
 
         public void autorizarRequisicao()
         {
             autRequisicao();
+        }
+
+        private void selectImpOS()
+        {
+            cmd.CommandText = "Select * from tab_OSTHR where NOP = @numeroOS";
+            cmd.Parameters.AddWithValue("@numeroOS", numeroOSTHR);
+
+            try
+            {
+                cmd.Connection = con.conectar();
+                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+
+                da.Fill(dt);
+
+
+
+            }
+            catch(Exception ex)
+            {
+                msg = "Erro, " + ex;
+            }
+            finally
+            {
+                con.desconectar();
+            }
+        }
+
+        public void selectImpOrdemServico()
+        {
+            selectImpOS();
         }
     }
 }

@@ -1,13 +1,6 @@
-﻿using SistemaTHR.DAO;
+﻿
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.OleDb;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -15,9 +8,12 @@ namespace SistemaTHR.Apllication
 {
     public partial class frmTransferencia : Form
     {
-        public frmTransferencia()
+        String usuario;
+        public frmTransferencia(String usuario)
         {
             InitializeComponent();
+            this.usuario = usuario;
+
         }
 
         private void txtNumeroPA_KeyUp(object sender, KeyEventArgs e)
@@ -59,6 +55,7 @@ namespace SistemaTHR.Apllication
             {
                 Modelo.loadPaController loadPaController = new Modelo.loadPaController();
                 loadPaController.selectPA(txtNumeroPA.Text);
+
                 if (loadPaController.codigo != null)
                 {
                     this.codigo = loadPaController.codigo;
@@ -84,12 +81,9 @@ namespace SistemaTHR.Apllication
                 }
             }
 
+            int i2 = listView1.Items.Count;
 
-            int resultado = -1;
-            int resultado2 = listView1.Items.Count;
-            int numeroLinha = resultado + resultado2;
-
-            ListViewItem item1 = listView1.Items[numeroLinha];
+            ListViewItem item1 = listView1.Items[i2 -1];
 
             if (item1.Text == "Resultado:")
             {
@@ -346,18 +340,19 @@ namespace SistemaTHR.Apllication
                 }
                 else
                 {
-                    int resultado = -1;
-                    int resultado2 = listView1.Items.Count;
-                    int numeroLinha = resultado + resultado2;
+                    int i = listView1.Items.Count;
 
-                    ListViewItem item1 = listView1.Items[numeroLinha];
+
+                    ListViewItem item1 = listView1.Items[i - 1];
 
                     if (item1.Text == "Resultado:")
                     {
+
                         alterarResultado();
                     }
                     else
                     {
+
                         loadPA();
                     }
 
@@ -390,18 +385,11 @@ namespace SistemaTHR.Apllication
                     decimal pesoBruto = Convert.ToDecimal(item.SubItems[3].Text);
                     decimal pesoLiquido = Convert.ToDecimal(item.SubItems[4].Text);
                     double qtBobinas = Convert.ToDouble(item.SubItems[5].Text);
-                    decimal resultadopesoBruto1 = 0;
-                    decimal resultadopesoLiquido1 = 0;
-                    double resultadoQtBobinas1 = 0;
+
 
                     resultadopesoBruto = resultadopesoBruto + pesoBruto;
                     resultadopesoLiquido = resultadopesoLiquido + pesoLiquido;
                     resultadoQtBobinas = resultadoQtBobinas + qtBobinas;
-
-
-                    resultadopesoBruto1 = resultadopesoBruto;
-                    resultadopesoLiquido1 = resultadopesoLiquido;
-                    resultadoQtBobinas1 = resultadoQtBobinas;
 
                 }
 
@@ -428,8 +416,7 @@ namespace SistemaTHR.Apllication
             if (listView1.Items.Count > 0 && listView2.Items.Count > 0) 
             {
                 Modelo.transferenciaController transferenciaController = new Modelo.transferenciaController();
-                try
-                {
+
 
                     transferenciaController.insert(dateTime, lblUsuario.Text); ;
                     transferenciaController.selectId();
@@ -447,25 +434,32 @@ namespace SistemaTHR.Apllication
                             String pesoLiquido = item.SubItems[4].Text;
                             String bobinas = item.SubItems[5].Text;
                             String idTransferencia = this.id;
-                            String usuarioTransferencia = this.lblUsuario.Text;
 
 
-                            transferenciaController.insertMov(numeroPA, codigo, descricao, pesoBruto, pesoLiquido, bobinas, idTransferencia, usuarioTransferencia);
+
+                            transferenciaController.insertMov(numeroPA, codigo, descricao, pesoBruto, pesoLiquido, bobinas, idTransferencia, usuario);
                         }
 
 
                     }
                     foreach (ListViewItem item2 in listView2.Items)
                     {
+                        this.codigo = item2.SubItems[0].Text;
+                        this.descricao = item2.SubItems[1].Text;
+                        this.pesoBruto = item2.SubItems[2].Text;
+                        this.pesoLiquido = item2.SubItems[3].Text;
+                        this.qtBobinas = item2.SubItems[4].Text;
 
-                        String codigo = item2.SubItems[0].Text;
-                        String descricao = item2.SubItems[1].Text;
-                        String pesoBruto = item2.SubItems[2].Text;
-                        String pesoLiquido = item2.SubItems[3].Text;
-                        String bobinas = item2.SubItems[4].Text;
                         String idTransferencia = this.id;
 
-                        transferenciaController.InsertFechamento(codigo, descricao, pesoBruto, pesoLiquido, bobinas, idTransferencia);
+                        transferenciaController.codigo = this.codigo;
+                        transferenciaController.descricao = this.descricao;
+                        transferenciaController.pesoBruto = this.pesoBruto;
+                        transferenciaController.pesoLiquido = this.pesoLiquido;
+                        transferenciaController.bobinas = this.qtBobinas;
+                        transferenciaController.idTransferencia = idTransferencia;
+
+                        transferenciaController.InsertFechamento();
 
                     }
 
@@ -474,11 +468,8 @@ namespace SistemaTHR.Apllication
                     listView2.Items.Clear();
 
 
-                }
-                catch
-                {
-                    MessageBox.Show("Erro inesperado. Contate o administrador!","THR SISTEMAS",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                }
+                
+
 
             }
             else
@@ -547,38 +538,15 @@ namespace SistemaTHR.Apllication
             }
               
         }
-        OleDbCommand cmd = new OleDbCommand();
-        OleDbDataReader dr;
-        Connection conn = new Connection();
+
         DataTable dt = new DataTable();
 
-        public void loadFechamento()
-        {
-            cmd.CommandText = "Select * from tab_Fechamento where idTransferencia = @id";
-            cmd.Parameters.AddWithValue("@id", "66");
 
-            try
-            {
-                cmd.Connection = conn.conectar();
-
-                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
-
-                da.Fill(dt);
-
-                conn.desconectar();
-
-            }
-            catch
-            {
-                MessageBox.Show("Errooooo");
-            }
-
-        }
 
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            //loadFechamento();
+
             Modelo.transferenciaController transferenciaController = new Modelo.transferenciaController();
 
             transferenciaController.selectId();
@@ -592,15 +560,7 @@ namespace SistemaTHR.Apllication
 
         }
 
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            Bitmap Image = Image = new Bitmap(this.listView2.Width, this.listView2.Height);
-            listView2.DrawToBitmap(Image, new Rectangle(0, 0, this.listView2.Width, this.listView2.Height));
-            e.Graphics.DrawImage(Image, 0, 0);
-
-        }
-
-        private void txtNumeroPA_TextChanged(object sender, EventArgs e)
+        private void splitContainer3_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

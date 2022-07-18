@@ -12,6 +12,13 @@ namespace SistemaTHR.Apllication
 {
     public partial class frmGerenciarLogin : Form
     {
+
+        String empilhadeiras = "Não";
+        String recebimento = "Não";
+        String expedicao = "Não";
+        String aDM = "Não";
+        String manutencao = "Não";
+
         public frmGerenciarLogin()
         {
             InitializeComponent();
@@ -326,6 +333,54 @@ namespace SistemaTHR.Apllication
 
         }
 
+        private void verificarChecked()
+        {
+            if (rbEmpSim.Checked == true)
+            {
+                empilhadeiras = rbEmpSim.Text;
+            }
+            if (rbEmpNao.Checked == true)
+            {
+                empilhadeiras = rbEmpNao.Text;
+            }
+
+            if (rbEmpRecebSim.Checked == true)
+            {
+                recebimento = rbEmpRecebSim.Text;
+            }
+            if (rbRecebeNao.Checked == true)
+            {
+                recebimento = rbRecebeNao.Text;
+            }
+
+            if (rbExpSim.Checked == true)
+            {
+                expedicao = rbExpSim.Text;
+            }
+            if (rbExpNao.Checked == true)
+            {
+                expedicao = rbExpNao.Text;
+            }
+
+            if (rbAdmSim.Checked == true)
+            {
+                aDM = rbAdmSim.Text;
+            }
+            if (rbEmpNao.Checked == true)
+            {
+                aDM = rbAdmNao.Text;
+            }
+
+            if (rdbManutencaoSim.Checked == true)
+            {
+                manutencao = rdbManutencaoSim.Text;
+            }
+            if (rdbManutencaoNao.Checked == true)
+            {
+                manutencao = rdbManutencaoNao.Text;
+            }
+        }
+
         private void btnSalvar_Click_1(object sender, EventArgs e)
         {
             loginController controller = new loginController();
@@ -334,56 +389,9 @@ namespace SistemaTHR.Apllication
 
             if(txtNome.Text != string.Empty && txtUsuario.Text != string.Empty && txtSenha.Text != string.Empty)
             {
-                String empilhadeiras = "Não";
-                String recebimento = "Não";
-                String expedicao = "Não";
-                String aDM = "Não";
-                String manutencao = "Não";
 
-                if (rbEmpSim.Checked == true)
-                {
-                    empilhadeiras = rbEmpSim.Text;
-                }
-                if (rbEmpNao.Checked == true)
-                {
-                    empilhadeiras = rbEmpNao.Text;
-                }
 
-                if (rbEmpRecebSim.Checked == true)
-                {
-                    recebimento = rbEmpRecebSim.Text;
-                }
-                if (rbRecebeNao.Checked == true)
-                {
-                    recebimento = rbRecebeNao.Text;
-                }
-
-                if (rbExpSim.Checked == true)
-                {
-                    expedicao = rbExpSim.Text;
-                }
-                if (rbExpNao.Checked == true)
-                {
-                    expedicao = rbExpNao.Text;
-                }
-
-                if (rbAdmSim.Checked == true)
-                {
-                    aDM = rbAdmSim.Text;
-                }
-                if (rbEmpNao.Checked == true)
-                {
-                    aDM = rbAdmNao.Text;
-                }
-
-                if (rdbManutencaoSim.Checked == true)
-                {
-                    manutencao = rdbManutencaoSim.Text;
-                }
-                if (rdbManutencaoNao.Checked == true)
-                {
-                    manutencao = rdbManutencaoNao.Text;
-                }
+                verificarChecked();
 
                 controller.Empilhadeiras = empilhadeiras;
                 controller.EmpNivel = cboEmp.Text;
@@ -401,13 +409,13 @@ namespace SistemaTHR.Apllication
 
                 if (controller.tem == true)
                 {
-                    MessageBox.Show("Já existe");
+
                     controller.uptadeModulosUsuario();
                     controller.updateUser();
                 }
                 else
                 {
-                    MessageBox.Show("Não existe");
+
                     controller.inserUsuario();
                     controller.insertMod();
 

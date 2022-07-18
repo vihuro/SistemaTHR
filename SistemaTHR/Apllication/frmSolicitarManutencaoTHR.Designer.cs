@@ -47,8 +47,11 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(16, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(166, 13);
             this.label1.TabIndex = 0;
@@ -79,53 +82,79 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 77);
+            this.label2.Location = new System.Drawing.Point(16, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Tipo de Serviço:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // cboTipoServico
             // 
+            this.cboTipoServico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cboTipoServico.FormattingEnabled = true;
             this.cboTipoServico.Items.AddRange(new object[] {
             "Elétrico",
             "Mecânico",
-            "Serralheria"});
+            "Serralheria",
+            "Jardinagem",
+            "Alvenaria"});
             this.cboTipoServico.Location = new System.Drawing.Point(19, 94);
             this.cboTipoServico.Name = "cboTipoServico";
             this.cboTipoServico.Size = new System.Drawing.Size(121, 21);
             this.cboTipoServico.TabIndex = 1;
+            this.cboTipoServico.SelectedIndexChanged += new System.EventHandler(this.cboTipoServico_SelectedIndexChanged);
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(16, 212);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(102, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Descreva o serviço:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // txtDescricao
             // 
+            this.txtDescricao.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescricao.Location = new System.Drawing.Point(16, 229);
+            this.txtDescricao.MaxLength = 1000;
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(287, 121);
             this.txtDescricao.TabIndex = 3;
+            this.txtDescricao.TextChanged += new System.EventHandler(this.txtDescricao_TextChanged);
             // 
             // lblCaractere
             // 
+            this.lblCaractere.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCaractere.AutoSize = true;
             this.lblCaractere.Location = new System.Drawing.Point(16, 357);
             this.lblCaractere.Name = "lblCaractere";
-            this.lblCaractere.Size = new System.Drawing.Size(112, 13);
+            this.lblCaractere.Size = new System.Drawing.Size(134, 13);
             this.lblCaractere.TabIndex = 7;
-            this.lblCaractere.Text = "Restam 250 caractere";
+            this.lblCaractere.Text = "Caracteres restantes: 1000";
+            this.lblCaractere.Click += new System.EventHandler(this.lblCaractere_Click);
             // 
             // cboAondeSera
             // 
+            this.cboAondeSera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cboAondeSera.FormattingEnabled = true;
             this.cboAondeSera.Items.AddRange(new object[] {
             "EXT-PP 01",
@@ -172,6 +201,9 @@
             // 
             // btnSalvar
             // 
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalvar.Location = new System.Drawing.Point(16, 388);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
@@ -182,6 +214,9 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelar.Location = new System.Drawing.Point(228, 388);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
@@ -192,19 +227,27 @@
             // 
             // txtDataIdeal
             // 
-            this.txtDataIdeal.Location = new System.Drawing.Point(16, 138);
+            this.txtDataIdeal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDataIdeal.Location = new System.Drawing.Point(19, 155);
             this.txtDataIdeal.Name = "txtDataIdeal";
             this.txtDataIdeal.Size = new System.Drawing.Size(100, 20);
             this.txtDataIdeal.TabIndex = 2;
+            this.txtDataIdeal.TextChanged += new System.EventHandler(this.txtDataIdeal_TextChanged);
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 122);
+            this.label4.Location = new System.Drawing.Point(16, 139);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(185, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "Data ideal para realização do serviço:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // frmSolicitarManutencaoTHR
             // 
@@ -223,7 +266,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmSolicitarManutencaoTHR";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Solicitar Manutenção";
             this.Load += new System.EventHandler(this.frmSolicitarManutencaoTHR_Load);
             this.statusStrip1.ResumeLayout(false);

@@ -69,6 +69,7 @@
             this.lblCaractere.Size = new System.Drawing.Size(117, 13);
             this.lblCaractere.TabIndex = 7;
             this.lblCaractere.Text = "Restam 250 caracteres";
+            this.lblCaractere.Click += new System.EventHandler(this.lblCaractere_Click);
             // 
             // btnSolicitar
             // 

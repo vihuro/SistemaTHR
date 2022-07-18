@@ -155,15 +155,15 @@ namespace SistemaTHR.Apllication
         private void btnEditar_Click(object sender, EventArgs e)
         {
             frmEditarTransferencia frmEditarTransferencia = new frmEditarTransferencia(idSelecionado,usuarioMovimentacao);
-            Modelo.transferenciaController transferencia = new Modelo.transferenciaController();
-            transferencia.selectTransf(idSelecionado);
-            this.dt = transferencia.dt;
-            frmEditarTransferencia.dataGridView1.DataSource = transferencia.dt;
-            frmEditarTransferencia.dataGridView1.DataMember = dt.TableName;
-            frmEditarTransferencia.loadStyleGridView1();
-            transferencia.selecMovimenta(idSelecionado);
-            frmEditarTransferencia.dataGridView2.DataSource = transferencia.dt;
-            frmEditarTransferencia.loadStyleGridView2();
+           // Modelo.transferenciaController transferencia = new Modelo.transferenciaController();
+            //transferencia.selectTransf(idSelecionado);
+            //this.dt = transferencia.dt;
+            //frmEditarTransferencia.dataGridView1.DataSource = transferencia.dt;
+            //frmEditarTransferencia.dataGridView1.DataMember = dt.TableName;
+            //frmEditarTransferencia.loadStyleGridView1();
+            //transferencia.selecMovimenta(idSelecionado);
+            //frmEditarTransferencia.dataGridView2.DataSource = transferencia.dt;
+            //frmEditarTransferencia.loadStyleGridView2();
             frmEditarTransferencia.Show();
         }
 

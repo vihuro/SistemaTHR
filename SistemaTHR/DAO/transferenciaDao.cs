@@ -14,6 +14,8 @@ namespace SistemaTHR.DAO
         OleDbCommand cmd = new OleDbCommand();
         OleDbDataReader dr;
         Connection conn = new Connection();
+        public String idFechamento;
+        public String menssagem;
 
         public DateTime dataHoraTransf;
         public String usuarioTransf;
@@ -69,54 +71,74 @@ namespace SistemaTHR.DAO
 
         private void insertoMovimentaco()
         {
-            cmd.CommandText = "Insert into tab_Movimentacao (numeroPa,codigo,Descricao,PesoBruto," +
-                "PesoLiquido,Bobinas,idTransferencia,UsuarioTransferencia) " +
-                "Values (@numeroPa,@codigo,@descricao,@pesoBruto,@pesoLiquido,@bobinas,@idTransferencia,@usuarioTransferencia)";
-            cmd.Parameters.AddWithValue("@numeroPa", numeroPa);
-            cmd.Parameters.AddWithValue("@codigo", codigo);
-            cmd.Parameters.AddWithValue("@descricao", descricao);
-            cmd.Parameters.AddWithValue("@pesoBruto", pesoBruto);
-            cmd.Parameters.AddWithValue("@pesoLiquido", pesoLiquido);
-            cmd.Parameters.AddWithValue("@bobinas", bobinas);
-            cmd.Parameters.AddWithValue("@idTransferencia", idTransferencia);
-            cmd.Parameters.AddWithValue("@usuarioTransferencia", usuarioTransferencia);
-
-            try
+            if (cmd.Parameters.Count > 0)
             {
-                cmd.Connection = conn.conectar();
-                cmd.ExecuteReader();
-
-                conn.desconectar();
-            }
-            catch
-            {
-
+                cmd.Parameters.Clear();
             }
 
+
+                cmd.CommandText = "Insert into tab_Movimentacao (numeroPa,codigo,Descricao,PesoBruto," +
+                    "PesoLiquido,Bobinas,idTransferencia,UsuarioTransferencia) " +
+                    "Values (@numeroPa,@codigo,@descricao,@pesoBruto,@pesoLiquido,@bobinas,@idTransferencia,@usuarioTransferencia)";
+                cmd.Parameters.AddWithValue("@numeroPa", numeroPa);
+                cmd.Parameters.AddWithValue("@codigo", codigo);
+                cmd.Parameters.AddWithValue("@descricao", descricao);
+                cmd.Parameters.AddWithValue("@pesoBruto", pesoBruto);
+                cmd.Parameters.AddWithValue("@pesoLiquido", pesoLiquido);
+                cmd.Parameters.AddWithValue("@bobinas", bobinas);
+                cmd.Parameters.AddWithValue("@idTransferencia", idTransferencia);
+                cmd.Parameters.AddWithValue("@usuarioTransferencia", usuarioTransferencia);
+
+                try
+                {
+                    cmd.Connection = conn.conectar();
+                     cmd.ExecuteNonQuery();
+                   
+
+                    conn.desconectar();
+                }
+                catch
+                {
+
+                }
+            
 
         }
 
         private void insertIntoFechamento()
         {
-            cmd.CommandText = "Insert into tab_fechamento(Codigo,Descricao,PesoBruto,PesoLiquido,QtBobinas,IdTransferencia)" +
-                " Values (@Codigo,@Descricao,@PesoBruto,@PesoLiquido,@QtBobinas,@IdTransferencia)";
-            cmd.Parameters.AddWithValue("@Codigo", codigo);
-            cmd.Parameters.AddWithValue("@Descricao", descricao);
-            cmd.Parameters.AddWithValue("@PesoBruto", pesoBruto);
-            cmd.Parameters.AddWithValue("@PesoLiquido", pesoLiquido);
-            cmd.Parameters.AddWithValue("@QtBobinas", bobinas);
-            cmd.Parameters.AddWithValue("@IdTransferencia", idTransferencia);
-            try
+            if (cmd.Parameters.Count > 0)
             {
-                cmd.Connection = conn.conectar();
-                cmd.ExecuteReader();
-
-                conn.desconectar();
+                cmd.Parameters.Clear();
             }
-            catch
-            {
 
-            }
+
+                cmd.CommandText = "Insert into tab_fechamento(Codigo,Descricao,PesoBruto,PesoLiquido,QtBobinas,IdTransferencia)" +
+                    " Values (@Codigo,@Descricao,@PesoBruto,@PesoLiquido,@QtBobinas,@IdTransferencia)";
+                cmd.Parameters.AddWithValue("@Codigo", codigo);
+                cmd.Parameters.AddWithValue("@Descricao", descricao);
+                cmd.Parameters.AddWithValue("@PesoBruto", pesoBruto);
+                cmd.Parameters.AddWithValue("@PesoLiquido", pesoLiquido);
+                cmd.Parameters.AddWithValue("@QtBobinas", bobinas);
+                cmd.Parameters.AddWithValue("@IdTransferencia", idTransferencia);
+
+                try
+                {
+
+                    cmd.Connection = conn.conectar();
+                    cmd.ExecuteNonQuery();
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    conn.desconectar();
+                }
+            
         }
 
         private void selectTransfenrecia()
@@ -231,7 +253,7 @@ namespace SistemaTHR.DAO
         public String numeroFechamento;
         private void updateFechamento()
         {
-            int id = 71;
+
 
             cmd.CommandText = "Update tab_Fechamento SET PesoBruto = @pesoBruto, PesoLiquido = @pesoliquido, QtBobinas = @qtBobinas WHERE ID = @id";
 
@@ -346,7 +368,12 @@ namespace SistemaTHR.DAO
 
         private void selectFechamento() 
         {
-            cmd.CommandText = "Select * from tab_fechamento where idTransferencia = @id";
+            if(cmd.Parameters.Count > 0)
+            {
+                cmd.Parameters.Clear();
+            }
+
+            cmd.CommandText = "Select * from tab_fechamento where IdTransferencia = @id";
             cmd.Parameters.AddWithValue("@id", id);
             try
             {
@@ -364,6 +391,34 @@ namespace SistemaTHR.DAO
             }
 
         }
+
+        private void deleteFechamento()
+        {
+            cmd.CommandText = "Delete from tab_fechamento where id = @idFechamento";
+            cmd.Parameters.AddWithValue("@idFechamento", idFechamento);
+            try
+            {
+                cmd.Connection = conn.conectar();
+                cmd.ExecuteReader();
+
+       
+            }
+            catch(OleDbException e)
+            {
+                menssagem = e.ToString();
+            }
+            finally
+            {
+                conn.desconectar();
+            }
+        }
+
+        public void deleteFech()
+        {
+            deleteFechamento();
+        }
+
+
 
         public void selectFech(String id)
         {

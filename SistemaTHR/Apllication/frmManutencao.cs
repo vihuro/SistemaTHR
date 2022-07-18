@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaTHR.Apllication
@@ -17,12 +12,18 @@ namespace SistemaTHR.Apllication
         String Usuario;
         String Status;
         public String manutencaoNivel;
-        
+        DateTime datahora;
+        String numeroStatus;
+        String dataHoraApontamento;
+        String usuarioApontamento;
+        String dataHoraAlteracao;
+        String usuarioAlteracao;
+        String observacao;
+
         public frmManutencao(String usuario)
         {
             InitializeComponent();
             this.Usuario = usuario;
-            loadGridView1();
 
         }
 
@@ -39,14 +40,14 @@ namespace SistemaTHR.Apllication
 
             for (var i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                
-                if(i == dataGridView1.Rows.Count -1)
+
+                if (i == dataGridView1.Rows.Count - 1)
                 {
-                    dataGridView1.CurrentCell = dataGridView1.Rows[i - 1].Cells[0];
+                    dataGridView1.CurrentCell = dataGridView1.Rows[i].Cells[0];
 
                     break;
                 }
-                
+
             }
 
         }
@@ -70,14 +71,14 @@ namespace SistemaTHR.Apllication
         {
             DataGridView dataGrid = (DataGridView)sender;
             int i = dataGrid.SelectedRows.Count;
-            
-            if ( i > 0)
+
+            if (i > 0)
             {
                 numeroOS = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString();
-                txtOrdemServico.Text = numeroOS; 
+                txtOrdemServico.Text = numeroOS;
                 loadInfoDataGridView1();
                 loadDataGridView2();
-                
+
             }
 
         }
@@ -115,7 +116,8 @@ namespace SistemaTHR.Apllication
             dataGridView2.ClearSelection();
             txtObservacao.Text = string.Empty;
             btnApontar.Enabled = false;
-            
+            btnDesfazer.Enabled = false;
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -123,24 +125,18 @@ namespace SistemaTHR.Apllication
 
         }
 
-        DateTime datahora;
-        String numeroStatus;
-        String dataHoraApontamento;
-        String usuarioApontamento;
-        String dataHoraAlteracao;
-        String usuarioAlteracao;
-        String observacao;
+
         private void btnApontar_Click(object sender, EventArgs e)
         {
             datahora = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
 
 
-            if(dataGridView2.SelectedRows[0].Cells[3].Value.Equals("00/00/0000 00:00:00"))
+            if (dataGridView2.SelectedRows[0].Cells[3].Value.Equals("00/00/0000 00:00:00"))
             {
                 dataGridView2.SelectedRows[0].Cells[3].Value = Convert.ToString(datahora);
                 dataGridView2.SelectedRows[0].Cells[4].Value = Usuario;
             }
-            if(!dataGridView2.SelectedRows[0].Cells[3].Value.Equals("00/00/0000 00:00:00"))
+            if (!dataGridView2.SelectedRows[0].Cells[3].Value.Equals("00/00/0000 00:00:00"))
             {
                 dataGridView2.SelectedRows[0].Cells[5].Value = Convert.ToString(datahora);
                 dataGridView2.SelectedRows[0].Cells[6].Value = Usuario;
@@ -154,7 +150,7 @@ namespace SistemaTHR.Apllication
             usuarioAlteracao = dataGridView2.SelectedRows[0].Cells[6].Value.ToString();
             observacao = txtObservacao.Text;
 
-            if(dataGridView2.SelectedRows[0].Cells[2].Value.ToString() == "Início de manutenção")
+            if (dataGridView2.SelectedRows[0].Cells[2].Value.ToString() == "Início de manutenção")
             {
                 Status = "Manutenção/INI";
             }
@@ -189,32 +185,47 @@ namespace SistemaTHR.Apllication
 
             controller.statusOP = Status;
             controller.UpdateStaOS(numeroOS);
+            
+            if (controller.msg != null)
+            {
 
-            dataGridView2.ClearSelection();
-            loadDataGridView2();
-            btnApontar.Enabled = false;
+                MessageBox.Show("OS sendo alterada por outro usuário. Tente novamente mais tarde", "THR SISTEMAS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clearAll();
+            }
+            else
+            {
+                dataGridView2.ClearSelection();
+                loadDataGridView2();
+                btnApontar.Enabled = false;
+                btnDesfazer.Enabled = false;
+
+            }
+
+
+
+
 
         }
 
         private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
-                for (int i = 0; i < dataGridView2.Rows.Count; i++)
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+            {
+                dataGridView2.Rows[i].DefaultCellStyle.SelectionBackColor = Color.Black;
+                if (dataGridView2.Rows[i].Cells[4].Value != "")
                 {
-                    dataGridView2.Rows[i].DefaultCellStyle.SelectionBackColor = Color.Black;
-                    if (dataGridView2.Rows[i].Cells[4].Value != "")
-                    {
-                        dataGridView2.Rows[i].DefaultCellStyle.ForeColor = Color.Green;
-                        dataGridView2.Rows[i].DefaultCellStyle.SelectionForeColor = Color.BlueViolet;
-
-                    }
-                    if (dataGridView2.Rows[i].Cells[4].Value == "" && dataGridView2.Rows[i].Cells[2].Value.ToString() == "Início de manutenção")
-                    {
-
-                        dataGridView2.Rows[4].DefaultCellStyle.ForeColor = Color.Gray;
-                    }
+                    dataGridView2.Rows[i].DefaultCellStyle.ForeColor = Color.Green;
+                    dataGridView2.Rows[i].DefaultCellStyle.SelectionForeColor = Color.LightPink;
 
                 }
+                if (dataGridView2.Rows[i].Cells[4].Value == "" && dataGridView2.Rows[i].Cells[2].Value.ToString() == "Início de manutenção")
+                {
+
+                    dataGridView2.Rows[4].DefaultCellStyle.ForeColor = Color.Gray;
+                }
+
+            }
 
         }
 
@@ -222,12 +233,12 @@ namespace SistemaTHR.Apllication
         {
             dataGridView1.ClearSelection();
 
-            while(dataGridView2.Rows.Count > 0)
+            while (dataGridView2.Rows.Count > 0)
             {
                 for (int i = 0; i < dataGridView2.Rows.Count; i++)
                 {
 
-                  dataGridView2.Rows.Remove(dataGridView2.Rows[i]);
+                    dataGridView2.Rows.Remove(dataGridView2.Rows[i]);
 
                 }
             }
@@ -235,37 +246,19 @@ namespace SistemaTHR.Apllication
 
             dataGridView2.ClearSelection();
             txtDescricao.Text = string.Empty;
+            txtObservacao.Text = string.Empty;
             txtOrdemServico.Text = string.Empty;
             cboPrioridade.Text = string.Empty;
             btnApontar.Enabled = false;
+            btnDesfazer.Enabled = false;
         }
 
         private void frmManutencao_Load(object sender, EventArgs e)
         {
 
-            
-            dataGridView1.ClearSelection();
+            loadGridView1();
+            clearAll();
 
-            int i = dataGridView2.Rows.Count;
-            for (int j = 0; j < i; j++)
-            {
-                if (dataGridView2.CurrentCell != null)
-                {
-                    if (i > 0)
-                    {
-                        if (dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[0].Value != null)
-                        {
-                            dataGridView2.Rows.Remove(dataGridView2.CurrentRow);
-                        }
-                    }
-                }
-            }
-
-            dataGridView2.ClearSelection();
-            txtDescricao.Text = string.Empty;
-            txtOrdemServico.Text = string.Empty;
-            cboPrioridade.Text = string.Empty;
-            btnApontar.Enabled = false;
 
         }
 
@@ -287,16 +280,14 @@ namespace SistemaTHR.Apllication
 
                     if (dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[0].Value != null)
                     {
-                        numeroStatus = dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[0].Value.ToString();
 
-                        Modelo.OSTHRController controller = new Modelo.OSTHRController();
-                        controller.selectOBS(numeroStatus);
-                        txtObservacao.Text = controller.observacao;
+                        txtObservacao.Text = dataGridView2.Rows[dataGridView2.SelectedRows[0].Index].Cells[7].Value.ToString();
+
                     }
 
-                    for(i = 0; i < dataGridView2.Rows.Count; i++)
+                    for (i = 0; i < dataGridView2.Rows.Count; i++)
                     {
-                        if(dataGridView2.CurrentRow.DefaultCellStyle.ForeColor == Color.Gray)
+                        if (dataGridView2.CurrentRow.DefaultCellStyle.ForeColor == Color.Gray)
                         {
                             btnApontar.Enabled = false;
 
@@ -304,6 +295,7 @@ namespace SistemaTHR.Apllication
                         else
                         {
                             btnApontar.Enabled = true;
+                            btnDesfazer.Enabled = true;
                         }
                     }
 
@@ -335,10 +327,10 @@ namespace SistemaTHR.Apllication
 
         private void btnCompra_Click(object sender, EventArgs e)
         {
-            frmSolicitacaoPeca peca = new frmSolicitacaoPeca(Usuario,numeroOS);
+            frmSolicitacaoPeca peca = new frmSolicitacaoPeca(Usuario, numeroOS);
             peca.lblUsuario.Text = this.lblUsuario.Text;
             peca.btnAutorizar.Enabled = false;
-            if(manutencaoNivel == "1")
+            if (manutencaoNivel == "1")
             {
                 peca.btnAutorizar.Enabled = true;
             }
@@ -359,17 +351,118 @@ namespace SistemaTHR.Apllication
         {
             Modelo.OSTHRController controller = new Modelo.OSTHRController();
             controller.VerificarPriori(numeroOS);
-            if(cboPrioridade.Text != controller.Prioridade)
+
+            if (controller.msg != null)
             {
-                controller.Prioridade = cboPrioridade.Text;
-                controller.usuarioPrioridade = Usuario;
-                controller.dataHoraPrioridade = "";
-                controller.UpdatePriori(numeroOS);
+                MessageBox.Show("OS sendo alterar por outro usuário. Tente novamente mais tarde. ", "SISTEMA THR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+            else
+            {
+                if (cboPrioridade.Text != controller.Prioridade)
+                {
+                    controller.Prioridade = cboPrioridade.Text;
+                    controller.usuarioPrioridade = Usuario;
+                    controller.dataHoraPrioridade = "";
+                    controller.UpdatePriori(numeroOS);
+
+
+                }
+                loadGridView1();
+                clearAll();
             }
 
-            loadGridView1();
-            clearAll();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmObservacoes observacoes = new frmObservacoes(txtObservacao.Text, this);
+            observacoes.txtObservaco.Text = this.txtObservacao.Text;
+            observacoes.ShowDialog();
+        }
+
+        private void txtObservacao_DoubleClick(object sender, EventArgs e)
+        {
+            frmObservacoes observacoes = new frmObservacoes(txtObservacao.Text, this);
+            observacoes.txtObservaco.Text = this.txtObservacao.Text;
+            observacoes.ShowDialog();
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            frmOSTHR oSTHR = new frmOSTHR(numeroOS);
+
+            oSTHR.Show();
+        }
+
+        private void frmManutencao_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                MessageBox.Show("Apertou F5");
+            }
+        }
+
+        private void frmManutencao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void selectNOS()
+        {
+            for (var i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                if (txtOrdemServico.Text == dataGridView1.Rows[dataGridView1.Rows[i].Index].Cells[0].Value.ToString())
+                {
+                    dataGridView1.CurrentCell = dataGridView1.Rows[i].Cells[0];
+                    break;
+                }
+
+                if (i == dataGridView1.Rows.Count - 1)
+                {
+                    dataGridView1.CurrentCell = dataGridView1.Rows[i].Cells[0];
+                    dataGridView1.ClearSelection();
+                    clearAll();
+                    MessageBox.Show("OS não encontrada!", "THR SISTEMAS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                }
+
+            }
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                loadGridView1();
+                clearAll();
+            }
+        }
+
+        private void txtOrdemServico_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                loadGridView1();
+                clearAll();
+            }
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                selectNOS();
+            }
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            frmFiltroManutencoes filtro = new frmFiltroManutencoes(this);
+            filtro.ShowDialog();
         }
     }
 }
